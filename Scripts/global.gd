@@ -37,6 +37,17 @@ var in_tutorial = false
 func _ready():
 	random.randomize()
 	
+	if not FileAccess.file_exists("user://options_save.json"):
+		var save_file = FileAccess.get_file_as_string("res://Game V2/Saves/options_save.json")
+		var file_destination = FileAccess.open("user://options_save.json", FileAccess.WRITE_READ)
+		#var save_json_as_text = FileAccess.get_file_as_string(save_file)
+		var dict = JSON.parse_string(save_file)
+		
+		var json_string = JSON.stringify(dict)
+		file_destination.store_line(json_string)
+	else:
+		print("DOESN'T EXIST")
+	
 	var file = "res://Game V2/Databases/combat_encounters.json"
 	var json_as_text = FileAccess.get_file_as_string(file)
 	enemy_encounter_db = JSON.parse_string(json_as_text)
