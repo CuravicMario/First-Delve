@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://dvdegm2i1drxc"]
+
+[ext_resource type="Script" path="res://Game V2/scripts/resume.gd" id="1_tr5b7"]
+[ext_resource type="Shader" path="res://Game V2/scripts/Shaders/color_swap.gdshader" id="2_hwoyn"]
+[ext_resource type="Texture2D" uid="uid://h6ajmsc1agyd" path="res://Game V2/Sprites/Start combat btn-border.png" id="3_gwgat"]
+[ext_resource type="Texture2D" uid="uid://cm6c32384an2y" path="res://Game V2/Sprites/Start combat btn hover border.png" id="4_q66wn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3phg5"]
+size = Vector2(80, 32)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xc587"]
+shader = ExtResource("2_hwoyn")
+shader_parameter/target_color_1 = null
+shader_parameter/replace_color_1 = null
+shader_parameter/target_color_2 = null
+shader_parameter/replace_color_2 = null
+shader_parameter/tolerance = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_00bi1"]
+shader = ExtResource("2_hwoyn")
+shader_parameter/target_color_1 = null
+shader_parameter/replace_color_1 = null
+shader_parameter/target_color_2 = null
+shader_parameter/replace_color_2 = null
+shader_parameter/tolerance = null
+
+[node name="Resume" type="CharacterBody2D"]
+input_pickable = true
+script = ExtResource("1_tr5b7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_3phg5")
+
+[node name="Border" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_xc587")
+texture = ExtResource("3_gwgat")
+
+[node name="HoverBorder" type="Sprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_00bi1")
+texture = ExtResource("4_q66wn")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

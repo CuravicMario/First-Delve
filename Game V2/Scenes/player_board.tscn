@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://34b8fyj557b6"]
+
+[ext_resource type="Texture2D" uid="uid://cd6ru5wj2i1ci" path="res://Game V2/Sprites/big board rough-Sheet.png" id="1_2uqcs"]
+[ext_resource type="Script" path="res://Game V2/scripts/Player_Board.gd" id="1_iusfs"]
+[ext_resource type="Shader" path="res://Game V2/scripts/Shaders/color_swap.gdshader" id="2_38gwk"]
+[ext_resource type="Texture2D" uid="uid://wajb0ccyjfyb" path="res://Game V2/Sprites/big board hover border.png" id="3_gqspb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_koykm"]
+shader = ExtResource("2_38gwk")
+shader_parameter/target_color_1 = null
+shader_parameter/replace_color_1 = null
+shader_parameter/target_color_2 = null
+shader_parameter/replace_color_2 = null
+shader_parameter/tolerance = null
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rwtlb"]
+size = Vector2(352, 128)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1h2co"]
+shader = ExtResource("2_38gwk")
+shader_parameter/target_color_1 = null
+shader_parameter/replace_color_1 = null
+shader_parameter/target_color_2 = null
+shader_parameter/replace_color_2 = null
+shader_parameter/tolerance = null
+
+[node name="PlayerBoard" type="CharacterBody2D" groups=["dropable"]]
+script = ExtResource("1_iusfs")
+
+[node name="BoardSprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_koykm")
+position = Vector2(176, 64)
+texture = ExtResource("1_2uqcs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(176, 64)
+shape = SubResource("RectangleShape2D_rwtlb")
+
+[node name="Hover_border" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+material = SubResource("ShaderMaterial_1h2co")
+position = Vector2(176, 64)
+texture = ExtResource("3_gqspb")

@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://df3tabp6jwyiq"]
+
+[ext_resource type="Script" path="res://Game V2/scripts/Equipment/health_potion.gd" id="1_bpafg"]
+[ext_resource type="Script" path="res://Game V2/scripts/Parts.gd" id="2_xwydq"]
+[ext_resource type="Shader" path="res://Game V2/scripts/Shaders/color_swap.gdshader" id="3_mj6sm"]
+[ext_resource type="Texture2D" uid="uid://dfh7w0fmxath4" path="res://Game V2/Sprites/Equipment/health potion.png" id="4_sr7sl"]
+[ext_resource type="PackedScene" uid="uid://bb8uimg5kiniu" path="res://Game V2/Scenes/hover.tscn" id="5_8cj52"]
+[ext_resource type="Material" uid="uid://bsbussaclyott" path="res://Game V2/scripts/Shaders/Material/color_changer.tres" id="6_bik3h"]
+[ext_resource type="Texture2D" uid="uid://dl662fivjybb3" path="res://Game V2/Sprites/Equipment/1x1 hover border.png" id="7_vpnj3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3qhij"]
+shader = ExtResource("3_mj6sm")
+shader_parameter/target_color_1 = Color(0.921569, 0.898039, 0.807843, 1)
+shader_parameter/replace_color_1 = Color(0.921569, 0.898039, 0.807843, 1)
+shader_parameter/target_color_2 = Color(0.180392, 0.188235, 0.215686, 1)
+shader_parameter/replace_color_2 = Color(0.180392, 0.188235, 0.215686, 1)
+shader_parameter/tolerance = null
+
+[node name="HealthPotion" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_bpafg")
+attack_to_trigger = 2
+
+[node name="Parts" type="Node2D" parent="."]
+script = ExtResource("2_xwydq")
+
+[node name="Part 1" type="Sprite2D" parent="Parts"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_3qhij")
+texture = ExtResource("4_sr7sl")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(-16, 16, 16, 16, 16, -16, -16, -16)
+
+[node name="Hover" parent="." instance=ExtResource("5_8cj52")]
+visible = false
+position = Vector2(0, -58)
+
+[node name="Hover_border" type="Sprite2D" parent="."]
+visible = false
+z_index = 5
+texture_filter = 1
+material = ExtResource("6_bik3h")
+texture = ExtResource("7_vpnj3")
+
+[node name="SwitchPosition" type="Marker2D" parent="."]
+position = Vector2(0, 58)
+
+[node name="DefaultPosition" type="Marker2D" parent="."]
+position = Vector2(0, -58)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

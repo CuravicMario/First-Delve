@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ctbtfreefmkpp"
+path="res://.godot/imported/Troubadeck 41 Firecat.ogg-ba1d04d6b21ad040a75f64dcb36a01d4.oggvorbisstr"
+
+[deps]
+
+source_file="res://Game V2/Sounds/Music/Troubadeck 41 Firecat.ogg"
+dest_files=["res://.godot/imported/Troubadeck 41 Firecat.ogg-ba1d04d6b21ad040a75f64dcb36a01d4.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://bph5j3st78206"]
+
+[ext_resource type="Script" path="res://Game V2/scripts/reward.gd" id="1_tbm73"]
+[ext_resource type="Texture2D" uid="uid://6lurfcuj7tis" path="res://Game V2/Sprites/reward-text.png" id="2_owb5t"]
+[ext_resource type="Shader" path="res://Game V2/scripts/Shaders/color_swap.gdshader" id="3_4lj7y"]
+[ext_resource type="Texture2D" uid="uid://bq535m8ds3si7" path="res://Game V2/Sprites/shop icon frame.png" id="3_kxexc"]
+[ext_resource type="PackedScene" uid="uid://bdohjy5psq1t7" path="res://Game V2/Scenes/take_reward.tscn" id="4_lcnmk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u1lu0"]
+shader = ExtResource("3_4lj7y")
+shader_parameter/target_color_1 = null
+shader_parameter/replace_color_1 = null
+shader_parameter/target_color_2 = null
+shader_parameter/replace_color_2 = null
+shader_parameter/tolerance = null
+
+[node name="Reward" type="Node2D" node_paths=PackedStringArray("RIGHT_NEIGHBOUR")]
+script = ExtResource("1_tbm73")
+label_group = "reward"
+RIGHT_NEIGHBOUR = NodePath("TakeBtn")
+
+[node name="Text location" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -32)
+texture = ExtResource("2_owb5t")
+
+[node name="Reward position" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_u1lu0")
+position = Vector2(-40, 24)
+texture = ExtResource("3_kxexc")
+
+[node name="TakeBtn" parent="." node_paths=PackedStringArray("LEFT_NEIGHBOUR") instance=ExtResource("4_lcnmk")]
+position = Vector2(48, 24)
+LEFT_NEIGHBOUR = NodePath("..")

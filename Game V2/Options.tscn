@@ -1,0 +1,335 @@
+[gd_scene load_steps=22 format=3 uid="uid://d1dmnwvak03it"]
+
+[ext_resource type="Shader" path="res://Game V2/scripts/Shaders/color_swap.gdshader" id="1_8t251"]
+[ext_resource type="Script" path="res://Game V2/scripts/Pixel_Art_Viewport.gd" id="1_esgro"]
+[ext_resource type="PackedScene" uid="uid://cgipxjx7q2bns" path="res://Game V2/Scenes/UI_options.tscn" id="1_xb8dr"]
+[ext_resource type="Texture2D" uid="uid://bgpji35m5diwo" path="res://Game V2/Sprites/big game mockup-Sheet.png" id="2_wkunn"]
+[ext_resource type="Script" path="res://Game V2/scripts/Background.gd" id="3_x8326"]
+[ext_resource type="Texture2D" uid="uid://jpvcw2t3vv4s" path="res://Game V2/Sprites/options frame.png" id="5_c0ges"]
+[ext_resource type="PackedScene" uid="uid://dtpmm4fygm4d6" path="res://Game V2/Scenes/reset_options.tscn" id="6_8ugmm"]
+[ext_resource type="PackedScene" uid="uid://bc6ajawsl2wdd" path="res://Game V2/Scenes/change_scene.tscn" id="7_b7en3"]
+[ext_resource type="Texture2D" uid="uid://bow7drb87vd4m" path="res://Game V2/Sprites/options view devider.png" id="7_xhc4s"]
+[ext_resource type="PackedScene" uid="uid://b4qxv18jwgn7j" path="res://Game V2/Scenes/tab.tscn" id="8_j1yap"]
+[ext_resource type="PackedScene" uid="uid://djfnb41ur6x0e" path="res://Game V2/Scenes/save_options.tscn" id="9_yke48"]
+[ext_resource type="Script" path="res://Game V2/scripts/MainOptionsNode.gd" id="11_jmna2"]
+[ext_resource type="Script" path="res://Game V2/scripts/selectable_options.gd" id="12_jfpqy"]
+[ext_resource type="PackedScene" uid="uid://yavrlw5ju8nl" path="res://Game V2/Scenes/option_name.tscn" id="12_xe0pq"]
+[ext_resource type="PackedScene" uid="uid://1cxsnbsgrklk" path="res://Game V2/Scenes/palette.tscn" id="13_6xb1g"]
+[ext_resource type="PackedScene" uid="uid://drfqlh7nr5s8c" path="res://Game V2/Scenes/check_box.tscn" id="14_vu6ci"]
+[ext_resource type="Script" path="res://Game V2/scripts/options_ panel.gd" id="15_jl0ve"]
+[ext_resource type="PackedScene" uid="uid://kv0lbfx7m648" path="res://Game V2/Scenes/volume_bar.tscn" id="15_ls43f"]
+[ext_resource type="Script" path="res://Game V2/scripts/Hotkeys panel.gd" id="19_wn2jn"]
+[ext_resource type="PackedScene" uid="uid://bry6yxqolytl2" path="res://Game V2/Scenes/language_bar.tscn" id="20_vpmlx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aek7e"]
+shader = ExtResource("1_8t251")
+shader_parameter/target_color_1 = null
+shader_parameter/replace_color_1 = null
+shader_parameter/target_color_2 = null
+shader_parameter/replace_color_2 = null
+shader_parameter/tolerance = null
+
+[node name="Options" type="Node2D"]
+
+[node name="CanvasLayer" parent="." instance=ExtResource("1_xb8dr")]
+
+[node name="Pixel Art" type="SubViewportContainer" parent="."]
+offset_right = 640.0
+offset_bottom = 360.0
+stretch = true
+script = ExtResource("1_esgro")
+
+[node name="SubViewport" type="SubViewport" parent="Pixel Art"]
+handle_input_locally = false
+physics_object_picking = true
+size = Vector2i(640, 360)
+render_target_update_mode = 4
+
+[node name="Camera2D" type="Camera2D" parent="Pixel Art/SubViewport"]
+anchor_mode = 0
+
+[node name="Background" type="Sprite2D" parent="Pixel Art/SubViewport/Camera2D"]
+z_index = -15
+material = SubResource("ShaderMaterial_aek7e")
+position = Vector2(320, 180)
+texture = ExtResource("2_wkunn")
+script = ExtResource("3_x8326")
+
+[node name="Options Frame" type="Sprite2D" parent="Pixel Art/SubViewport/Camera2D"]
+material = SubResource("ShaderMaterial_aek7e")
+position = Vector2(320, 152)
+texture = ExtResource("5_c0ges")
+script = ExtResource("3_x8326")
+
+[node name="Options Devider" type="Sprite2D" parent="Pixel Art/SubViewport/Camera2D"]
+material = SubResource("ShaderMaterial_aek7e")
+position = Vector2(192, 152)
+texture = ExtResource("7_xhc4s")
+script = ExtResource("3_x8326")
+
+[node name="SaveOptions2" parent="Pixel Art/SubViewport/Camera2D" node_paths=PackedStringArray("palette_1", "palette_2", "hp_palette", "common_palette", "rare_palette", "legendary_palette", "keyboard", "fullscreen", "background_volume", "sfx_volume", "hotkeys", "lang", "UP_NEIGHBOUR", "LEFT_NEIGHBOUR") instance=ExtResource("9_yke48")]
+position = Vector2(568, 320)
+palette_1 = NodePath("../Selectable options/Graphics panel/Palette")
+palette_2 = NodePath("../Selectable options/Graphics panel/Palette2")
+hp_palette = NodePath("../Selectable options/GameplayPanel/Palette4")
+common_palette = NodePath("../Selectable options/GameplayPanel/Palette")
+rare_palette = NodePath("../Selectable options/GameplayPanel/Palette2")
+legendary_palette = NodePath("../Selectable options/GameplayPanel/Palette3")
+keyboard = NodePath("../Selectable options/GameplayPanel/CheckBox")
+fullscreen = NodePath("../Selectable options/Graphics panel/CheckBox")
+background_volume = NodePath("../Selectable options/Audio panel/BackgroundMusic")
+sfx_volume = NodePath("../Selectable options/Audio panel/SFX")
+hotkeys = NodePath("../Selectable options/Hotkeys panel")
+lang = NodePath("../Selectable options/Graphics panel/LanguageBar")
+label_group = "save"
+btn_real_pos = Vector2(568, 320)
+text_id = 17
+UP_NEIGHBOUR = NodePath("../Tabs/Gameplay")
+LEFT_NEIGHBOUR = NodePath("../ResetOptions")
+
+[node name="ChangeScene" parent="Pixel Art/SubViewport/Camera2D" node_paths=PackedStringArray("VIEWPORT", "UP_NEIGHBOUR", "RIGHT_NEIGHBOUR") instance=ExtResource("7_b7en3")]
+position = Vector2(72, 320)
+TARGET_SCENE = "res://Game V2/TitleScreen.tscn"
+VIEWPORT = NodePath("../../..")
+label_group = "back"
+btn_real_pos = Vector2(72, 320)
+text_id = 16
+UP_NEIGHBOUR = NodePath("../Tabs/Gameplay")
+RIGHT_NEIGHBOUR = NodePath("../ResetOptions")
+
+[node name="ResetOptions" parent="Pixel Art/SubViewport/Camera2D" node_paths=PackedStringArray("UP_NEIGHBOUR", "RIGHT_NEIGHBOUR", "LEFT_NEIGHBOUR") instance=ExtResource("6_8ugmm")]
+position = Vector2(456, 320)
+label_group = "reset"
+btn_real_pos = Vector2(456, 320)
+text_id = 18
+UP_NEIGHBOUR = NodePath("../Tabs/Gameplay")
+RIGHT_NEIGHBOUR = NodePath("../SaveOptions2")
+LEFT_NEIGHBOUR = NodePath("../ChangeScene")
+
+[node name="Tabs" type="Node2D" parent="Pixel Art/SubViewport/Camera2D"]
+
+[node name="Graphics" parent="Pixel Art/SubViewport/Camera2D/Tabs" node_paths=PackedStringArray("RIGHT_NEIGHBOUR", "DOWN_NEIGHBOUR", "OPTIONS_PANEL") instance=ExtResource("8_j1yap")]
+position = Vector2(112, 56)
+label_group = "graphics"
+text_id = 19
+RIGHT_NEIGHBOUR = NodePath("../../Selectable options/Graphics panel/OptionName")
+DOWN_NEIGHBOUR = NodePath("../Audio")
+OPTIONS_PANEL = NodePath("../../Selectable options/Graphics panel")
+
+[node name="Audio" parent="Pixel Art/SubViewport/Camera2D/Tabs" node_paths=PackedStringArray("UP_NEIGHBOUR", "DOWN_NEIGHBOUR", "OPTIONS_PANEL") instance=ExtResource("8_j1yap")]
+position = Vector2(112, 120)
+label_group = "audio"
+text_id = 20
+UP_NEIGHBOUR = NodePath("../Graphics")
+DOWN_NEIGHBOUR = NodePath("../Gameplay")
+OPTIONS_PANEL = NodePath("../../Selectable options/Audio panel")
+
+[node name="Gameplay" parent="Pixel Art/SubViewport/Camera2D/Tabs" node_paths=PackedStringArray("UP_NEIGHBOUR", "DOWN_NEIGHBOUR", "OPTIONS_PANEL") instance=ExtResource("8_j1yap")]
+position = Vector2(112, 184)
+label_group = "gameplay"
+text_id = 21
+UP_NEIGHBOUR = NodePath("../Audio")
+DOWN_NEIGHBOUR = NodePath("../Hotkeys")
+OPTIONS_PANEL = NodePath("../../Selectable options/GameplayPanel")
+
+[node name="Hotkeys" parent="Pixel Art/SubViewport/Camera2D/Tabs" node_paths=PackedStringArray("UP_NEIGHBOUR", "DOWN_NEIGHBOUR", "OPTIONS_PANEL") instance=ExtResource("8_j1yap")]
+position = Vector2(112, 248)
+label_group = "hotkey"
+text_id = 49
+UP_NEIGHBOUR = NodePath("../Gameplay")
+DOWN_NEIGHBOUR = NodePath("../../ChangeScene")
+OPTIONS_PANEL = NodePath("../../Selectable options/Hotkeys panel")
+
+[node name="MainOptionsNode" type="Node2D" parent="Pixel Art/SubViewport/Camera2D"]
+script = ExtResource("11_jmna2")
+
+[node name="Selectable options" type="Node2D" parent="Pixel Art/SubViewport/Camera2D" node_paths=PackedStringArray("FIRST_ACTIVE")]
+script = ExtResource("12_jfpqy")
+FIRST_ACTIVE = NodePath("Graphics panel")
+
+[node name="Graphics panel" type="Node2D" parent="Pixel Art/SubViewport/Camera2D/Selectable options" node_paths=PackedStringArray("first_element", "TAB")]
+script = ExtResource("15_jl0ve")
+first_element = NodePath("OptionName")
+TAB = NodePath("../../Tabs/Graphics")
+
+[node name="OptionName" parent="Pixel Art/SubViewport/Camera2D/Selectable options/Graphics panel" node_paths=PackedStringArray("LEFT_NEIGHBOUR") instance=ExtResource("12_xe0pq")]
+position = Vector2(312, 40)
+label_group = "palette1"
+text_id = 22
+LEFT_NEIGHBOUR = NodePath("../../../Tabs/Graphics")
+
+[node name="Palette" parent="Pixel Art/SubViewport/Camera2D/Selectable options/Graphics panel" node_paths=PackedStringArray("UP", "DOWN", "LEFT") instance=ExtResource("13_6xb1g")]
+position = Vector2(208, 56)
+UP = NodePath("../OptionName")
+DOWN = NodePath("../OptionName2")
+LEFT = NodePath("../../../Tabs/Graphics")
+
+[node name="OptionName2" parent="Pixel Art/SubViewport/Camera2D/Selectable options/Graphics panel" node_paths=PackedStringArray("LEFT_NEIGHBOUR") instance=ExtResource("12_xe0pq")]
+position = Vector2(312, 84)
+label_group = "palette2"
+text_id = 23
+LEFT_NEIGHBOUR = NodePath("../../../Tabs/Graphics")
+
+[node name="Palette2" parent="Pixel Art/SubViewport/Camera2D/Selectable options/Graphics panel" node_paths=PackedStringArray("UP", "DOWN", "LEFT") instance=ExtResource("13_6xb1g")]
+position = Vector2(208, 100)
+type = 1
+UP = NodePath("../OptionName2")
+DOWN = NodePath("../OptionName4")
+LEFT = NodePath("../../../Tabs/Graphics")
+
+[node name="OptionName4" parent="Pixel Art/SubViewport/Camera2D/Selectable options/Graphics panel" node_paths=PackedStringArray("DOWN_NEIGHBOUR", "LEFT_NEIGHBOUR") instance=ExtResource("12_xe0pq")]
+position = Vector2(312, 128)
+label_group = "fullscreen"
+text_id = 25
+DOWN_NEIGHBOUR = NodePath("../CheckBox")
+LEFT_NEIGHBOUR = NodePath("../../../Tabs/Graphics")
+
+[node name="CheckBox" parent="Pixel Art/SubViewport/Camera2D/Selectable options/Graphics panel" node_paths=PackedStringArray("UP_NEIGHBOUR", "DOWN_NEIGHBOUR", "LEFT_NEIGHBOUR") instance=ExtResource("14_vu6ci")]
+position = Vector2(217, 154)
+UP_NEIGHBOUR = NodePath("../OptionName4")
+DOWN_NEIGHBOUR = NodePath("../OptionName5")
+LEFT_NEIGHBOUR = NodePath("../../../Tabs/Graphics")
+
+[node name="OptionName5" parent="Pixel Art/SubViewport/Camera2D/Selectable options/Graphics panel" node_paths=PackedStringArray("UP_NEIGHBOUR", "DOWN_NEIGHBOUR", "LEFT_NEIGHBOUR") instance=ExtResource("12_xe0pq")]
+position = Vector2(312, 180)
+label_group = "name_lang"
+text_id = 73
+UP_NEIGHBOUR = NodePath("../CheckBox")
+DOWN_NEIGHBOUR = NodePath("../LanguageBar/Arrow2")
+LEFT_NEIGHBOUR = NodePath("../../../Tabs/Graphics")
+
+[node name="LanguageBar" parent="Pixel Art/SubViewport/Camera2D/Selectable options/Graphics panel" instance=ExtResource("20_vpmlx")]
+position = Vector2(296, 208)
+
+[node name="Arrow" parent="Pixel Art/SubViewport/Camera2D/Selectable options/Graphics panel/LanguageBar" index="1" node_paths=PackedStringArray("UP_NEIGHBOUR", "DOWN_NEIGHBOUR")]
+UP_NEIGHBOUR = NodePath("../../OptionName5")
+DOWN_NEIGHBOUR = NodePath("../../../../SaveOptions2")
+
+[node name="Arrow2" parent="Pixel Art/SubViewport/Camera2D/Selectable options/Graphics panel/LanguageBar" index="2" node_paths=PackedStringArray("UP_NEIGHBOUR", "DOWN_NEIGHBOUR", "LEFT_NEIGHBOUR")]
+UP_NEIGHBOUR = NodePath("../../OptionName5")
+DOWN_NEIGHBOUR = NodePath("../../../../SaveOptions2")
+LEFT_NEIGHBOUR = NodePath("../../../../Tabs/Graphics")
+
+[node name="Audio panel" type="Node2D" parent="Pixel Art/SubViewport/Camera2D/Selectable options" node_paths=PackedStringArray("first_element", "TAB")]
+visible = false
+script = ExtResource("15_jl0ve")
+first_element = NodePath("OptionName")
+TAB = NodePath("../../Tabs/Audio")
+
+[node name="OptionName" parent="Pixel Art/SubViewport/Camera2D/Selectable options/Audio panel" node_paths=PackedStringArray("DOWN_NEIGHBOUR", "LEFT_NEIGHBOUR") instance=ExtResource("12_xe0pq")]
+position = Vector2(312, 40)
+label_group = "bgmusic"
+text_id = 31
+DOWN_NEIGHBOUR = NodePath("../BackgroundMusic/Arrow2")
+LEFT_NEIGHBOUR = NodePath("../../../Tabs/Graphics")
+
+[node name="BackgroundMusic" parent="Pixel Art/SubViewport/Camera2D/Selectable options/Audio panel" instance=ExtResource("15_ls43f")]
+position = Vector2(296, 64)
+
+[node name="Arrow" parent="Pixel Art/SubViewport/Camera2D/Selectable options/Audio panel/BackgroundMusic" index="1" node_paths=PackedStringArray("UP_NEIGHBOUR", "DOWN_NEIGHBOUR")]
+UP_NEIGHBOUR = NodePath("../../OptionName")
+DOWN_NEIGHBOUR = NodePath("../../OptionName2")
+
+[node name="Arrow2" parent="Pixel Art/SubViewport/Camera2D/Selectable options/Audio panel/BackgroundMusic" index="2" node_paths=PackedStringArray("UP_NEIGHBOUR", "DOWN_NEIGHBOUR", "LEFT_NEIGHBOUR")]
+UP_NEIGHBOUR = NodePath("../../OptionName")
+DOWN_NEIGHBOUR = NodePath("../../OptionName2")
+LEFT_NEIGHBOUR = NodePath("../../../../Tabs/Graphics")
+
+[node name="OptionName2" parent="Pixel Art/SubViewport/Camera2D/Selectable options/Audio panel" node_paths=PackedStringArray("UP_NEIGHBOUR", "DOWN_NEIGHBOUR", "LEFT_NEIGHBOUR") instance=ExtResource("12_xe0pq")]
+position = Vector2(312, 88)
+label_group = "sfxmusic"
+text_id = 32
+UP_NEIGHBOUR = NodePath("../BackgroundMusic/Arrow2")
+DOWN_NEIGHBOUR = NodePath("../SFX/Arrow2")
+LEFT_NEIGHBOUR = NodePath("../../../Tabs/Graphics")
+
+[node name="SFX" parent="Pixel Art/SubViewport/Camera2D/Selectable options/Audio panel" instance=ExtResource("15_ls43f")]
+position = Vector2(296, 112)
+TYPE = 1
+
+[node name="Arrow" parent="Pixel Art/SubViewport/Camera2D/Selectable options/Audio panel/SFX" index="1" node_paths=PackedStringArray("UP_NEIGHBOUR")]
+UP_NEIGHBOUR = NodePath("../../OptionName2")
+
+[node name="Arrow2" parent="Pixel Art/SubViewport/Camera2D/Selectable options/Audio panel/SFX" index="2" node_paths=PackedStringArray("UP_NEIGHBOUR", "LEFT_NEIGHBOUR")]
+UP_NEIGHBOUR = NodePath("../../OptionName2")
+LEFT_NEIGHBOUR = NodePath("../../../../Tabs/Graphics")
+
+[node name="GameplayPanel" type="Node2D" parent="Pixel Art/SubViewport/Camera2D/Selectable options" node_paths=PackedStringArray("first_element", "TAB")]
+visible = false
+script = ExtResource("15_jl0ve")
+first_element = NodePath("OptionName")
+TAB = NodePath("../../Tabs/Gameplay")
+
+[node name="OptionName" parent="Pixel Art/SubViewport/Camera2D/Selectable options/GameplayPanel" node_paths=PackedStringArray("LEFT_NEIGHBOUR") instance=ExtResource("12_xe0pq")]
+position = Vector2(312, 40)
+label_group = "common"
+text_id = 26
+LEFT_NEIGHBOUR = NodePath("../../../Tabs/Graphics")
+
+[node name="Palette" parent="Pixel Art/SubViewport/Camera2D/Selectable options/GameplayPanel" node_paths=PackedStringArray("UP", "DOWN", "LEFT") instance=ExtResource("13_6xb1g")]
+position = Vector2(208, 56)
+type = 3
+UP = NodePath("../OptionName")
+DOWN = NodePath("../OptionName2")
+LEFT = NodePath("../../../Tabs/Graphics")
+
+[node name="OptionName2" parent="Pixel Art/SubViewport/Camera2D/Selectable options/GameplayPanel" node_paths=PackedStringArray("LEFT_NEIGHBOUR") instance=ExtResource("12_xe0pq")]
+position = Vector2(312, 84)
+label_group = "rare"
+text_id = 27
+LEFT_NEIGHBOUR = NodePath("../../../Tabs/Graphics")
+
+[node name="Palette2" parent="Pixel Art/SubViewport/Camera2D/Selectable options/GameplayPanel" node_paths=PackedStringArray("UP", "DOWN", "LEFT") instance=ExtResource("13_6xb1g")]
+position = Vector2(208, 100)
+type = 4
+UP = NodePath("../OptionName2")
+DOWN = NodePath("../OptionName3")
+LEFT = NodePath("../../../Tabs/Graphics")
+
+[node name="OptionName3" parent="Pixel Art/SubViewport/Camera2D/Selectable options/GameplayPanel" node_paths=PackedStringArray("LEFT_NEIGHBOUR") instance=ExtResource("12_xe0pq")]
+position = Vector2(312, 128)
+label_group = "legendary"
+text_id = 28
+LEFT_NEIGHBOUR = NodePath("../../../Tabs/Graphics")
+
+[node name="Palette3" parent="Pixel Art/SubViewport/Camera2D/Selectable options/GameplayPanel" node_paths=PackedStringArray("UP", "DOWN", "LEFT") instance=ExtResource("13_6xb1g")]
+position = Vector2(208, 144)
+type = 5
+UP = NodePath("../OptionName3")
+DOWN = NodePath("../OptionName4")
+LEFT = NodePath("../../../Tabs/Graphics")
+
+[node name="OptionName4" parent="Pixel Art/SubViewport/Camera2D/Selectable options/GameplayPanel" node_paths=PackedStringArray("LEFT_NEIGHBOUR") instance=ExtResource("12_xe0pq")]
+position = Vector2(312, 172)
+label_group = "hp"
+text_id = 24
+LEFT_NEIGHBOUR = NodePath("../../../Tabs/Graphics")
+
+[node name="Palette4" parent="Pixel Art/SubViewport/Camera2D/Selectable options/GameplayPanel" node_paths=PackedStringArray("UP", "DOWN", "LEFT") instance=ExtResource("13_6xb1g")]
+position = Vector2(208, 187)
+type = 2
+UP = NodePath("../OptionName4")
+DOWN = NodePath("../OptionName5")
+LEFT = NodePath("../../../Tabs/Graphics")
+
+[node name="OptionName5" parent="Pixel Art/SubViewport/Camera2D/Selectable options/GameplayPanel" node_paths=PackedStringArray("DOWN_NEIGHBOUR", "LEFT_NEIGHBOUR") instance=ExtResource("12_xe0pq")]
+position = Vector2(312, 216)
+label_group = "keyboard"
+text_id = 29
+DOWN_NEIGHBOUR = NodePath("../CheckBox")
+LEFT_NEIGHBOUR = NodePath("../../../Tabs/Graphics")
+
+[node name="CheckBox" parent="Pixel Art/SubViewport/Camera2D/Selectable options/GameplayPanel" node_paths=PackedStringArray("UP_NEIGHBOUR", "LEFT_NEIGHBOUR") instance=ExtResource("14_vu6ci")]
+position = Vector2(217, 242)
+UP_NEIGHBOUR = NodePath("../OptionName5")
+LEFT_NEIGHBOUR = NodePath("../../../Tabs/Graphics")
+checkbox_type = 1
+
+[node name="Hotkeys panel" type="Node2D" parent="Pixel Art/SubViewport/Camera2D/Selectable options" node_paths=PackedStringArray("TAB")]
+visible = false
+script = ExtResource("19_wn2jn")
+TAB = NodePath("../../Tabs/Hotkeys")
+
+[editable path="Pixel Art/SubViewport/Camera2D/Selectable options/Graphics panel/LanguageBar"]
+[editable path="Pixel Art/SubViewport/Camera2D/Selectable options/Audio panel/BackgroundMusic"]
+[editable path="Pixel Art/SubViewport/Camera2D/Selectable options/Audio panel/SFX"]

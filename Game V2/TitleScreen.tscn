@@ -1,0 +1,93 @@
+[gd_scene load_steps=10 format=3 uid="uid://dpge458v8pgeh"]
+
+[ext_resource type="PackedScene" uid="uid://csibws6vl8gjm" path="res://Game V2/Scenes/UI_title.tscn" id="1_rqndw"]
+[ext_resource type="Script" path="res://Game V2/scripts/Pixel_Art_Viewport.gd" id="2_ukmdo"]
+[ext_resource type="Shader" path="res://Game V2/scripts/Shaders/color_swap.gdshader" id="3_tlma5"]
+[ext_resource type="Texture2D" uid="uid://bgpji35m5diwo" path="res://Game V2/Sprites/big game mockup-Sheet.png" id="4_gat17"]
+[ext_resource type="Script" path="res://Game V2/scripts/Background.gd" id="5_uhcyo"]
+[ext_resource type="Texture2D" uid="uid://b1b71jrkj6esj" path="res://Game V2/Sprites/Title-RS_font.png" id="6_jjf80"]
+[ext_resource type="Script" path="res://Game V2/scripts/TitleMainNode.gd" id="8_f2uhq"]
+[ext_resource type="PackedScene" uid="uid://bc6ajawsl2wdd" path="res://Game V2/Scenes/change_scene.tscn" id="9_m6rov"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aek7e"]
+shader = ExtResource("3_tlma5")
+shader_parameter/target_color_1 = null
+shader_parameter/replace_color_1 = null
+shader_parameter/target_color_2 = null
+shader_parameter/replace_color_2 = null
+shader_parameter/tolerance = null
+
+[node name="TitleScreen" type="Node2D"]
+
+[node name="CanvasLayer" parent="." instance=ExtResource("1_rqndw")]
+
+[node name="Pixel Art" type="SubViewportContainer" parent="."]
+offset_right = 640.0
+offset_bottom = 360.0
+stretch = true
+script = ExtResource("2_ukmdo")
+
+[node name="SubViewport" type="SubViewport" parent="Pixel Art"]
+handle_input_locally = false
+physics_object_picking = true
+size = Vector2i(640, 360)
+render_target_update_mode = 4
+
+[node name="Camera2D" type="Camera2D" parent="Pixel Art/SubViewport"]
+anchor_mode = 0
+
+[node name="Title" type="Sprite2D" parent="Pixel Art/SubViewport/Camera2D"]
+material = SubResource("ShaderMaterial_aek7e")
+position = Vector2(320, 100)
+texture = ExtResource("6_jjf80")
+script = ExtResource("5_uhcyo")
+
+[node name="StartGame" parent="Pixel Art/SubViewport/Camera2D" node_paths=PackedStringArray("VIEWPORT", "DOWN_NEIGHBOUR") instance=ExtResource("9_m6rov")]
+position = Vector2(320, 216)
+TARGET_SCENE = "res://Game V2/MainScene.tscn"
+VIEWPORT = NodePath("../../..")
+label_group = "start"
+btn_real_pos = Vector2(320, 216)
+text_id = 33
+DOWN_NEIGHBOUR = NodePath("../Options")
+
+[node name="Tutorial" parent="Pixel Art/SubViewport/Camera2D" node_paths=PackedStringArray("VIEWPORT", "UP_NEIGHBOUR", "DOWN_NEIGHBOUR") instance=ExtResource("9_m6rov")]
+position = Vector2(320, 256)
+TARGET_SCENE = "res://Game V2/MainScene.tscn"
+tutorial = true
+VIEWPORT = NodePath("../../..")
+label_group = "tutorial"
+btn_real_pos = Vector2(320, 256)
+text_id = 34
+UP_NEIGHBOUR = NodePath("../StartGame")
+DOWN_NEIGHBOUR = NodePath("../Options")
+
+[node name="Options" parent="Pixel Art/SubViewport/Camera2D" node_paths=PackedStringArray("VIEWPORT", "UP_NEIGHBOUR", "DOWN_NEIGHBOUR") instance=ExtResource("9_m6rov")]
+texture_filter = 1
+position = Vector2(320, 296)
+TARGET_SCENE = "res://Game V2/Options.tscn"
+VIEWPORT = NodePath("../../..")
+label_group = "options"
+btn_real_pos = Vector2(320, 296)
+text_id = 35
+UP_NEIGHBOUR = NodePath("../Tutorial")
+DOWN_NEIGHBOUR = NodePath("../Exit")
+
+[node name="Exit" parent="Pixel Art/SubViewport/Camera2D" node_paths=PackedStringArray("VIEWPORT", "UP_NEIGHBOUR") instance=ExtResource("9_m6rov")]
+position = Vector2(320, 336)
+exit = true
+VIEWPORT = NodePath("../../..")
+label_group = "exit"
+btn_real_pos = Vector2(320, 336)
+text_id = 36
+UP_NEIGHBOUR = NodePath("../Options")
+
+[node name="Background" type="Sprite2D" parent="Pixel Art/SubViewport/Camera2D"]
+z_index = -15
+material = SubResource("ShaderMaterial_aek7e")
+position = Vector2(320, 180)
+texture = ExtResource("4_gat17")
+script = ExtResource("5_uhcyo")
+
+[node name="TitleMainNode" type="Node2D" parent="Pixel Art/SubViewport/Camera2D"]
+script = ExtResource("8_f2uhq")

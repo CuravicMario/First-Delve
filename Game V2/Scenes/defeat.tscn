@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cql4ntmro8vy4"]
+
+[ext_resource type="Script" path="res://Game V2/scripts/defeat.gd" id="1_1vyqa"]
+[ext_resource type="Texture2D" uid="uid://6lurfcuj7tis" path="res://Game V2/Sprites/reward-text.png" id="2_6cdqy"]
+[ext_resource type="PackedScene" uid="uid://bc6ajawsl2wdd" path="res://Game V2/Scenes/change_scene.tscn" id="3_sfqno"]
+
+[node name="Defeat" type="Node2D"]
+script = ExtResource("1_1vyqa")
+
+[node name="Text location" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -32)
+texture = ExtResource("2_6cdqy")
+
+[node name="ReturnButton" parent="." instance=ExtResource("3_sfqno")]
+TARGET_SCENE = "res://Game V2/TitleScreen.tscn"

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://hexrc8esj72l"]
+
+[ext_resource type="Script" path="res://Game V2/scripts/UI_Viewport.gd" id="1_cfb1h"]
+[ext_resource type="PackedScene" uid="uid://cqsnu3kfj851c" path="res://Game V2/Scenes/UI_canvas_layer.tscn" id="2_bua0a"]
+
+[node name="UI" type="SubViewportContainer"]
+z_index = 1
+offset_right = 640.0
+offset_bottom = 360.0
+stretch = true
+script = ExtResource("1_cfb1h")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+handle_input_locally = false
+size = Vector2i(640, 360)
+render_target_update_mode = 4
+
+[node name="CanvasLayer" parent="SubViewport" instance=ExtResource("2_bua0a")]

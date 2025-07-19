@@ -1,0 +1,85 @@
+[gd_scene load_steps=12 format=3 uid="uid://dxfsdjarhxedr"]
+
+[ext_resource type="Script" path="res://Game V2/scripts/pause_panel.gd" id="1_2uyhr"]
+[ext_resource type="Shader" path="res://Game V2/scripts/Shaders/color_swap.gdshader" id="2_4n1sg"]
+[ext_resource type="Texture2D" uid="uid://ct24ksdsy1inx" path="res://Game V2/Sprites/pop up box tilemap.png" id="3_vocvc"]
+[ext_resource type="Texture2D" uid="uid://d341qa0lv163k" path="res://Game V2/Sprites/Background Secondary Fill.png" id="4_ltslo"]
+[ext_resource type="PackedScene" uid="uid://bc6ajawsl2wdd" path="res://Game V2/Scenes/change_scene.tscn" id="5_r7k3r"]
+[ext_resource type="PackedScene" uid="uid://dvdegm2i1drxc" path="res://Game V2/Scenes/resume.tscn" id="6_elrta"]
+[ext_resource type="Script" path="res://Game V2/scripts/RightBlocker.gd" id="7_6nb8j"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qfb4w"]
+shader = ExtResource("2_4n1sg")
+shader_parameter/target_color_1 = null
+shader_parameter/replace_color_1 = null
+shader_parameter/target_color_2 = null
+shader_parameter/replace_color_2 = null
+shader_parameter/tolerance = null
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d5tco"]
+texture = ExtResource("3_vocvc")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_s4dd7"]
+sources/0 = SubResource("TileSetAtlasSource_d5tco")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hdkkj"]
+shader = ExtResource("2_4n1sg")
+shader_parameter/target_color_1 = null
+shader_parameter/replace_color_1 = null
+shader_parameter/target_color_2 = null
+shader_parameter/replace_color_2 = null
+shader_parameter/tolerance = null
+
+[node name="Pause" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_2uyhr")
+
+[node name="TutorialBox" type="TileMap" parent="."]
+z_index = 20
+material = SubResource("ShaderMaterial_qfb4w")
+tile_set = SubResource("TileSet_s4dd7")
+format = 2
+layer_0/tile_data = PackedInt32Array(-327683, 262144, 0, -327682, 262144, 0, -327681, 262144, 0, -393216, 262144, 0, -393215, 262144, 0, -393214, 262144, 0, -393213, 262144, 0, -393212, 262144, 0, -327684, 262144, 0, -327685, 262144, 0, -327686, 262144, 0, -393211, 262144, 0, -393210, 393216, 0, -327687, 131072, 0, -262151, 65536, 0, -196615, 65536, 0, -131079, 65536, 0, -65543, 65536, 0, -7, 65536, 0, 65529, 65536, 0, 131065, 65536, 0, 196601, 65536, 0, 262137, 65536, 0, 393215, 196608, 0, 393214, 196608, 0, 393213, 196608, 0, 393212, 196608, 0, 393211, 196608, 0, 393210, 196608, 0, 327680, 196608, 0, 327681, 196608, 0, 327682, 196608, 0, 327683, 196608, 0, 393209, 0, 0, 327673, 65536, 0, -327674, 458752, 0, -262138, 458752, 0, -196602, 458752, 0, -131066, 458752, 0, -65530, 458752, 0, 6, 458752, 0, 65542, 458752, 0, 131078, 458752, 0, 196614, 458752, 0, 262150, 458752, 0, 327684, 196608, 0, 327685, 196608, 0, 327686, 524288, 0)
+
+[node name="Fill" type="Sprite2D" parent="."]
+z_index = 20
+texture_filter = 1
+material = SubResource("ShaderMaterial_hdkkj")
+scale = Vector2(7.36, 14.24)
+texture = ExtResource("4_ltslo")
+
+[node name="Resume" parent="." node_paths=PackedStringArray("DOWN_NEIGHBOUR") instance=ExtResource("6_elrta")]
+z_index = 30
+position = Vector2(0, -48)
+label_group = "resume"
+text_id = 74
+DOWN_NEIGHBOUR = NodePath("../MainMenu")
+
+[node name="MainMenu" parent="." node_paths=PackedStringArray("UP_NEIGHBOUR", "DOWN_NEIGHBOUR") instance=ExtResource("5_r7k3r")]
+z_index = 30
+TARGET_SCENE = "res://Game V2/TitleScreen.tscn"
+label_group = "mainmenu"
+text_id = 59
+UP_NEIGHBOUR = NodePath("../Resume")
+DOWN_NEIGHBOUR = NodePath("../Exit")
+
+[node name="Exit" parent="." node_paths=PackedStringArray("UP_NEIGHBOUR") instance=ExtResource("5_r7k3r")]
+z_index = 30
+position = Vector2(0, 48)
+exit = true
+label_group = "exit"
+text_id = 36
+UP_NEIGHBOUR = NodePath("../MainMenu")
+
+[node name="RightBlocker" type="Marker2D" parent="."]
+position = Vector2(77, 0)
+script = ExtResource("7_6nb8j")
+label_group = "r_blocker"

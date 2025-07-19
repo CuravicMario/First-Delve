@@ -1,0 +1,69 @@
+[gd_scene load_steps=11 format=3 uid="uid://bb8uimg5kiniu"]
+
+[ext_resource type="Script" path="res://Game V2/scripts/Hover.gd" id="1_86dxe"]
+[ext_resource type="Texture2D" uid="uid://ct24ksdsy1inx" path="res://Game V2/Sprites/pop up box tilemap.png" id="2_5ej3r"]
+[ext_resource type="Shader" path="res://Game V2/scripts/Shaders/color_swap.gdshader" id="2_tf13e"]
+[ext_resource type="Texture2D" uid="uid://dk6uqrbsgfdfv" path="res://Game V2/Sprites/hover info tail.png" id="3_hhdwd"]
+[ext_resource type="Texture2D" uid="uid://d341qa0lv163k" path="res://Game V2/Sprites/Background Secondary Fill.png" id="4_vsfnw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8c6bn"]
+shader = ExtResource("2_tf13e")
+shader_parameter/target_color_1 = null
+shader_parameter/replace_color_1 = null
+shader_parameter/target_color_2 = null
+shader_parameter/replace_color_2 = null
+shader_parameter/tolerance = null
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_31o4y"]
+texture = ExtResource("2_5ej3r")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_nex30"]
+sources/1 = SubResource("TileSetAtlasSource_31o4y")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ogctc"]
+shader = ExtResource("2_tf13e")
+shader_parameter/target_color_1 = null
+shader_parameter/replace_color_1 = null
+shader_parameter/target_color_2 = null
+shader_parameter/replace_color_2 = null
+shader_parameter/tolerance = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pe5cp"]
+shader = ExtResource("2_tf13e")
+shader_parameter/target_color_1 = null
+shader_parameter/replace_color_1 = null
+shader_parameter/target_color_2 = null
+shader_parameter/replace_color_2 = null
+shader_parameter/tolerance = null
+
+[node name="Hover" type="Node2D"]
+z_index = 20
+script = ExtResource("1_86dxe")
+
+[node name="HoverBox" type="TileMap" parent="."]
+z_index = 2
+material = SubResource("ShaderMaterial_8c6bn")
+tile_set = SubResource("TileSet_nex30")
+format = 2
+layer_0/tile_data = PackedInt32Array(131068, 1, 0, 131069, 196609, 0, 131070, 196609, 0, 131071, 196609, 0, 65536, 196609, 0, 65537, 196609, 0, 65538, 196609, 0, 65539, 524289, 0, 3, 458753, 0, -65533, 458753, 0, -131069, 393217, 0, -131070, 262145, 0, -131071, 262145, 0, -131072, 262145, 0, -65537, 262145, 0, -65538, 262145, 0, -65539, 262145, 0, -65540, 131073, 0, -4, 65537, 0, 65532, 65537, 0)
+
+[node name="Fill" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_ogctc")
+texture = ExtResource("4_vsfnw")
+
+[node name="Tail" type="Sprite2D" parent="."]
+z_index = 3
+material = SubResource("ShaderMaterial_pe5cp")
+position = Vector2(0, 35)
+texture = ExtResource("3_hhdwd")
+
+[node name="Top notifier" type="Marker2D" parent="."]
+position = Vector2(-64, -32)

@@ -1,0 +1,94 @@
+[gd_scene load_steps=13 format=3 uid="uid://ceno2ltn178i2"]
+
+[ext_resource type="Script" path="res://Game V2/scripts/tutorial.gd" id="1_4vowe"]
+[ext_resource type="Shader" path="res://Game V2/scripts/Shaders/color_swap.gdshader" id="1_yf84g"]
+[ext_resource type="Texture2D" uid="uid://ct24ksdsy1inx" path="res://Game V2/Sprites/pop up box tilemap.png" id="2_vq112"]
+[ext_resource type="Texture2D" uid="uid://d341qa0lv163k" path="res://Game V2/Sprites/Background Secondary Fill.png" id="3_6uo4g"]
+[ext_resource type="Texture2D" uid="uid://cgwc45y3icrf0" path="res://Game V2/Sprites/Options Volume control arrowsSheet.png" id="5_mvh7n"]
+[ext_resource type="Script" path="res://Game V2/scripts/NextArrow.gd" id="6_nmki2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qfb4w"]
+shader = ExtResource("1_yf84g")
+shader_parameter/target_color_1 = null
+shader_parameter/replace_color_1 = null
+shader_parameter/target_color_2 = null
+shader_parameter/replace_color_2 = null
+shader_parameter/tolerance = null
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d5tco"]
+texture = ExtResource("2_vq112")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_s4dd7"]
+sources/0 = SubResource("TileSetAtlasSource_d5tco")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hdkkj"]
+shader = ExtResource("1_yf84g")
+shader_parameter/target_color_1 = null
+shader_parameter/replace_color_1 = null
+shader_parameter/target_color_2 = null
+shader_parameter/replace_color_2 = null
+shader_parameter/tolerance = null
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_47bmm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b5hnh"]
+shader = ExtResource("1_yf84g")
+shader_parameter/target_color_1 = null
+shader_parameter/replace_color_1 = null
+shader_parameter/target_color_2 = null
+shader_parameter/replace_color_2 = null
+shader_parameter/tolerance = null
+
+[node name="Tutorial" type="Node2D"]
+script = ExtResource("1_4vowe")
+label_group = "tutorial"
+combat_part = Array[int]([37, 38, 39, 40, 41])
+reward_part = Array[int]([42, 43])
+shop_part = Array[int]([44, 45, 46])
+event_part = Array[int]([47])
+boss_part = Array[int]([48])
+
+[node name="TutorialBox" type="TileMap" parent="."]
+z_index = 2
+material = SubResource("ShaderMaterial_qfb4w")
+tile_set = SubResource("TileSet_s4dd7")
+format = 2
+layer_0/tile_data = PackedInt32Array(262138, 0, 0, 262139, 196608, 0, 262140, 196608, 0, 262141, 196608, 0, 262142, 196608, 0, 262143, 196608, 0, 196608, 196608, 0, 196609, 196608, 0, 196610, 196608, 0, 196611, 196608, 0, 196612, 196608, 0, 65530, 65536, 0, -6, 65536, 0, -65542, 65536, 0, -131078, 65536, 0, 131066, 65536, 0, 196602, 65536, 0, 196614, 524288, 0, 131078, 458752, 0, 65542, 458752, 0, 6, 458752, 0, -65530, 458752, 0, -131066, 458752, 0, -196602, 458752, 0, 196613, 196608, 0, -327674, 393216, 0, -327675, 262144, 0, -327676, 262144, 0, -327677, 262144, 0, -327678, 262144, 0, -327679, 262144, 0, -327680, 262144, 0, -262145, 262144, 0, -262146, 262144, 0, -262147, 262144, 0, -262148, 262144, 0, -262149, 262144, 0, -262138, 458752, 0, -262150, 131072, 0, -196614, 65536, 0)
+
+[node name="Fill" type="Sprite2D" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_hdkkj")
+texture = ExtResource("3_6uo4g")
+
+[node name="NextArrow" type="Sprite2D" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_hdkkj")
+position = Vector2(100, 52)
+texture = ExtResource("5_mvh7n")
+region_enabled = true
+region_rect = Rect2(0, 0, 20, 20)
+script = ExtResource("6_nmki2")
+
+[node name="Area2D" type="Area2D" parent="NextArrow"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NextArrow/Area2D"]
+shape = SubResource("RectangleShape2D_47bmm")
+
+[node name="Hover_border" type="Sprite2D" parent="NextArrow"]
+visible = false
+texture_filter = 1
+material = SubResource("ShaderMaterial_b5hnh")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(8, -18)
+
+[connection signal="mouse_entered" from="NextArrow/Area2D" to="NextArrow" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="NextArrow/Area2D" to="NextArrow" method="_on_area_2d_mouse_exited"]

@@ -1,0 +1,95 @@
+[gd_scene load_steps=12 format=3 uid="uid://bcfe0fuoi0gii"]
+
+[ext_resource type="Shader" path="res://Game V2/scripts/Shaders/color_swap.gdshader" id="1_4aaf2"]
+[ext_resource type="Texture2D" uid="uid://qduf05ud5tr0" path="res://Game V2/Sprites/Enemies/player explorer.png" id="2_36v80"]
+[ext_resource type="Script" path="res://Game V2/scripts/player_sprite.gd" id="2_52one"]
+[ext_resource type="Texture2D" uid="uid://cdt6dsmj6xnap" path="res://Game V2/Sprites/Player atk timer border.png" id="3_k3aya"]
+[ext_resource type="Texture2D" uid="uid://miamywxg1yh8" path="res://Game V2/Sprites/Player atk timer fill.png" id="4_w31y5"]
+[ext_resource type="Texture2D" uid="uid://cbh6m5ldk2far" path="res://Game V2/Sprites/64x64 hover border.png" id="6_ro003"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3vfjh"]
+shader = ExtResource("1_4aaf2")
+shader_parameter/target_color_1 = null
+shader_parameter/replace_color_1 = null
+shader_parameter/target_color_2 = null
+shader_parameter/replace_color_2 = null
+shader_parameter/tolerance = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n6tfb"]
+shader = ExtResource("1_4aaf2")
+shader_parameter/target_color_1 = null
+shader_parameter/replace_color_1 = null
+shader_parameter/target_color_2 = null
+shader_parameter/replace_color_2 = null
+shader_parameter/tolerance = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kewjp"]
+shader = ExtResource("1_4aaf2")
+shader_parameter/target_color_1 = null
+shader_parameter/replace_color_1 = null
+shader_parameter/target_color_2 = null
+shader_parameter/replace_color_2 = null
+shader_parameter/tolerance = null
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gf8lk"]
+size = Vector2(64, 64)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_162hl"]
+shader = ExtResource("1_4aaf2")
+shader_parameter/target_color_1 = null
+shader_parameter/replace_color_1 = null
+shader_parameter/target_color_2 = null
+shader_parameter/replace_color_2 = null
+shader_parameter/tolerance = null
+
+[node name="PlayerSprite" type="Sprite2D"]
+material = SubResource("ShaderMaterial_3vfjh")
+texture = ExtResource("2_36v80")
+script = ExtResource("2_52one")
+
+[node name="Health bar" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_n6tfb")
+position = Vector2(0, 39)
+texture = ExtResource("3_k3aya")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Health bar"]
+self_modulate = Color(1, 0.14902, 0.164706, 1)
+z_index = -1
+offset_left = -37.0
+offset_top = -2.0
+offset_right = 38.0
+texture_progress = ExtResource("4_w31y5")
+metadata/_edit_use_anchors_ = true
+
+[node name="Timer Border" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_kewjp")
+position = Vector2(0, 44)
+texture = ExtResource("3_k3aya")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Timer Border"]
+z_index = -1
+offset_left = -37.0
+offset_top = -2.0
+offset_right = 38.0
+texture_progress = ExtResource("4_w31y5")
+metadata/_edit_use_anchors_ = true
+
+[node name="Atk Progress" type="Timer" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_gf8lk")
+
+[node name="DamagePopupPos" type="Marker2D" parent="."]
+position = Vector2(0, -24)
+
+[node name="Hover_border" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+material = SubResource("ShaderMaterial_162hl")
+texture = ExtResource("6_ro003")
+
+[connection signal="timeout" from="Atk Progress" to="." method="_on_atk_progress_timeout"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

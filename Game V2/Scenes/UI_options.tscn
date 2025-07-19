@@ -1,0 +1,262 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgipxjx7q2bns"]
+
+[ext_resource type="Script" path="res://Game V2/scripts/UI_canvas_layer.gd" id="1_eka64"]
+[ext_resource type="Theme" uid="uid://dp6hsyqomfx6c" path="res://Game V2/Theme/default_theme.tres" id="2_1qxel"]
+[ext_resource type="Script" path="res://Game V2/scripts/UI_Element_Position.gd" id="3_ynyag"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_eka64")
+
+[node name="Reset" type="Label" parent="." groups=["reset"]]
+offset_left = 217.0
+offset_top = 176.0
+offset_right = 294.0
+offset_bottom = 224.0
+size_flags_horizontal = 4
+theme = ExtResource("2_1qxel")
+theme_override_font_sizes/font_size = 32
+text = "Start"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_ynyag")
+
+[node name="Back" type="Label" parent="." groups=["back"]]
+offset_left = 217.0
+offset_top = 176.0
+offset_right = 294.0
+offset_bottom = 224.0
+size_flags_horizontal = 4
+theme = ExtResource("2_1qxel")
+theme_override_font_sizes/font_size = 32
+text = "Take
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_ynyag")
+
+[node name="Save" type="Label" parent="." groups=["save"]]
+offset_left = 217.0
+offset_top = 176.0
+offset_right = 294.0
+offset_bottom = 224.0
+size_flags_horizontal = 4
+theme = ExtResource("2_1qxel")
+theme_override_font_sizes/font_size = 32
+text = "Take
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_ynyag")
+
+[node name="Graphics" type="Label" parent="." groups=["graphics"]]
+offset_left = 217.0
+offset_top = 176.0
+offset_right = 294.0
+offset_bottom = 224.0
+size_flags_horizontal = 4
+theme = ExtResource("2_1qxel")
+theme_override_font_sizes/font_size = 32
+text = "Take
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_ynyag")
+
+[node name="Audio" type="Label" parent="." groups=["audio"]]
+offset_left = 217.0
+offset_top = 176.0
+offset_right = 294.0
+offset_bottom = 224.0
+size_flags_horizontal = 4
+theme = ExtResource("2_1qxel")
+theme_override_font_sizes/font_size = 32
+text = "Take
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_ynyag")
+
+[node name="Gameplay" type="Label" parent="." groups=["gameplay"]]
+offset_left = 217.0
+offset_top = 176.0
+offset_right = 294.0
+offset_bottom = 224.0
+size_flags_horizontal = 4
+theme = ExtResource("2_1qxel")
+theme_override_font_sizes/font_size = 32
+text = "Take
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_ynyag")
+
+[node name="Hotkeys" type="Label" parent="." groups=["hotkey"]]
+offset_left = 217.0
+offset_top = 176.0
+offset_right = 294.0
+offset_bottom = 224.0
+size_flags_horizontal = 4
+theme = ExtResource("2_1qxel")
+theme_override_font_sizes/font_size = 32
+text = "Take
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_ynyag")
+
+[node name="Palette1" type="Label" parent="." groups=["palette1"]]
+offset_left = 217.0
+offset_top = 176.0
+offset_right = 294.0
+offset_bottom = 224.0
+size_flags_horizontal = 4
+theme = ExtResource("2_1qxel")
+theme_override_font_sizes/font_size = 32
+text = "Take
+"
+vertical_alignment = 1
+script = ExtResource("3_ynyag")
+
+[node name="Palette2" type="Label" parent="." groups=["palette2"]]
+offset_left = 217.0
+offset_top = 176.0
+offset_right = 294.0
+offset_bottom = 224.0
+size_flags_horizontal = 4
+theme = ExtResource("2_1qxel")
+theme_override_font_sizes/font_size = 32
+text = "Take
+"
+vertical_alignment = 1
+script = ExtResource("3_ynyag")
+
+[node name="Fullscreen" type="Label" parent="." groups=["fullscreen"]]
+offset_left = 217.0
+offset_top = 176.0
+offset_right = 294.0
+offset_bottom = 224.0
+size_flags_horizontal = 4
+theme = ExtResource("2_1qxel")
+theme_override_font_sizes/font_size = 32
+text = "Take
+"
+vertical_alignment = 1
+script = ExtResource("3_ynyag")
+
+[node name="Language" type="Label" parent="." groups=["name_lang"]]
+offset_left = 217.0
+offset_top = 176.0
+offset_right = 294.0
+offset_bottom = 224.0
+size_flags_horizontal = 4
+theme = ExtResource("2_1qxel")
+theme_override_font_sizes/font_size = 32
+text = "Take
+"
+vertical_alignment = 1
+script = ExtResource("3_ynyag")
+
+[node name="Languages" type="Label" parent="." groups=["languages"]]
+offset_left = 217.0
+offset_top = 176.0
+offset_right = 294.0
+offset_bottom = 224.0
+size_flags_horizontal = 4
+theme = ExtResource("2_1qxel")
+theme_override_font_sizes/font_size = 32
+text = "Take
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_ynyag")
+
+[node name="BGMusic" type="Label" parent="." groups=["bgmusic"]]
+offset_left = 217.0
+offset_top = 176.0
+offset_right = 294.0
+offset_bottom = 224.0
+size_flags_horizontal = 4
+theme = ExtResource("2_1qxel")
+theme_override_font_sizes/font_size = 32
+text = "Take
+"
+vertical_alignment = 1
+script = ExtResource("3_ynyag")
+
+[node name="SFXMusic" type="Label" parent="." groups=["sfxmusic"]]
+offset_left = 217.0
+offset_top = 176.0
+offset_right = 294.0
+offset_bottom = 224.0
+size_flags_horizontal = 4
+theme = ExtResource("2_1qxel")
+theme_override_font_sizes/font_size = 32
+text = "Take
+"
+vertical_alignment = 1
+script = ExtResource("3_ynyag")
+
+[node name="CommonColor" type="Label" parent="." groups=["common"]]
+offset_left = 217.0
+offset_top = 176.0
+offset_right = 294.0
+offset_bottom = 224.0
+size_flags_horizontal = 4
+theme = ExtResource("2_1qxel")
+theme_override_font_sizes/font_size = 32
+text = "Take
+"
+vertical_alignment = 1
+script = ExtResource("3_ynyag")
+
+[node name="RareColor" type="Label" parent="." groups=["rare"]]
+offset_left = 217.0
+offset_top = 176.0
+offset_right = 294.0
+offset_bottom = 224.0
+size_flags_horizontal = 4
+theme = ExtResource("2_1qxel")
+theme_override_font_sizes/font_size = 32
+text = "Take
+"
+vertical_alignment = 1
+script = ExtResource("3_ynyag")
+
+[node name="LegendaryColor" type="Label" parent="." groups=["legendary"]]
+offset_left = 217.0
+offset_top = 176.0
+offset_right = 294.0
+offset_bottom = 224.0
+size_flags_horizontal = 4
+theme = ExtResource("2_1qxel")
+theme_override_font_sizes/font_size = 32
+text = "Take
+"
+vertical_alignment = 1
+script = ExtResource("3_ynyag")
+
+[node name="HP" type="Label" parent="." groups=["hp"]]
+offset_left = 217.0
+offset_top = 176.0
+offset_right = 294.0
+offset_bottom = 224.0
+size_flags_horizontal = 4
+theme = ExtResource("2_1qxel")
+theme_override_font_sizes/font_size = 32
+text = "Take
+"
+vertical_alignment = 1
+script = ExtResource("3_ynyag")
+
+[node name="KeyboardInput" type="Label" parent="." groups=["keyboard"]]
+offset_left = 217.0
+offset_top = 176.0
+offset_right = 294.0
+offset_bottom = 224.0
+size_flags_horizontal = 4
+theme = ExtResource("2_1qxel")
+theme_override_font_sizes/font_size = 32
+text = "Take
+"
+vertical_alignment = 1
+script = ExtResource("3_ynyag")

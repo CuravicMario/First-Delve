@@ -1,0 +1,62 @@
+[gd_scene load_steps=4 format=3 uid="uid://csibws6vl8gjm"]
+
+[ext_resource type="Script" path="res://Game V2/scripts/UI_canvas_layer.gd" id="1_ghmds"]
+[ext_resource type="Theme" uid="uid://dp6hsyqomfx6c" path="res://Game V2/Theme/default_theme.tres" id="2_eee37"]
+[ext_resource type="Script" path="res://Game V2/scripts/UI_Element_Position.gd" id="3_45fsa"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_ghmds")
+
+[node name="Start" type="Label" parent="." groups=["start"]]
+offset_left = 217.0
+offset_top = 176.0
+offset_right = 294.0
+offset_bottom = 224.0
+size_flags_horizontal = 4
+theme = ExtResource("2_eee37")
+theme_override_font_sizes/font_size = 32
+text = "Start"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_45fsa")
+
+[node name="Tutorial" type="Label" parent="." groups=["tutorial"]]
+offset_left = 217.0
+offset_top = 176.0
+offset_right = 294.0
+offset_bottom = 224.0
+size_flags_horizontal = 4
+theme = ExtResource("2_eee37")
+theme_override_font_sizes/font_size = 32
+text = "Start"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_45fsa")
+
+[node name="Options" type="Label" parent="." groups=["options"]]
+offset_left = 217.0
+offset_top = 176.0
+offset_right = 294.0
+offset_bottom = 224.0
+size_flags_horizontal = 4
+theme = ExtResource("2_eee37")
+theme_override_font_sizes/font_size = 32
+text = "Take
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_45fsa")
+
+[node name="Exit" type="Label" parent="." groups=["exit"]]
+offset_left = 217.0
+offset_top = 176.0
+offset_right = 294.0
+offset_bottom = 224.0
+size_flags_horizontal = 4
+theme = ExtResource("2_eee37")
+theme_override_font_sizes/font_size = 32
+text = "Take
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_45fsa")

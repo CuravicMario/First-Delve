@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://c1op7ibp8ntlm"]
+
+[ext_resource type="Texture2D" uid="uid://cd7v0un3qd7iq" path="res://Game V2/Sprites/info stat placement.png" id="1_ghkjd"]
+[ext_resource type="Script" path="res://Game V2/scripts/stats_block.gd" id="2_pcjn6"]
+[ext_resource type="PackedScene" uid="uid://bb8uimg5kiniu" path="res://Game V2/Scenes/hover.tscn" id="5_8sdkj"]
+[ext_resource type="Shader" path="res://Game V2/scripts/Shaders/color_swap.gdshader" id="6_0ww73"]
+[ext_resource type="Texture2D" uid="uid://chy7p26p8fenr" path="res://Game V2/Sprites/stats hover border.png" id="6_qclkl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dii57"]
+size = Vector2(64, 24)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h5k3s"]
+shader = ExtResource("6_0ww73")
+shader_parameter/target_color_1 = null
+shader_parameter/replace_color_1 = null
+shader_parameter/target_color_2 = null
+shader_parameter/replace_color_2 = null
+shader_parameter/tolerance = null
+
+[node name="StatsBlock" type="Sprite2D"]
+z_index = -15
+texture = ExtResource("1_ghkjd")
+script = ExtResource("2_pcjn6")
+label_group = "stats"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_dii57")
+
+[node name="Hover_border" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+material = SubResource("ShaderMaterial_h5k3s")
+texture = ExtResource("6_qclkl")
+
+[node name="Hover" parent="." instance=ExtResource("5_8sdkj")]
+visible = false
+position = Vector2(0, -58)
+
+[node name="HoverBox" parent="Hover" index="0"]
+layer_0/tile_data = PackedInt32Array(131069, 1, 0, 65533, 65537, 0, -3, 65537, 0, 131070, 196609, 0, 131071, 196609, 0, 65536, 196609, 0, 65537, 196609, 0, 65538, 524289, 0, 2, 458753, 0, -65534, 458753, 0, -131070, 393217, 0, -131071, 262145, 0, -131072, 262145, 0, -65537, 262145, 0, -65538, 262145, 0, -65539, 131073, 0)
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
+
+[editable path="Hover"]

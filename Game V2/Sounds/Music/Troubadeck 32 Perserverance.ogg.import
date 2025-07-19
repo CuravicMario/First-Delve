@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://byhsol0h7pgpe"
+path="res://.godot/imported/Troubadeck 32 Perserverance.ogg-c976d4b49c8dd47b5a71b1c5850b4d89.oggvorbisstr"
+
+[deps]
+
+source_file="res://Game V2/Sounds/Music/Troubadeck 32 Perserverance.ogg"
+dest_files=["res://.godot/imported/Troubadeck 32 Perserverance.ogg-c976d4b49c8dd47b5a71b1c5850b4d89.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://iy41s6p5dx2b"]
+
+[ext_resource type="Shader" path="res://Game V2/scripts/Shaders/color_swap.gdshader" id="1_088uh"]
+[ext_resource type="Texture2D" uid="uid://c6xlfsy3wr4d5" path="res://Game V2/Sprites/dashed frame tilemap.png" id="1_nilnq"]
+[ext_resource type="Script" path="res://Game V2/scripts/sell.gd" id="2_1cw6q"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rcbp6"]
+shader = ExtResource("1_088uh")
+shader_parameter/target_color_1 = null
+shader_parameter/replace_color_1 = null
+shader_parameter/target_color_2 = null
+shader_parameter/replace_color_2 = null
+shader_parameter/tolerance = null
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ygu7n"]
+texture = ExtResource("1_nilnq")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_uk7tc"]
+sources/1 = SubResource("TileSetAtlasSource_ygu7n")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3f1rm"]
+size = Vector2(64, 64)
+
+[node name="Sell" type="TileMap"]
+material = SubResource("ShaderMaterial_rcbp6")
+tile_set = SubResource("TileSet_uk7tc")
+format = 2
+layer_0/tile_data = PackedInt32Array(5, 1, 0, -65531, 65537, 0, -131067, 65537, 0, -196603, 131073, 0, -196602, 262145, 0, -196601, 262145, 0, -196600, 393217, 0, 6, 196609, 0, 7, 196609, 0, 8, 524289, 0, -131064, 458753, 0, -65528, 458753, 0)
+script = ExtResource("2_1cw6q")
+label_group = "sell"
+
+[node name="Area2D" type="Area2D" parent="." groups=["sell"]]
+position = Vector2(112, -16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_3f1rm")

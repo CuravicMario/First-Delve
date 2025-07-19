@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://vydji1owjrnm"
+path="res://.godot/imported/Troubadeck 40 In My Shell.ogg-b9c4b1d0f0a50c397c0113fb580d5b2f.oggvorbisstr"
+
+[deps]
+
+source_file="res://Game V2/Sounds/Music/Troubadeck 40 In My Shell.ogg"
+dest_files=["res://.godot/imported/Troubadeck 40 In My Shell.ogg-b9c4b1d0f0a50c397c0113fb580d5b2f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

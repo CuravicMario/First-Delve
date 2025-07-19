@@ -1,0 +1,252 @@
+[
+	{
+		"id": 1,
+		"name": "pair of slimes",
+		"enemyids": "1/1/0/0",
+		"numrow1": 1,
+		"numrow2": 1,
+		"rewarditemchance": "85/15/0",
+		"flooraplicable": 1,
+		"boss": 0
+	},
+	{
+		"id": 2,
+		"name": "slime ambush",
+		"enemyids": "1/1/1/1",
+		"numrow1": 2,
+		"numrow2": 2,
+		"rewarditemchance": "85/15/0",
+		"flooraplicable": 1,
+		"boss": 0
+	},
+	{
+		"id": 3,
+		"name": "tutorial",
+		"enemyids": "1/0/0/0",
+		"numrow1": 0,
+		"numrow2": 1,
+		"rewarditemchance": "100/0/0",
+		"flooraplicable": 0,
+		"boss": 0
+	},
+	{
+		"id": 4,
+		"name": "flock of birds",
+		"enemyids": "2/2/2/0",
+		"numrow1": 1,
+		"numrow2": 2,
+		"rewarditemchance": "85/15/0",
+		"flooraplicable": 1,
+		"boss": 0
+	},
+	{
+		"id": 5,
+		"name": "knightescort",
+		"enemyids": "2/2/3/0",
+		"numrow1": 2,
+		"numrow2": 1,
+		"rewarditemchance": "75/25/0",
+		"flooraplicable": 1,
+		"boss": 0
+	},
+	{
+		"id": 6,
+		"name": "solo rogue",
+		"enemyids": "4/0/0/0",
+		"numrow1": 0,
+		"numrow2": 1,
+		"rewarditemchance": "85/15/0",
+		"flooraplicable": 1,
+		"boss": 0
+	},
+	{
+		"id": 7,
+		"name": "solo knight",
+		"enemyids": "3/0/0/0",
+		"numrow1": 0,
+		"numrow2": 1,
+		"rewarditemchance": "85/15/0",
+		"flooraplicable": 1,
+		"boss": 0
+	},
+	{
+		"id": 8,
+		"name": "pair of knights",
+		"enemyids": "3/3/0/0",
+		"numrow1": 1,
+		"numrow2": 1,
+		"rewarditemchance": "75/25/0",
+		"flooraplicable": 1,
+		"boss": 0
+	},
+	{
+		"id": 9,
+		"name": "knight rogue combo",
+		"enemyids": "3/4/0/0",
+		"numrow1": 1,
+		"numrow2": 1,
+		"rewarditemchance": "75/25/0",
+		"flooraplicable": 1,
+		"boss": 0
+	},
+	{
+		"id": 10,
+		"name": "baron slime",
+		"enemyids": "5/0/0/0",
+		"numrow1": 0,
+		"numrow2": 1,
+		"rewarditemchance": "0/0/100",
+		"flooraplicable": 1,
+		"boss": 1
+	},
+	{
+		"id": 11,
+		"name": "slimes + healer",
+		"enemyids": "1/1/6/0",
+		"numrow1": 2,
+		"numrow2": 1,
+		"rewarditemchance": "85/15/0",
+		"flooraplicable": 1,
+		"boss": 0
+	},
+	{
+		"id": 12,
+		"name": "knight + healer",
+		"enemyids": "3/6/0/0",
+		"numrow1": 1,
+		"numrow2": 1,
+		"rewarditemchance": "75/25/0",
+		"flooraplicable": 1,
+		"boss": 0
+	},
+	{
+		"id": 13,
+		"name": "Rogue + birds",
+		"enemyids": "4/2/2/0",
+		"numrow1": 1,
+		"numrow2": 2,
+		"rewarditemchance": "75/25/0",
+		"flooraplicable": 1,
+		"boss": 0
+	},
+	{
+		"id": 14,
+		"name": "birds + knight",
+		"enemyids": "2/2/7/0",
+		"numrow1": 2,
+		"numrow2": 1,
+		"rewarditemchance": "55/45/0",
+		"flooraplicable": 2,
+		"boss": 0
+	},
+	{
+		"id": 15,
+		"name": "knight aliance",
+		"enemyids": "7/3/0/0",
+		"numrow1": 1,
+		"numrow2": 1,
+		"rewarditemchance": "55/45/0",
+		"flooraplicable": 2,
+		"boss": 0
+	},
+	{
+		"id": 16,
+		"name": "slimey knight",
+		"enemyids": "3/1/1/6",
+		"numrow1": 2,
+		"numrow2": 2,
+		"rewarditemchance": "55/45/0",
+		"flooraplicable": 2,
+		"boss": 0
+	},
+	{
+		"id": 17,
+		"name": "healing bird",
+		"enemyids": "7/6/0/0",
+		"numrow1": 1,
+		"numrow2": 1,
+		"rewarditemchance": "65/35/0",
+		"flooraplicable": 2,
+		"boss": 0
+	},
+	{
+		"id": 18,
+		"name": "king bird",
+		"enemyids": "8/0/0/0",
+		"numrow1": 0,
+		"numrow2": 1,
+		"rewarditemchance": "0/0/100",
+		"flooraplicable": 2,
+		"boss": 1
+	},
+	{
+		"id": 19,
+		"name": "pair of knights",
+		"enemyids": "3/3/0/0",
+		"numrow1": 1,
+		"numrow2": 1,
+		"rewarditemchance": "65/35/0",
+		"flooraplicable": 2,
+		"boss": 0
+	},
+	{
+		"id": 20,
+		"name": "knight rogue combo",
+		"enemyids": "3/4/0/0",
+		"numrow1": 1,
+		"numrow2": 1,
+		"rewarditemchance": "65/35/0",
+		"flooraplicable": 2,
+		"boss": 0
+	},
+	{
+		"id": 21,
+		"name": "birds + healer",
+		"enemyids": "3/2/2/6",
+		"numrow1": 2,
+		"numrow2": 2,
+		"rewarditemchance": "55/45/0",
+		"flooraplicable": 2,
+		"boss": 0
+	},
+	{
+		"id": 22,
+		"name": "baron slime regular",
+		"enemyids": "5/0/0/0",
+		"numrow1": 0,
+		"numrow2": 1,
+		"rewarditemchance": "45/45/10",
+		"flooraplicable": 2,
+		"boss": 0
+	},
+	{
+		"id": 23,
+		"name": "knight rogue combo 2nd",
+		"enemyids": "3/4/0/0",
+		"numrow1": 1,
+		"numrow2": 1,
+		"rewarditemchance": "65/35/0",
+		"flooraplicable": 2,
+		"boss": 0
+	},
+	{
+		"id": 24,
+		"name": "rogue bird knight",
+		"enemyids": "7/4/0/0",
+		"numrow1": 1,
+		"numrow2": 1,
+		"rewarditemchance": "65/35/0",
+		"flooraplicable": 2,
+		"boss": 0
+	},
+	{
+		"id": 25,
+		"name": "pair of bird knights",
+		"enemyids": "7/7/0/0",
+		"numrow1": 1,
+		"numrow2": 1,
+		"rewarditemchance": "55/45/0",
+		"flooraplicable": 2,
+		"boss": 0
+	}
+]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://pn6gv51uvdt6"
+path="res://.godot/imported/Troubadeck 16 Cloak of Darkness.ogg-7fe0b7711cd3aad46f95c0b59b3af2e5.oggvorbisstr"
+
+[deps]
+
+source_file="res://Game V2/Sounds/Music/Troubadeck 16 Cloak of Darkness.ogg"
+dest_files=["res://.godot/imported/Troubadeck 16 Cloak of Darkness.ogg-7fe0b7711cd3aad46f95c0b59b3af2e5.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

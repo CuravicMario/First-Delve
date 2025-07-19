@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=3 uid="uid://c4aole6lkkjy7"]
+
+[ext_resource type="Script" path="res://Game V2/scripts/Equipment/scroll_of_haste.gd" id="1_xkl2n"]
+[ext_resource type="Script" path="res://Game V2/scripts/Parts.gd" id="2_v0lc6"]
+[ext_resource type="Material" uid="uid://bsbussaclyott" path="res://Game V2/scripts/Shaders/Material/color_changer.tres" id="3_s17hm"]
+[ext_resource type="Texture2D" uid="uid://baykglv4ldl6x" path="res://Game V2/Sprites/Equipment/scroll of haste.png" id="4_a7ij4"]
+[ext_resource type="PackedScene" uid="uid://bb8uimg5kiniu" path="res://Game V2/Scenes/hover.tscn" id="5_svrgm"]
+[ext_resource type="Shader" path="res://Game V2/scripts/Shaders/color_swap.gdshader" id="6_vc3qv"]
+[ext_resource type="Texture2D" uid="uid://bmfgvf6w8dukj" path="res://Game V2/Sprites/Equipment/1x2 hover border.png" id="7_e657p"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1y2mt"]
+shader = ExtResource("6_vc3qv")
+shader_parameter/target_color_1 = null
+shader_parameter/replace_color_1 = null
+shader_parameter/target_color_2 = null
+shader_parameter/replace_color_2 = null
+shader_parameter/tolerance = null
+
+[node name="Scroll of haste" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_xkl2n")
+
+[node name="Parts" type="Node2D" parent="."]
+script = ExtResource("2_v0lc6")
+
+[node name="Part 1" type="Sprite2D" parent="Parts"]
+material = ExtResource("3_s17hm")
+position = Vector2(0, -16)
+texture = ExtResource("4_a7ij4")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
+
+[node name="Part 2" type="Sprite2D" parent="Parts"]
+material = ExtResource("3_s17hm")
+position = Vector2(0, 16)
+texture = ExtResource("4_a7ij4")
+region_enabled = true
+region_rect = Rect2(0, 32, 32, 32)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(-16, 32, 16, 32, 16, -32, -16, -32)
+
+[node name="Hover" parent="." instance=ExtResource("5_svrgm")]
+visible = false
+position = Vector2(0, -74)
+
+[node name="Hover_border" type="Sprite2D" parent="."]
+visible = false
+z_index = 5
+texture_filter = 1
+material = SubResource("ShaderMaterial_1y2mt")
+texture = ExtResource("7_e657p")
+
+[node name="SwitchPosition" type="Marker2D" parent="."]
+position = Vector2(0, 74)
+
+[node name="DefaultPosition" type="Marker2D" parent="."]
+position = Vector2(0, -74)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

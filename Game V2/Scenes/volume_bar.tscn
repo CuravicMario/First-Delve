@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://kv0lbfx7m648"]
+
+[ext_resource type="Script" path="res://Game V2/scripts/volume_bar.gd" id="1_2e3c0"]
+[ext_resource type="Shader" path="res://Game V2/scripts/Shaders/color_swap.gdshader" id="1_uo1l6"]
+[ext_resource type="Texture2D" uid="uid://dbroxaoxsnqea" path="res://Game V2/Sprites/Options Volume Slider bar.png" id="2_jtgtm"]
+[ext_resource type="Script" path="res://Game V2/scripts/Background.gd" id="3_ejdhe"]
+[ext_resource type="Texture2D" uid="uid://bbpncalvsklnp" path="res://Game V2/Sprites/Options Volume Slider bar fill.png" id="4_rg2u0"]
+[ext_resource type="PackedScene" uid="uid://dupg53m865p3a" path="res://Game V2/Scenes/UI_arrow.tscn" id="5_vnkwf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mridx"]
+shader = ExtResource("1_uo1l6")
+shader_parameter/target_color_1 = null
+shader_parameter/replace_color_1 = null
+shader_parameter/target_color_2 = null
+shader_parameter/replace_color_2 = null
+shader_parameter/tolerance = null
+
+[node name="VolumeBar" type="Node2D"]
+script = ExtResource("1_2e3c0")
+
+[node name="Border" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_mridx")
+texture = ExtResource("2_jtgtm")
+script = ExtResource("3_ejdhe")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Border"]
+z_index = -1
+offset_left = -64.0
+offset_top = -8.0
+offset_right = 64.0
+offset_bottom = 8.0
+value = 50.0
+texture_progress = ExtResource("4_rg2u0")
+metadata/_edit_use_anchors_ = true
+
+[node name="Arrow" parent="." node_paths=PackedStringArray("LEFT_NEIGHBOUR", "BAR_CONTROLED") instance=ExtResource("5_vnkwf")]
+position = Vector2(78, 0)
+LEFT_NEIGHBOUR = NodePath("../Arrow2")
+BAR_CONTROLED = NodePath("..")
+DIRECTION = 1
+
+[node name="Arrow2" parent="." node_paths=PackedStringArray("RIGHT_NEIGHBOUR", "BAR_CONTROLED") instance=ExtResource("5_vnkwf")]
+position = Vector2(-78, 0)
+rotation = 3.14159
+RIGHT_NEIGHBOUR = NodePath("../Arrow")
+BAR_CONTROLED = NodePath("..")

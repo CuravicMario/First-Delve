@@ -1,0 +1,124 @@
+[gd_scene load_steps=13 format=3 uid="uid://c710kdk1hi6pa"]
+
+[ext_resource type="Texture2D" uid="uid://b1fhom5xubkc1" path="res://Game V2/Sprites/info frame.png" id="1_6ctjj"]
+[ext_resource type="Texture2D" uid="uid://bqurr4u8rm6lx" path="res://Game V2/Sprites/info name placement.png" id="2_41ul2"]
+[ext_resource type="Script" path="res://Game V2/scripts/info.gd" id="2_102vr"]
+[ext_resource type="Shader" path="res://Game V2/scripts/Shaders/color_swap.gdshader" id="3_nqwrc"]
+[ext_resource type="Texture2D" uid="uid://c1rfhlhlq8p5i" path="res://Game V2/Sprites/info hp bar frame.png" id="3_s71wl"]
+[ext_resource type="Texture2D" uid="uid://batb6abaji5bq" path="res://Game V2/Sprites/info hp bar fill.png" id="4_syn6q"]
+[ext_resource type="Texture2D" uid="uid://f7k0guv8d817" path="res://Game V2/Sprites/info gold position.png" id="5_aa74l"]
+[ext_resource type="PackedScene" uid="uid://c1op7ibp8ntlm" path="res://Game V2/Scenes/stats_block.tscn" id="7_fgnh4"]
+[ext_resource type="Texture2D" uid="uid://bomvnaiwgovwb" path="res://Game V2/Sprites/gold hover border.png" id="8_4fj77"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5magu"]
+shader = ExtResource("3_nqwrc")
+shader_parameter/target_color_1 = null
+shader_parameter/replace_color_1 = null
+shader_parameter/target_color_2 = null
+shader_parameter/replace_color_2 = null
+shader_parameter/tolerance = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_23405"]
+shader = ExtResource("3_nqwrc")
+shader_parameter/target_color_1 = null
+shader_parameter/replace_color_1 = null
+shader_parameter/target_color_2 = null
+shader_parameter/replace_color_2 = null
+shader_parameter/tolerance = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1a2t8"]
+shader = ExtResource("3_nqwrc")
+shader_parameter/target_color_1 = null
+shader_parameter/replace_color_1 = null
+shader_parameter/target_color_2 = null
+shader_parameter/replace_color_2 = null
+shader_parameter/tolerance = null
+
+[node name="Info" type="Sprite2D"]
+z_index = -15
+material = SubResource("ShaderMaterial_5magu")
+texture = ExtResource("1_6ctjj")
+script = ExtResource("2_102vr")
+info_group_name = "Info"
+
+[node name="Name" type="Sprite2D" parent="."]
+z_index = -15
+material = SubResource("ShaderMaterial_23405")
+position = Vector2(0, -104)
+texture = ExtResource("2_41ul2")
+
+[node name="HP Bar" type="Sprite2D" parent="."]
+z_index = -15
+material = SubResource("ShaderMaterial_1a2t8")
+position = Vector2(0, -72)
+texture = ExtResource("3_s71wl")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HP Bar"]
+z_index = -1
+offset_left = -65.0
+offset_top = -8.0
+offset_right = 65.0
+offset_bottom = 8.0
+texture_progress = ExtResource("4_syn6q")
+metadata/_edit_use_anchors_ = true
+
+[node name="Gold" parent="." node_paths=PackedStringArray("parent", "UP_NEIGHBOUR") instance=ExtResource("7_fgnh4")]
+position = Vector2(0, 104)
+texture = ExtResource("5_aa74l")
+parent = NodePath("..")
+text_id = 130
+UP_NEIGHBOUR = NodePath("../Stats/StatsBlock11")
+
+[node name="Hover_border" parent="Gold" index="1"]
+texture = ExtResource("8_4fj77")
+
+[node name="Stats" type="Node2D" parent="."]
+
+[node name="StatsBlock" parent="Stats" node_paths=PackedStringArray("parent", "RIGHT_NEIGHBOUR", "DOWN_NEIGHBOUR") instance=ExtResource("7_fgnh4")]
+position = Vector2(-40, -32)
+parent = NodePath("../..")
+text_id = 124
+RIGHT_NEIGHBOUR = NodePath("../StatsBlock7")
+DOWN_NEIGHBOUR = NodePath("../StatsBlock8")
+
+[node name="StatsBlock7" parent="Stats" node_paths=PackedStringArray("parent", "DOWN_NEIGHBOUR", "LEFT_NEIGHBOUR") instance=ExtResource("7_fgnh4")]
+position = Vector2(40, -32)
+parent = NodePath("../..")
+text_id = 125
+DOWN_NEIGHBOUR = NodePath("../StatsBlock9")
+LEFT_NEIGHBOUR = NodePath("../StatsBlock")
+
+[node name="StatsBlock8" parent="Stats" node_paths=PackedStringArray("parent", "UP_NEIGHBOUR", "RIGHT_NEIGHBOUR", "DOWN_NEIGHBOUR") instance=ExtResource("7_fgnh4")]
+position = Vector2(-40, 16)
+parent = NodePath("../..")
+text_id = 126
+UP_NEIGHBOUR = NodePath("../StatsBlock")
+RIGHT_NEIGHBOUR = NodePath("../StatsBlock9")
+DOWN_NEIGHBOUR = NodePath("../StatsBlock10")
+
+[node name="StatsBlock9" parent="Stats" node_paths=PackedStringArray("parent", "UP_NEIGHBOUR", "DOWN_NEIGHBOUR", "LEFT_NEIGHBOUR") instance=ExtResource("7_fgnh4")]
+position = Vector2(40, 16)
+parent = NodePath("../..")
+text_id = 127
+UP_NEIGHBOUR = NodePath("../StatsBlock7")
+DOWN_NEIGHBOUR = NodePath("../StatsBlock11")
+LEFT_NEIGHBOUR = NodePath("../StatsBlock8")
+
+[node name="StatsBlock10" parent="Stats" node_paths=PackedStringArray("parent", "UP_NEIGHBOUR", "RIGHT_NEIGHBOUR", "DOWN_NEIGHBOUR") instance=ExtResource("7_fgnh4")]
+position = Vector2(-40, 64)
+parent = NodePath("../..")
+text_id = 128
+UP_NEIGHBOUR = NodePath("../StatsBlock8")
+RIGHT_NEIGHBOUR = NodePath("../StatsBlock11")
+DOWN_NEIGHBOUR = NodePath("../../Gold")
+
+[node name="StatsBlock11" parent="Stats" node_paths=PackedStringArray("parent", "UP_NEIGHBOUR", "DOWN_NEIGHBOUR", "LEFT_NEIGHBOUR") instance=ExtResource("7_fgnh4")]
+position = Vector2(40, 64)
+parent = NodePath("../..")
+text_id = 129
+UP_NEIGHBOUR = NodePath("../StatsBlock9")
+DOWN_NEIGHBOUR = NodePath("../../Gold")
+LEFT_NEIGHBOUR = NodePath("../StatsBlock10")
+
+[editable path="Gold"]
+[editable path="Gold/Hover"]

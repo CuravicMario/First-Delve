@@ -1,0 +1,81 @@
+[gd_scene load_steps=9 format=3 uid="uid://8ugksj4v5gu8"]
+
+[ext_resource type="Script" path="res://Game V2/scripts/Equipment.gd" id="1_t4hdc"]
+[ext_resource type="Script" path="res://Game V2/scripts/Parts.gd" id="2_n6yml"]
+[ext_resource type="Material" uid="uid://bsbussaclyott" path="res://Game V2/scripts/Shaders/Material/color_changer.tres" id="3_ya2r3"]
+[ext_resource type="Texture2D" uid="uid://42ca8jwdqxd5" path="res://Game V2/Sprites/Equipment/wooden shield.png" id="4_n273a"]
+[ext_resource type="PackedScene" uid="uid://bb8uimg5kiniu" path="res://Game V2/Scenes/hover.tscn" id="5_4480y"]
+[ext_resource type="Shader" path="res://Game V2/scripts/Shaders/color_swap.gdshader" id="6_a8w23"]
+[ext_resource type="Texture2D" uid="uid://cuycljlx4ww82" path="res://Game V2/Sprites/Equipment/2x2 hover border.png" id="7_m127t"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vlx8g"]
+shader = ExtResource("6_a8w23")
+shader_parameter/target_color_1 = null
+shader_parameter/replace_color_1 = null
+shader_parameter/target_color_2 = null
+shader_parameter/replace_color_2 = null
+shader_parameter/tolerance = null
+
+[node name="WoodenShield" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_t4hdc")
+
+[node name="Parts" type="Node2D" parent="."]
+script = ExtResource("2_n6yml")
+
+[node name="Part 1" type="Sprite2D" parent="Parts"]
+material = ExtResource("3_ya2r3")
+position = Vector2(-16, -16)
+texture = ExtResource("4_n273a")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
+
+[node name="Part 2" type="Sprite2D" parent="Parts"]
+material = ExtResource("3_ya2r3")
+position = Vector2(16, -16)
+texture = ExtResource("4_n273a")
+region_enabled = true
+region_rect = Rect2(32, 0, 32, 32)
+
+[node name="Part 3" type="Sprite2D" parent="Parts"]
+material = ExtResource("3_ya2r3")
+position = Vector2(-16, 16)
+texture = ExtResource("4_n273a")
+region_enabled = true
+region_rect = Rect2(0, 32, 32, 32)
+
+[node name="Part 4" type="Sprite2D" parent="Parts"]
+material = ExtResource("3_ya2r3")
+position = Vector2(16, 16)
+texture = ExtResource("4_n273a")
+region_enabled = true
+region_rect = Rect2(32, 32, 32, 32)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(-32, 32, 32, 32, 32, -32, -32, -32)
+
+[node name="Hover" parent="." instance=ExtResource("5_4480y")]
+visible = false
+position = Vector2(0, -74)
+
+[node name="Hover_border" type="Sprite2D" parent="."]
+visible = false
+z_index = 5
+texture_filter = 1
+material = SubResource("ShaderMaterial_vlx8g")
+texture = ExtResource("7_m127t")
+
+[node name="SwitchPosition" type="Marker2D" parent="."]
+position = Vector2(0, 74)
+
+[node name="DefaultPosition" type="Marker2D" parent="."]
+position = Vector2(0, -74)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

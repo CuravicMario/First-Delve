@@ -1,0 +1,78 @@
+[gd_scene load_steps=9 format=3 uid="uid://bk08oy8jmlr73"]
+
+[ext_resource type="Script" path="res://Game V2/scripts/shop.gd" id="1_nu538"]
+[ext_resource type="Shader" path="res://Game V2/scripts/Shaders/color_swap.gdshader" id="2_an7si"]
+[ext_resource type="Texture2D" uid="uid://rqws21w7adf" path="res://Game V2/Sprites/shop-border.png" id="2_kvm8h"]
+[ext_resource type="PackedScene" uid="uid://bgt44jcihba20" path="res://Game V2/Scenes/shop_slot.tscn" id="3_h4wyf"]
+[ext_resource type="PackedScene" uid="uid://d0jiruwlj8fmv" path="res://Game V2/Scenes/room_coplete_btn.tscn" id="4_swqpa"]
+[ext_resource type="PackedScene" uid="uid://iy41s6p5dx2b" path="res://Game V2/Scenes/sell.tscn" id="5_vv8io"]
+[ext_resource type="PackedScene" uid="uid://dt1k4buk7axya" path="res://Game V2/Scenes/reroll.tscn" id="6_ywew2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_27bw7"]
+shader = ExtResource("2_an7si")
+shader_parameter/target_color_1 = null
+shader_parameter/replace_color_1 = null
+shader_parameter/target_color_2 = null
+shader_parameter/replace_color_2 = null
+shader_parameter/tolerance = null
+
+[node name="Shop" type="Node2D" node_paths=PackedStringArray("shop_slots")]
+script = ExtResource("1_nu538")
+shop_slots = [NodePath("ShopSlot"), NodePath("ShopSlot2"), NodePath("ShopSlot3")]
+label_group = "price"
+
+[node name="Border" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_27bw7")
+texture = ExtResource("2_kvm8h")
+
+[node name="ShopSlot" parent="." node_paths=PackedStringArray("RIGHT_NEIGHBOUR") instance=ExtResource("3_h4wyf")]
+position = Vector2(-128, -16)
+RIGHT_NEIGHBOUR = NodePath("../ShopSlot2")
+
+[node name="PriceSign" parent="ShopSlot" index="1" node_paths=PackedStringArray("RIGHT_NEIGHBOUR", "DOWN_NEIGHBOUR")]
+RIGHT_NEIGHBOUR = NodePath("../../ShopSlot2/PriceSign")
+DOWN_NEIGHBOUR = NodePath("../../Room Complete")
+
+[node name="ShopSlot2" parent="." node_paths=PackedStringArray("RIGHT_NEIGHBOUR", "LEFT_NEIGHBOUR") instance=ExtResource("3_h4wyf")]
+position = Vector2(-48, -16)
+RIGHT_NEIGHBOUR = NodePath("../ShopSlot3")
+LEFT_NEIGHBOUR = NodePath("../ShopSlot")
+
+[node name="PriceSign" parent="ShopSlot2" index="1" node_paths=PackedStringArray("RIGHT_NEIGHBOUR", "DOWN_NEIGHBOUR", "LEFT_NEIGHBOUR")]
+RIGHT_NEIGHBOUR = NodePath("../../ShopSlot3/PriceSign")
+DOWN_NEIGHBOUR = NodePath("../../Room Complete")
+LEFT_NEIGHBOUR = NodePath("../../ShopSlot/PriceSign")
+
+[node name="ShopSlot3" parent="." node_paths=PackedStringArray("RIGHT_NEIGHBOUR", "LEFT_NEIGHBOUR") instance=ExtResource("3_h4wyf")]
+position = Vector2(32, -16)
+RIGHT_NEIGHBOUR = NodePath("../Reroll")
+LEFT_NEIGHBOUR = NodePath("../ShopSlot2")
+
+[node name="PriceSign" parent="ShopSlot3" index="1" node_paths=PackedStringArray("RIGHT_NEIGHBOUR", "DOWN_NEIGHBOUR", "LEFT_NEIGHBOUR")]
+RIGHT_NEIGHBOUR = NodePath("../../Reroll")
+DOWN_NEIGHBOUR = NodePath("../../Room Complete")
+LEFT_NEIGHBOUR = NodePath("../../ShopSlot2/PriceSign")
+
+[node name="Room Complete" parent="." node_paths=PackedStringArray("UP_NEIGHBOUR") instance=ExtResource("4_swqpa")]
+position = Vector2(0, 80)
+btn_real_pos = Vector2(432, 160)
+UP_NEIGHBOUR = NodePath("../ShopSlot/PriceSign")
+
+[node name="Sell" parent="." instance=ExtResource("5_vv8io")]
+position = Vector2(0, -5)
+
+[node name="Reroll" parent="." node_paths=PackedStringArray("DOWN_NEIGHBOUR", "LEFT_NEIGHBOUR") instance=ExtResource("6_ywew2")]
+position = Vector2(96, 36)
+label_group = "reroll"
+DOWN_NEIGHBOUR = NodePath("../Room Complete")
+LEFT_NEIGHBOUR = NodePath("../ShopSlot3")
+
+[node name="Gold" parent="Reroll" index="1" node_paths=PackedStringArray("parent")]
+parent = NodePath("../..")
+
+[editable path="ShopSlot"]
+[editable path="ShopSlot2"]
+[editable path="ShopSlot3"]
+[editable path="Reroll"]
+[editable path="Reroll/Gold"]
+[editable path="Reroll/Gold/Hover"]

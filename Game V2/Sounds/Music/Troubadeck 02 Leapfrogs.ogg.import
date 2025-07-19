@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c7245yorqbc48"
+path="res://.godot/imported/Troubadeck 02 Leapfrogs.ogg-842c38a39fa194464bbb1e05739c2b34.oggvorbisstr"
+
+[deps]
+
+source_file="res://Game V2/Sounds/Music/Troubadeck 02 Leapfrogs.ogg"
+dest_files=["res://.godot/imported/Troubadeck 02 Leapfrogs.ogg-842c38a39fa194464bbb1e05739c2b34.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

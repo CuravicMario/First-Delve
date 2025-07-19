@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dxgko54u8qsih"
+path="res://.godot/imported/Troubadeck 23 Soldier's Lament.ogg-b7ca971a8e47031db22165725422bfcc.oggvorbisstr"
+
+[deps]
+
+source_file="res://Game V2/Sounds/Music/Troubadeck 23 Soldier's Lament.ogg"
+dest_files=["res://.godot/imported/Troubadeck 23 Soldier's Lament.ogg-b7ca971a8e47031db22165725422bfcc.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

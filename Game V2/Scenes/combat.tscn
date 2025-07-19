@@ -1,0 +1,62 @@
+[gd_scene load_steps=10 format=3 uid="uid://dsp4ykthglf5y"]
+
+[ext_resource type="Script" path="res://Game V2/scripts/combat.gd" id="1_acvob"]
+[ext_resource type="Texture2D" uid="uid://bssam4bujfytu" path="res://Game V2/Sprites/combat-border.png" id="1_gmtnb"]
+[ext_resource type="Shader" path="res://Game V2/scripts/Shaders/color_swap.gdshader" id="2_t3n76"]
+[ext_resource type="PackedScene" uid="uid://lyr2aecql3fn" path="res://Game V2/Scenes/combat_start_btn.tscn" id="2_whno5"]
+[ext_resource type="PackedScene" uid="uid://d0jiruwlj8fmv" path="res://Game V2/Scenes/room_coplete_btn.tscn" id="4_4d5xw"]
+[ext_resource type="PackedScene" uid="uid://bph5j3st78206" path="res://Game V2/Scenes/reward.tscn" id="6_5fkr8"]
+[ext_resource type="PackedScene" uid="uid://db0p1gkq4hq4o" path="res://Game V2/Scenes/next_floor_btn.tscn" id="6_psjud"]
+[ext_resource type="PackedScene" uid="uid://cql4ntmro8vy4" path="res://Game V2/Scenes/defeat.tscn" id="7_vxx3t"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mpqab"]
+shader = ExtResource("2_t3n76")
+shader_parameter/target_color_1 = null
+shader_parameter/replace_color_1 = null
+shader_parameter/target_color_2 = null
+shader_parameter/replace_color_2 = null
+shader_parameter/tolerance = null
+
+[node name="Combat" type="Node2D"]
+script = ExtResource("1_acvob")
+possible_enemy_pos_row1 = [Vector2(24, -40), Vector2(24, 48), Vector2(24, 0)]
+possible_enemy_pos_row2 = [Vector2(104, -40), Vector2(104, 48), Vector2(104, 0)]
+
+[node name="Border" type="Sprite2D" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_mpqab")
+texture = ExtResource("1_gmtnb")
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Player pos" type="Marker2D" parent="."]
+position = Vector2(-104, 0)
+
+[node name="CombatStartBtn" parent="." instance=ExtResource("2_whno5")]
+position = Vector2(0, 100)
+
+[node name="Room Complete" parent="." instance=ExtResource("4_4d5xw")]
+visible = false
+position = Vector2(0, 100)
+label_group = "shopLeave"
+
+[node name="NextFloor" parent="." instance=ExtResource("6_psjud")]
+visible = false
+position = Vector2(0, 100)
+
+[node name="Reward" parent="." node_paths=PackedStringArray("DOWN_NEIGHBOUR") instance=ExtResource("6_5fkr8")]
+visible = false
+DOWN_NEIGHBOUR = NodePath("../Room Complete")
+
+[node name="TakeBtn" parent="Reward" index="2" node_paths=PackedStringArray("DOWN_NEIGHBOUR")]
+DOWN_NEIGHBOUR = NodePath("../../Room Complete")
+
+[node name="Defeat" parent="." instance=ExtResource("7_vxx3t")]
+visible = false
+label_group = "defat"
+
+[node name="ReturnButton" parent="Defeat" index="1"]
+position = Vector2(0, 24)
+
+[editable path="Reward"]
+[editable path="Defeat"]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dpd47im4cdm4k"
+path="res://.godot/imported/Troubadeck 13 Loopy.ogg-b77934ce5338ab2c7084de47f4d9c996.oggvorbisstr"
+
+[deps]
+
+source_file="res://Game V2/Sounds/Music/Troubadeck 13 Loopy.ogg"
+dest_files=["res://.godot/imported/Troubadeck 13 Loopy.ogg-b77934ce5338ab2c7084de47f4d9c996.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

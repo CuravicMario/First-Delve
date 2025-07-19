@@ -1,0 +1,101 @@
+[gd_scene load_steps=12 format=3 uid="uid://0kt5g5afboor"]
+
+[ext_resource type="Shader" path="res://Game V2/scripts/Shaders/color_swap.gdshader" id="1_mtjm3"]
+[ext_resource type="Texture2D" uid="uid://cx1n031f5v22g" path="res://Game V2/Sprites/Enemies/baronSlime.png" id="2_wy0gj"]
+[ext_resource type="Script" path="res://Game V2/scripts/enemy.gd" id="3_ruemm"]
+[ext_resource type="Texture2D" uid="uid://04hg2fyqle2j" path="res://Game V2/Sprites/boss hover border.png" id="4_vhsdp"]
+[ext_resource type="Texture2D" uid="uid://cdt6dsmj6xnap" path="res://Game V2/Sprites/Player atk timer border.png" id="5_e30nk"]
+[ext_resource type="Texture2D" uid="uid://miamywxg1yh8" path="res://Game V2/Sprites/Player atk timer fill.png" id="6_ma3pn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yybs8"]
+shader = ExtResource("1_mtjm3")
+shader_parameter/target_color_1 = null
+shader_parameter/replace_color_1 = null
+shader_parameter/target_color_2 = null
+shader_parameter/replace_color_2 = null
+shader_parameter/tolerance = null
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_65d7h"]
+size = Vector2(96, 64)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1llx6"]
+shader = ExtResource("1_mtjm3")
+shader_parameter/target_color_1 = null
+shader_parameter/replace_color_1 = null
+shader_parameter/target_color_2 = null
+shader_parameter/replace_color_2 = null
+shader_parameter/tolerance = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2x7ui"]
+shader = ExtResource("1_mtjm3")
+shader_parameter/target_color_1 = null
+shader_parameter/replace_color_1 = null
+shader_parameter/target_color_2 = null
+shader_parameter/replace_color_2 = null
+shader_parameter/tolerance = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3navt"]
+shader = ExtResource("1_mtjm3")
+shader_parameter/target_color_1 = null
+shader_parameter/replace_color_1 = null
+shader_parameter/target_color_2 = null
+shader_parameter/replace_color_2 = null
+shader_parameter/tolerance = null
+
+[node name="Baron Slime" type="Sprite2D"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_yybs8")
+texture = ExtResource("2_wy0gj")
+offset = Vector2(-16, 0)
+region_rect = Rect2(0, 0, 32, 32)
+script = ExtResource("3_ruemm")
+
+[node name="Atk Progress" type="Timer" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-16, -8)
+shape = SubResource("RectangleShape2D_65d7h")
+
+[node name="Hover_border" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+material = SubResource("ShaderMaterial_1llx6")
+texture = ExtResource("4_vhsdp")
+offset = Vector2(-16, 0)
+
+[node name="DamagePopupPos" type="Marker2D" parent="."]
+position = Vector2(0, -32)
+
+[node name="Health bar" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_2x7ui")
+position = Vector2(-16, 41)
+texture = ExtResource("5_e30nk")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Health bar"]
+self_modulate = Color(1, 0.14902, 0.164706, 1)
+z_index = -1
+offset_left = -37.0
+offset_top = -2.0
+offset_right = 38.0
+texture_progress = ExtResource("6_ma3pn")
+metadata/_edit_use_anchors_ = true
+
+[node name="Timer Border" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_3navt")
+position = Vector2(-16, 46)
+texture = ExtResource("5_e30nk")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Timer Border"]
+z_index = -1
+offset_left = -37.0
+offset_top = -2.0
+offset_right = 38.0
+texture_progress = ExtResource("6_ma3pn")
+metadata/_edit_use_anchors_ = true
+
+[connection signal="timeout" from="Atk Progress" to="." method="_on_atk_progress_timeout"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

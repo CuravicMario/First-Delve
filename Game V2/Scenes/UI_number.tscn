@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://br6rspajjkpu8"]
+
+[ext_resource type="Theme" uid="uid://dp6hsyqomfx6c" path="res://Game V2/Theme/default_theme.tres" id="1_lf6lx"]
+[ext_resource type="Script" path="res://Game V2/scripts/UI_Element_Position.gd" id="2_usnuy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_04qbh"]
+
+[node name="Number" type="Label"]
+offset_left = 211.0
+offset_top = 332.0
+offset_right = 300.0
+offset_bottom = 380.0
+size_flags_horizontal = 4
+theme = ExtResource("1_lf6lx")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_04qbh")
+text = "Leave"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_usnuy")

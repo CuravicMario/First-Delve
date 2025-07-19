@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://dupg53m865p3a"]
+
+[ext_resource type="Shader" path="res://Game V2/scripts/Shaders/color_swap.gdshader" id="1_rcge3"]
+[ext_resource type="Texture2D" uid="uid://cgwc45y3icrf0" path="res://Game V2/Sprites/Options Volume control arrowsSheet.png" id="2_yfbmx"]
+[ext_resource type="Script" path="res://Game V2/scripts/UI_arrow.gd" id="3_e4s3r"]
+[ext_resource type="Texture2D" uid="uid://c4iv4tp6c6lky" path="res://Game V2/Sprites/Options Volume control arrows hover frame.png" id="4_8u1cp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mridx"]
+shader = ExtResource("1_rcge3")
+shader_parameter/target_color_1 = null
+shader_parameter/replace_color_1 = null
+shader_parameter/target_color_2 = null
+shader_parameter/replace_color_2 = null
+shader_parameter/tolerance = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ox2ir"]
+shader = ExtResource("1_rcge3")
+shader_parameter/target_color_1 = null
+shader_parameter/replace_color_1 = null
+shader_parameter/target_color_2 = null
+shader_parameter/replace_color_2 = null
+shader_parameter/tolerance = null
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d8yr0"]
+
+[node name="Arrow" type="Sprite2D"]
+material = SubResource("ShaderMaterial_mridx")
+texture = ExtResource("2_yfbmx")
+region_enabled = true
+region_rect = Rect2(0, 0, 20, 20)
+script = ExtResource("3_e4s3r")
+
+[node name="Hover_border" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+material = SubResource("ShaderMaterial_ox2ir")
+texture = ExtResource("4_8u1cp")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_d8yr0")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

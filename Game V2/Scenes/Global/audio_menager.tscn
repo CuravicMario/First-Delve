@@ -1,0 +1,63 @@
+[gd_scene load_steps=14 format=3 uid="uid://ypfdc7g0ww3s"]
+
+[ext_resource type="Script" path="res://Game V2/scripts/global/audio_menager.gd" id="1_opat4"]
+[ext_resource type="AudioStream" uid="uid://b25gikefy8stn" path="res://Game V2/Sounds/Music/Troubadeck 01 A Simple Snail.ogg" id="2_dc7g4"]
+[ext_resource type="Script" path="res://Game V2/scripts/SoundEffectSetting.gd" id="2_hapd0"]
+[ext_resource type="AudioStream" uid="uid://41dhigyqylmt" path="res://Game V2/Sounds/SFX/cash-register-purchase-87313.mp3" id="3_15fsr"]
+[ext_resource type="AudioStream" uid="uid://bf5movrlnseyf" path="res://Game V2/Sounds/SFX/07_human_atk_sword_2.wav" id="4_n55bp"]
+[ext_resource type="AudioStream" uid="uid://d3u6t21de2r51" path="res://Game V2/Sounds/SFX/DM-CGS-25 - DEFEAT.wav" id="5_06gkc"]
+[ext_resource type="AudioStream" uid="uid://c3vcfb012f1u6" path="res://Game V2/Sounds/SFX/DM-CGS-30 - UI CLICK 2.wav" id="6_aswri"]
+[ext_resource type="AudioStream" uid="uid://b5cfg6uq1lrue" path="res://Game V2/Sounds/SFX/DM-CGS-31.wav" id="7_vr6fv"]
+
+[sub_resource type="Resource" id="Resource_qih3q"]
+script = ExtResource("2_hapd0")
+limit = 3
+type = 0
+sound_effect = ExtResource("3_15fsr")
+volume = 0.5
+pitch_scale = 1.0
+pitch_randomness = 0.0
+
+[sub_resource type="Resource" id="Resource_8pqmo"]
+script = ExtResource("2_hapd0")
+limit = 5
+type = 1
+sound_effect = ExtResource("4_n55bp")
+volume = 1.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+
+[sub_resource type="Resource" id="Resource_btq7g"]
+script = ExtResource("2_hapd0")
+limit = 2
+type = 2
+sound_effect = ExtResource("5_06gkc")
+volume = 0.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+
+[sub_resource type="Resource" id="Resource_rrcnt"]
+script = ExtResource("2_hapd0")
+limit = 5
+type = 3
+sound_effect = ExtResource("6_aswri")
+volume = 0.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+
+[sub_resource type="Resource" id="Resource_p7g23"]
+script = ExtResource("2_hapd0")
+limit = 5
+type = 4
+sound_effect = ExtResource("7_vr6fv")
+volume = 0.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+
+[node name="AudioMenager" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_opat4")
+sound_effects = Array[ExtResource("2_hapd0")]([SubResource("Resource_qih3q"), SubResource("Resource_8pqmo"), SubResource("Resource_btq7g"), SubResource("Resource_rrcnt"), SubResource("Resource_p7g23")])
+bg_music_tracks = Array[AudioStream]([ExtResource("2_dc7g4")])
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]

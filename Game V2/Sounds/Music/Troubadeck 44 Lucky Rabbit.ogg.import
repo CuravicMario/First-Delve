@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cbuh7h0e8oxfp"
+path="res://.godot/imported/Troubadeck 44 Lucky Rabbit.ogg-614db7c72944a282b6d1958e547eb57c.oggvorbisstr"
+
+[deps]
+
+source_file="res://Game V2/Sounds/Music/Troubadeck 44 Lucky Rabbit.ogg"
+dest_files=["res://.godot/imported/Troubadeck 44 Lucky Rabbit.ogg-614db7c72944a282b6d1958e547eb57c.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

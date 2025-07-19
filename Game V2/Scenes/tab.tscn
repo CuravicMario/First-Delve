@@ -1,0 +1,50 @@
+[gd_scene load_steps=9 format=3 uid="uid://b4qxv18jwgn7j"]
+
+[ext_resource type="Shader" path="res://Game V2/scripts/Shaders/color_swap.gdshader" id="1_i3cvq"]
+[ext_resource type="Script" path="res://Game V2/scripts/tab.gd" id="1_qaq6m"]
+[ext_resource type="Texture2D" uid="uid://cnggkt7bl1u4f" path="res://Game V2/Sprites/options tab.png" id="2_c0cs1"]
+[ext_resource type="Script" path="res://Game V2/scripts/Background.gd" id="3_f8f2d"]
+[ext_resource type="Texture2D" uid="uid://bhltj1otwgyur" path="res://Game V2/Sprites/options tab hover frame.png" id="5_s67v1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1cf67"]
+shader = ExtResource("1_i3cvq")
+shader_parameter/target_color_1 = null
+shader_parameter/replace_color_1 = null
+shader_parameter/target_color_2 = null
+shader_parameter/replace_color_2 = null
+shader_parameter/tolerance = null
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_66aab"]
+size = Vector2(128, 32)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1ea2k"]
+shader = ExtResource("1_i3cvq")
+shader_parameter/target_color_1 = null
+shader_parameter/replace_color_1 = null
+shader_parameter/target_color_2 = null
+shader_parameter/replace_color_2 = null
+shader_parameter/tolerance = null
+
+[node name="Tab" type="Node2D"]
+script = ExtResource("1_qaq6m")
+
+[node name="Underline" type="Sprite2D" parent="."]
+visible = false
+z_index = -15
+material = SubResource("ShaderMaterial_1cf67")
+texture = ExtResource("2_c0cs1")
+script = ExtResource("3_f8f2d")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_66aab")
+
+[node name="Hover_border" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+material = SubResource("ShaderMaterial_1ea2k")
+texture = ExtResource("5_s67v1")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

@@ -1,0 +1,58 @@
+[gd_scene load_steps=10 format=3 uid="uid://db730np42gmqh"]
+
+[ext_resource type="Texture2D" uid="uid://drl2ymwh3jrdg" path="res://Game V2/Sprites/room select frame.png" id="1_6x2c5"]
+[ext_resource type="Shader" path="res://Game V2/scripts/Shaders/color_swap.gdshader" id="1_wctw0"]
+[ext_resource type="Texture2D" uid="uid://c1ybwvg353773" path="res://Game V2/Sprites/room select normal icons.png" id="2_mt10u"]
+[ext_resource type="Script" path="res://Game V2/scripts/room_select_icon.gd" id="2_pydu7"]
+[ext_resource type="Texture2D" uid="uid://dtqq2784sksfg" path="res://Game V2/Sprites/room select frame hover frame.png" id="4_pb8m1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e7l4l"]
+shader = ExtResource("1_wctw0")
+shader_parameter/target_color_1 = null
+shader_parameter/replace_color_1 = null
+shader_parameter/target_color_2 = null
+shader_parameter/replace_color_2 = null
+shader_parameter/tolerance = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kmkkk"]
+shader = ExtResource("1_wctw0")
+shader_parameter/target_color_1 = null
+shader_parameter/replace_color_1 = null
+shader_parameter/target_color_2 = null
+shader_parameter/replace_color_2 = null
+shader_parameter/tolerance = null
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jj3t1"]
+size = Vector2(48, 80)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xghry"]
+shader = ExtResource("1_wctw0")
+shader_parameter/target_color_1 = null
+shader_parameter/replace_color_1 = null
+shader_parameter/target_color_2 = null
+shader_parameter/replace_color_2 = null
+shader_parameter/tolerance = null
+
+[node name="RoomSelectIcon" type="Sprite2D"]
+material = SubResource("ShaderMaterial_e7l4l")
+texture = ExtResource("1_6x2c5")
+script = ExtResource("2_pydu7")
+
+[node name="Icon" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_kmkkk")
+texture = ExtResource("2_mt10u")
+region_enabled = true
+region_rect = Rect2(0, 0, 48, 80)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_jj3t1")
+
+[node name="HoverBorder" type="Sprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_xghry")
+texture = ExtResource("4_pb8m1")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

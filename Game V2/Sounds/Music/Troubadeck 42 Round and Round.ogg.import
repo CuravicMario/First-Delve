@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://tppb3ux45y8l"
+path="res://.godot/imported/Troubadeck 42 Round and Round.ogg-a0c1545743b1e27e564526047aaa3fdd.oggvorbisstr"
+
+[deps]
+
+source_file="res://Game V2/Sounds/Music/Troubadeck 42 Round and Round.ogg"
+dest_files=["res://.godot/imported/Troubadeck 42 Round and Round.ogg-a0c1545743b1e27e564526047aaa3fdd.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

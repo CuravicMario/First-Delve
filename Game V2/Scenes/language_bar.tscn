@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://bry6yxqolytl2"]
+
+[ext_resource type="Script" path="res://Game V2/scripts/language_bar.gd" id="1_du6jc"]
+[ext_resource type="Shader" path="res://Game V2/scripts/Shaders/color_swap.gdshader" id="2_yycmu"]
+[ext_resource type="Texture2D" uid="uid://dbroxaoxsnqea" path="res://Game V2/Sprites/Options Volume Slider bar.png" id="3_fuyyq"]
+[ext_resource type="Script" path="res://Game V2/scripts/Background.gd" id="4_6uh74"]
+[ext_resource type="PackedScene" uid="uid://dupg53m865p3a" path="res://Game V2/Scenes/UI_arrow.tscn" id="6_h2p0c"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mridx"]
+shader = ExtResource("2_yycmu")
+shader_parameter/target_color_1 = null
+shader_parameter/replace_color_1 = null
+shader_parameter/target_color_2 = null
+shader_parameter/replace_color_2 = null
+shader_parameter/tolerance = null
+
+[node name="LanguageBar" type="Node2D"]
+script = ExtResource("1_du6jc")
+languages = Array[String](["eng", "hr"])
+label_group = "languages"
+language_names = Array[int]([60, 61])
+
+[node name="Border" type="Sprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_mridx")
+texture = ExtResource("3_fuyyq")
+script = ExtResource("4_6uh74")
+
+[node name="Arrow" parent="." node_paths=PackedStringArray("LEFT_NEIGHBOUR", "BAR_CONTROLED") instance=ExtResource("6_h2p0c")]
+position = Vector2(78, 0)
+LEFT_NEIGHBOUR = NodePath("../Arrow2")
+BAR_CONTROLED = NodePath("..")
+DIRECTION = 1
+
+[node name="Arrow2" parent="." node_paths=PackedStringArray("RIGHT_NEIGHBOUR", "BAR_CONTROLED") instance=ExtResource("6_h2p0c")]
+position = Vector2(-78, 0)
+rotation = 3.14159
+RIGHT_NEIGHBOUR = NodePath("../Arrow")
+BAR_CONTROLED = NodePath("..")

@@ -1,0 +1,48 @@
+[gd_scene load_steps=9 format=3 uid="uid://ct4c5xhtjhoc6"]
+
+[ext_resource type="Script" path="res://Game V2/scripts/option_hotkey.gd" id="1_xfdhj"]
+[ext_resource type="Shader" path="res://Game V2/scripts/Shaders/color_swap.gdshader" id="2_mynho"]
+[ext_resource type="Texture2D" uid="uid://c7t4ld321uhen" path="res://Game V2/Sprites/option name.png" id="3_8rqrq"]
+[ext_resource type="Script" path="res://Game V2/scripts/Background.gd" id="4_04yip"]
+[ext_resource type="Texture2D" uid="uid://iyyaqmfmc2yc" path="res://Game V2/Sprites/option name hover frame.png" id="5_f04ab"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hg2lo"]
+shader = ExtResource("2_mynho")
+shader_parameter/target_color_1 = null
+shader_parameter/replace_color_1 = null
+shader_parameter/target_color_2 = null
+shader_parameter/replace_color_2 = null
+shader_parameter/tolerance = null
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o15ej"]
+size = Vector2(208, 16)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_efq6l"]
+shader = ExtResource("2_mynho")
+shader_parameter/target_color_1 = null
+shader_parameter/replace_color_1 = null
+shader_parameter/target_color_2 = null
+shader_parameter/replace_color_2 = null
+shader_parameter/tolerance = null
+
+[node name="OptionName" type="Node2D"]
+script = ExtResource("1_xfdhj")
+
+[node name="Background" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_hg2lo")
+texture = ExtResource("3_8rqrq")
+script = ExtResource("4_04yip")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_o15ej")
+
+[node name="Hover_border" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+material = SubResource("ShaderMaterial_efq6l")
+texture = ExtResource("5_f04ab")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

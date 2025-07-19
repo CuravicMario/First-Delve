@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://de6qrp7m2i15j"]
+
+[ext_resource type="Script" path="res://Game V2/scripts/room_select.gd" id="1_t87is"]
+[ext_resource type="PackedScene" uid="uid://db730np42gmqh" path="res://Game V2/Scenes/room_select_icon.tscn" id="2_v18ls"]
+[ext_resource type="Texture2D" uid="uid://bcwikl4bsl5fd" path="res://Game V2/Sprites/boss room select frame.png" id="3_7n1qk"]
+[ext_resource type="Texture2D" uid="uid://d0lrqxqhwt36m" path="res://Game V2/Sprites/boss room select icon.png" id="4_x46mb"]
+[ext_resource type="Texture2D" uid="uid://de81iok1xjfn7" path="res://Game V2/Sprites/boss room select frame hover frame.png" id="5_i1k12"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g3na5"]
+size = Vector2(144, 80)
+
+[node name="RoomSelect" type="Node2D"]
+script = ExtResource("1_t87is")
+
+[node name="RoomSelectIcon" parent="." node_paths=PackedStringArray("RIGHT_NEIGHBOUR") instance=ExtResource("2_v18ls")]
+position = Vector2(-72, 0)
+RIGHT_NEIGHBOUR = NodePath("../RoomSelectIcon3")
+
+[node name="RoomSelectIcon2" parent="." node_paths=PackedStringArray("LEFT_NEIGHBOUR") instance=ExtResource("2_v18ls")]
+position = Vector2(72, 0)
+LEFT_NEIGHBOUR = NodePath("../RoomSelectIcon3")
+
+[node name="RoomSelectIcon3" parent="." node_paths=PackedStringArray("RIGHT_NEIGHBOUR", "LEFT_NEIGHBOUR") instance=ExtResource("2_v18ls")]
+position = Vector2(0, 32)
+RIGHT_NEIGHBOUR = NodePath("../RoomSelectIcon2")
+LEFT_NEIGHBOUR = NodePath("../RoomSelectIcon")
+
+[node name="Boss Icon" parent="." instance=ExtResource("2_v18ls")]
+texture = ExtResource("3_7n1qk")
+
+[node name="Icon" parent="Boss Icon" index="0"]
+texture = ExtResource("4_x46mb")
+region_enabled = false
+
+[node name="CollisionShape2D" parent="Boss Icon/Area2D" index="0"]
+shape = SubResource("RectangleShape2D_g3na5")
+
+[node name="HoverBorder" parent="Boss Icon" index="2"]
+texture = ExtResource("5_i1k12")
+
+[editable path="Boss Icon"]

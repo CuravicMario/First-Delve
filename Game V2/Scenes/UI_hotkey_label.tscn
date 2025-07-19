@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlrigms6uo5q3"]
+
+[ext_resource type="Script" path="res://Game V2/scripts/UI_hotkey_label.gd" id="1_27772"]
+
+[node name="HotkeyLabel" type="HBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+script = ExtResource("1_27772")
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Action" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32

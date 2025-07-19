@@ -1,0 +1,540 @@
+[gd_scene load_steps=9 format=3 uid="uid://cqsnu3kfj851c"]
+
+[ext_resource type="Script" path="res://Game V2/scripts/UI_canvas_layer.gd" id="1_iw4ei"]
+[ext_resource type="Theme" uid="uid://dp6hsyqomfx6c" path="res://Game V2/Theme/default_theme.tres" id="1_kqced"]
+[ext_resource type="Script" path="res://Game V2/scripts/UI_Element_Position.gd" id="2_snq2t"]
+[ext_resource type="Script" path="res://Game V2/scripts/rich_label.gd" id="3_pupss"]
+[ext_resource type="PackedScene" uid="uid://cda6rhwnn7w5v" path="res://Game V2/Scenes/ui_event_choice_text.tscn" id="4_2dfb0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kj5ui"]
+content_margin_left = 5.0
+content_margin_right = 5.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_04qbh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5jkre"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.180392, 0.188235, 0.215686, 1)
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_iw4ei")
+
+[node name="Start Combat" type="Label" parent="." groups=["CombatStartBtn"]]
+offset_left = 217.0
+offset_top = 176.0
+offset_right = 294.0
+offset_bottom = 224.0
+size_flags_horizontal = 4
+theme = ExtResource("1_kqced")
+theme_override_font_sizes/font_size = 32
+text = "Start"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_snq2t")
+
+[node name="Take" type="Label" parent="." groups=["take"]]
+offset_left = 217.0
+offset_top = 176.0
+offset_right = 294.0
+offset_bottom = 224.0
+size_flags_horizontal = 4
+theme = ExtResource("1_kqced")
+theme_override_font_sizes/font_size = 32
+text = "Take
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_snq2t")
+
+[node name="NextFloor" type="Label" parent="." groups=["nextfloor"]]
+offset_left = 217.0
+offset_top = 176.0
+offset_right = 294.0
+offset_bottom = 224.0
+size_flags_horizontal = 4
+theme = ExtResource("1_kqced")
+theme_override_font_sizes/font_size = 32
+text = "Take
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_snq2t")
+
+[node name="CombatLeave" type="Label" parent="." groups=["combatleave"]]
+offset_left = 217.0
+offset_top = 176.0
+offset_right = 294.0
+offset_bottom = 224.0
+size_flags_horizontal = 4
+theme = ExtResource("1_kqced")
+theme_override_font_sizes/font_size = 32
+text = "Take
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_snq2t")
+
+[node name="Defeat" type="Label" parent="." groups=["defeat"]]
+offset_left = 217.0
+offset_top = 176.0
+offset_right = 294.0
+offset_bottom = 224.0
+size_flags_horizontal = 4
+theme = ExtResource("1_kqced")
+theme_override_font_sizes/font_size = 32
+text = "Take
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_snq2t")
+
+[node name="Resume" type="Label" parent="." groups=["resume"]]
+offset_left = 217.0
+offset_top = 176.0
+offset_right = 294.0
+offset_bottom = 224.0
+size_flags_horizontal = 4
+theme = ExtResource("1_kqced")
+theme_override_font_sizes/font_size = 32
+text = "Take
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_snq2t")
+
+[node name="MainMenu" type="Label" parent="." groups=["mainmenu"]]
+offset_left = 217.0
+offset_top = 176.0
+offset_right = 294.0
+offset_bottom = 224.0
+size_flags_horizontal = 4
+theme = ExtResource("1_kqced")
+theme_override_font_sizes/font_size = 32
+text = "Take
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_snq2t")
+
+[node name="Exit" type="Label" parent="." groups=["exit"]]
+offset_left = 217.0
+offset_top = 176.0
+offset_right = 294.0
+offset_bottom = 224.0
+size_flags_horizontal = 4
+theme = ExtResource("1_kqced")
+theme_override_font_sizes/font_size = 32
+text = "Take
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_snq2t")
+
+[node name="Equipment" parent="." groups=["equipment"] instance=ExtResource("4_2dfb0")]
+visible = false
+top_level = true
+z_index = 5
+offset_right = 100.0
+offset_bottom = 100.0
+
+[node name="Text" parent="Equipment/MarginContainer" index="0"]
+theme_override_styles/normal = SubResource("StyleBoxFlat_kj5ui")
+
+[node name="_VScrollBar_308531" type="VScrollBar" parent="Equipment/MarginContainer/Text" index="1"]
+visible = false
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+max_value = 23.0
+step = 1.0
+page = 23.0
+
+[node name="PauseRBlocker" parent="." groups=["r_blocker"] instance=ExtResource("4_2dfb0")]
+visible = false
+top_level = true
+z_index = 10
+offset_right = 100.0
+offset_bottom = 100.0
+
+[node name="Text" parent="PauseRBlocker/MarginContainer" index="0"]
+theme_override_styles/normal = SubResource("StyleBoxFlat_kj5ui")
+text = ""
+
+[node name="_VScrollBar_308531" type="VScrollBar" parent="PauseRBlocker/MarginContainer/Text" index="1"]
+visible = false
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+max_value = 23.0
+step = 1.0
+page = 23.0
+
+[node name="Tutorial" parent="." groups=["tutorial"] instance=ExtResource("4_2dfb0")]
+visible = false
+top_level = true
+z_index = 5
+offset_right = 100.0
+offset_bottom = 100.0
+
+[node name="Text" parent="Tutorial/MarginContainer" index="0"]
+theme_override_styles/normal = SubResource("StyleBoxFlat_kj5ui")
+
+[node name="_VScrollBar_308531" type="VScrollBar" parent="Tutorial/MarginContainer/Text" index="1"]
+visible = false
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+max_value = 23.0
+step = 1.0
+page = 23.0
+
+[node name="ShopLeave" type="Label" parent="." groups=["shopLeave"]]
+offset_left = 211.0
+offset_top = 228.0
+offset_right = 300.0
+offset_bottom = 276.0
+size_flags_horizontal = 4
+theme = ExtResource("1_kqced")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_04qbh")
+text = "Leave"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_snq2t")
+
+[node name="Name" type="Label" parent="." groups=["Info"]]
+offset_left = 211.0
+offset_top = 280.0
+offset_right = 300.0
+offset_bottom = 328.0
+size_flags_horizontal = 4
+theme = ExtResource("1_kqced")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_04qbh")
+text = "Leave"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_snq2t")
+
+[node name="HP" type="Label" parent="." groups=["Info"]]
+offset_left = 211.0
+offset_top = 332.0
+offset_right = 300.0
+offset_bottom = 380.0
+size_flags_horizontal = 4
+theme = ExtResource("1_kqced")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_04qbh")
+text = "Leave"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_snq2t")
+
+[node name="Gold" type="RichTextLabel" parent="." groups=["Info"]]
+texture_filter = 1
+offset_left = 255.0
+offset_top = 236.0
+offset_right = 256.0
+offset_bottom = 236.0
+size_flags_horizontal = 4
+mouse_filter = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_04qbh")
+bbcode_enabled = true
+text = "Leave"
+scroll_active = false
+script = ExtResource("3_pupss")
+
+[node name="Stat" type="RichTextLabel" parent="." groups=["Info"]]
+texture_filter = 1
+offset_left = 255.0
+offset_top = 240.0
+offset_right = 256.0
+offset_bottom = 240.0
+size_flags_horizontal = 4
+mouse_filter = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_04qbh")
+bbcode_enabled = true
+text = "Leave"
+script = ExtResource("3_pupss")
+
+[node name="Stat2" type="RichTextLabel" parent="." groups=["Info"]]
+texture_filter = 1
+offset_left = 255.0
+offset_top = 244.0
+offset_right = 256.0
+offset_bottom = 244.0
+size_flags_horizontal = 4
+mouse_filter = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_04qbh")
+bbcode_enabled = true
+text = "Leave"
+script = ExtResource("3_pupss")
+
+[node name="Stat3" type="RichTextLabel" parent="." groups=["Info"]]
+texture_filter = 1
+offset_left = 255.0
+offset_top = 248.0
+offset_right = 256.0
+offset_bottom = 248.0
+size_flags_horizontal = 4
+mouse_filter = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_04qbh")
+bbcode_enabled = true
+text = "Leave"
+script = ExtResource("3_pupss")
+
+[node name="Stat4" type="RichTextLabel" parent="." groups=["Info"]]
+texture_filter = 1
+offset_left = 255.0
+offset_top = 252.0
+offset_right = 256.0
+offset_bottom = 252.0
+size_flags_horizontal = 4
+mouse_filter = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_04qbh")
+bbcode_enabled = true
+text = "Leave"
+script = ExtResource("3_pupss")
+
+[node name="Stat5" type="RichTextLabel" parent="." groups=["Info"]]
+texture_filter = 1
+offset_left = 255.0
+offset_top = 256.0
+offset_right = 256.0
+offset_bottom = 256.0
+size_flags_horizontal = 4
+mouse_filter = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_04qbh")
+bbcode_enabled = true
+text = "Leave"
+script = ExtResource("3_pupss")
+
+[node name="Stat6" type="RichTextLabel" parent="." groups=["Info"]]
+texture_filter = 1
+offset_left = 255.0
+offset_top = 260.0
+offset_right = 256.0
+offset_bottom = 260.0
+size_flags_horizontal = 4
+mouse_filter = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_04qbh")
+bbcode_enabled = true
+text = "Leave"
+script = ExtResource("3_pupss")
+
+[node name="Price" parent="." groups=["price"] instance=ExtResource("4_2dfb0")]
+offset_right = 100.0
+offset_bottom = 100.0
+
+[node name="MarginContainer" parent="Price" index="0"]
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="_VScrollBar_308531" type="VScrollBar" parent="Price/MarginContainer/Text" index="1"]
+visible = false
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+max_value = 23.0
+step = 1.0
+page = 23.0
+
+[node name="Price2" parent="." groups=["price"] instance=ExtResource("4_2dfb0")]
+offset_right = 100.0
+offset_bottom = 100.0
+
+[node name="MarginContainer" parent="Price2" index="0"]
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="_VScrollBar_308531" type="VScrollBar" parent="Price2/MarginContainer/Text" index="1"]
+visible = false
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+max_value = 23.0
+step = 1.0
+page = 23.0
+
+[node name="Price3" parent="." groups=["price"] instance=ExtResource("4_2dfb0")]
+offset_right = 100.0
+offset_bottom = 100.0
+
+[node name="MarginContainer" parent="Price3" index="0"]
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="_VScrollBar_308531" type="VScrollBar" parent="Price3/MarginContainer/Text" index="1"]
+visible = false
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+max_value = 23.0
+step = 1.0
+page = 23.0
+
+[node name="Sell" parent="." groups=["sell"] instance=ExtResource("4_2dfb0")]
+offset_right = 100.0
+offset_bottom = 100.0
+
+[node name="MarginContainer" parent="Sell" index="0"]
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="_VScrollBar_308531" type="VScrollBar" parent="Sell/MarginContainer/Text" index="1"]
+visible = false
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+max_value = 23.0
+step = 1.0
+page = 23.0
+
+[node name="EventBodyText" parent="." groups=["event"] instance=ExtResource("4_2dfb0")]
+offset_right = 100.0
+offset_bottom = 100.0
+
+[node name="MarginContainer" parent="EventBodyText" index="0"]
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="_VScrollBar_308531" type="VScrollBar" parent="EventBodyText/MarginContainer/Text" index="1"]
+visible = false
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_force_pass_scroll_events = false
+max_value = 23.0
+step = 1.0
+page = 23.0
+
+[node name="Choice1" parent="." groups=["event"] instance=ExtResource("4_2dfb0")]
+
+[node name="MarginContainer" parent="Choice1" index="0"]
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Text" parent="Choice1/MarginContainer" index="0"]
+scroll_active = false
+
+[node name="_VScrollBar_308532" type="VScrollBar" parent="Choice1/MarginContainer/Text" index="1"]
+visible = false
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+max_value = 23.0
+step = 1.0
+page = 23.0
+
+[node name="Choice2" parent="." groups=["event"] instance=ExtResource("4_2dfb0")]
+
+[node name="MarginContainer" parent="Choice2" index="0"]
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Text" parent="Choice2/MarginContainer" index="0"]
+scroll_active = false
+
+[node name="_VScrollBar_308533" type="VScrollBar" parent="Choice2/MarginContainer/Text" index="1"]
+visible = false
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+max_value = 23.0
+step = 1.0
+page = 23.0
+
+[node name="Choice3" parent="." groups=["event"] instance=ExtResource("4_2dfb0")]
+
+[node name="MarginContainer" parent="Choice3" index="0"]
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Text" parent="Choice3/MarginContainer" index="0"]
+scroll_active = false
+
+[node name="_VScrollBar_308534" type="VScrollBar" parent="Choice3/MarginContainer/Text" index="1"]
+visible = false
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+max_value = 23.0
+step = 1.0
+page = 23.0
+
+[node name="Stats_discription" parent="." groups=["stats"] instance=ExtResource("4_2dfb0")]
+
+[node name="Text" parent="Stats_discription/MarginContainer" index="0"]
+theme_override_styles/normal = SubResource("StyleBoxFlat_5jkre")
+
+[node name="_VScrollBar_308534" type="VScrollBar" parent="Stats_discription/MarginContainer/Text" index="1"]
+visible = false
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+max_value = 23.0
+step = 1.0
+page = 23.0
+
+[node name="RewardText" parent="." groups=["reward"] instance=ExtResource("4_2dfb0")]
+
+[node name="_VScrollBar_308534" type="VScrollBar" parent="RewardText/MarginContainer/Text" index="1"]
+visible = false
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+max_value = 23.0
+step = 1.0
+page = 23.0
+
+[node name="DefeatText" parent="." groups=["defat"] instance=ExtResource("4_2dfb0")]
+
+[node name="_VScrollBar_308534" type="VScrollBar" parent="DefeatText/MarginContainer/Text" index="1"]
+visible = false
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+max_value = 23.0
+step = 1.0
+page = 23.0
+
+[node name="Reroll" parent="." groups=["reroll"] instance=ExtResource("4_2dfb0")]
+
+[node name="MarginContainer" parent="Reroll" index="0"]
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[editable path="Equipment"]
+[editable path="PauseRBlocker"]
+[editable path="Tutorial"]
+[editable path="Price"]
+[editable path="Price2"]
+[editable path="Price3"]
+[editable path="Sell"]
+[editable path="EventBodyText"]
+[editable path="Choice1"]
+[editable path="Choice2"]
+[editable path="Choice3"]
+[editable path="Stats_discription"]
+[editable path="RewardText"]
+[editable path="DefeatText"]
+[editable path="Reroll"]

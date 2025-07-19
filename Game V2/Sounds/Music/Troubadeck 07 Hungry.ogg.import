@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b0bxtp2vulur5"
+path="res://.godot/imported/Troubadeck 07 Hungry.ogg-cf6a259ff0faa5d35e7dc13e5aee318f.oggvorbisstr"
+
+[deps]
+
+source_file="res://Game V2/Sounds/Music/Troubadeck 07 Hungry.ogg"
+dest_files=["res://.godot/imported/Troubadeck 07 Hungry.ogg-cf6a259ff0faa5d35e7dc13e5aee318f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

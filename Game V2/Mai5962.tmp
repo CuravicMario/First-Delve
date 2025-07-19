@@ -1,0 +1,66 @@
+[gd_scene load_steps=10 format=3 uid="uid://b1f4ckpcsnf6p"]
+
+[ext_resource type="Texture2D" uid="uid://bgpji35m5diwo" path="res://Game V2/Sprites/big game mockup-Sheet.png" id="1_0eq08"]
+[ext_resource type="PackedScene" uid="uid://hexrc8esj72l" path="res://Game V2/Scenes/ui.tscn" id="1_oerb7"]
+[ext_resource type="Script" path="res://Game V2/scripts/Pixel_Art_Viewport.gd" id="1_wypto"]
+[ext_resource type="PackedScene" uid="uid://34b8fyj557b6" path="res://Game V2/Scenes/player_board.tscn" id="2_l8hus"]
+[ext_resource type="PackedScene" uid="uid://bgkalsj0pbtng" path="res://Game V2/Scenes/settings_btn.tscn" id="3_xbtvd"]
+[ext_resource type="Script" path="res://Scripts/piece_container.gd" id="5_3tdib"]
+[ext_resource type="PackedScene" uid="uid://begptcnnqoflc" path="res://Game V2/Scenes/equipment.tscn" id="7_wbfmr"]
+[ext_resource type="PackedScene" uid="uid://dsp4ykthglf5y" path="res://Game V2/Scenes/combat.tscn" id="8_8040x"]
+[ext_resource type="PackedScene" uid="uid://bcfe0fuoi0gii" path="res://Game V2/Scenes/player_sprite.tscn" id="9_a1hgo"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="UI" parent="." instance=ExtResource("1_oerb7")]
+offset_bottom = 40.0
+
+[node name="Pixel Art" type="SubViewportContainer" parent="."]
+offset_right = 640.0
+offset_bottom = 360.0
+stretch = true
+script = ExtResource("1_wypto")
+
+[node name="SubViewport" type="SubViewport" parent="Pixel Art"]
+handle_input_locally = false
+physics_object_picking = true
+size = Vector2i(640, 360)
+render_target_update_mode = 4
+
+[node name="Background" type="Sprite2D" parent="Pixel Art/SubViewport"]
+z_index = -15
+position = Vector2(320, 180)
+texture = ExtResource("1_0eq08")
+
+[node name="pieces" type="Node2D" parent="Pixel Art/SubViewport" groups=["focusable"]]
+script = ExtResource("5_3tdib")
+PLAYER = true
+
+[node name="PlayerBoard" parent="Pixel Art/SubViewport" instance=ExtResource("2_l8hus")]
+position = Vector2(248, 200)
+WIDTH = 11
+HEIGHT = 4
+CELL_SIZE = 32
+
+[node name="SettingsBtn" parent="Pixel Art/SubViewport" instance=ExtResource("3_xbtvd")]
+position = Vector2(32, 32)
+
+[node name="Equipment" parent="Pixel Art/SubViewport" instance=ExtResource("7_wbfmr")]
+position = Vector2(200, 200)
+
+[node name="Combat" parent="Pixel Art/SubViewport" node_paths=PackedStringArray("player") instance=ExtResource("8_8040x")]
+position = Vector2(424, 80)
+player = NodePath("../PlayerSprite")
+
+[node name="CombatStartBtn" parent="Pixel Art/SubViewport/Combat" index="3"]
+btn_real_pos = Vector2(424, 160)
+
+[node name="PlayerSprite" parent="Pixel Art/SubViewport" node_paths=PackedStringArray("pos", "combat_controll_node") instance=ExtResource("9_a1hgo")]
+texture_filter = 1
+pos = NodePath("../Combat/Player pos")
+combat_controll_node = NodePath("../Combat")
+
+[connection signal="child_entered_tree" from="Pixel Art/SubViewport/pieces" to="Pixel Art/SubViewport/pieces" method="_on_child_entered_tree" flags=18]
+[connection signal="child_order_changed" from="Pixel Art/SubViewport/pieces" to="Pixel Art/SubViewport/pieces" method="_on_child_order_changed" flags=18]
+
+[editable path="Pixel Art/SubViewport/Combat"]

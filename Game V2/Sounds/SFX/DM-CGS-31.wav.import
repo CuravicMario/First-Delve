@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b5cfg6uq1lrue"
+path="res://.godot/imported/DM-CGS-31.wav-8b66d50e9b4c127d9e3c1f367bfa5bba.sample"
+
+[deps]
+
+source_file="res://Game V2/Sounds/SFX/DM-CGS-31.wav"
+dest_files=["res://.godot/imported/DM-CGS-31.wav-8b66d50e9b4c127d9e3c1f367bfa5bba.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

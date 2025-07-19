@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cnq5q0bajnn0u"
+path="res://.godot/imported/Troubadeck 39 Flightless Dragon.ogg-b4a15c5faff3ccff1f9c8424152d3569.oggvorbisstr"
+
+[deps]
+
+source_file="res://Game V2/Sounds/Music/Troubadeck 39 Flightless Dragon.ogg"
+dest_files=["res://.godot/imported/Troubadeck 39 Flightless Dragon.ogg-b4a15c5faff3ccff1f9c8424152d3569.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

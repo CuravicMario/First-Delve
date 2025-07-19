@@ -1,0 +1,785 @@
+[
+	{
+		"id": 1,
+		"tag": "leave",
+		"eng": "EXIT",
+		"hr": "IZLAZ"
+	},
+	{
+		"id": 2,
+		"tag": "start_combat",
+		"eng": "START",
+		"hr": "START"
+	},
+	{
+		"id": 3,
+		"tag": "tut_event_title",
+		"eng": "A SMALL KITCHEN",
+		"hr": "MALA KUHINJA"
+	},
+	{
+		"id": 4,
+		"tag": "tut_event_body",
+		"eng": "Walking in the room you see a decrepit old kitchen. But inexplicably a pristine red potion and a shining golden apple are standin at the top of the kitchen counter.\\n\\nWhat will you do?",
+		"hr": "Ulazeći u prostoriju vidiš oronulu staru kuhinju. Ali neobjašnjivo, na vrhu kuhinjskog pulta stoje besprijekoran crveni napitak i sjajna zlatna jabuka.\\n\\nŠto ćete učiniti?"
+	},
+	{
+		"id": 5,
+		"tag": "tut_event_choice_1",
+		"eng": "Take a sip of the potion.",
+		"hr": "Uzmi guc napitka"
+	},
+	{
+		"id": 6,
+		"tag": "tut_event_choice_2",
+		"eng": "Take a bite out of the golden apple.",
+		"hr": "Uzmi griz iz zlatne jabuke"
+	},
+	{
+		"id": 7,
+		"tag": "tut_event_choice_3",
+		"eng": "Don't try anything and just leave.",
+		"hr": "Nemoj ništa provati i otiđi."
+	},
+	{
+		"id": 8,
+		"tag": "reward_screen_title",
+		"eng": "CONGRATULATIONS",
+		"hr": "ČESTITAM"
+	},
+	{
+		"id": 9,
+		"tag": "reward_screen_body",
+		"eng": "Take your reward",
+		"hr": "Uzmi svoju nagradu"
+	},
+	{
+		"id": 10,
+		"tag": "lether_boots_name",
+		"eng": "Lether Boots",
+		"hr": "Kožne Čizme"
+	},
+	{
+		"id": 11,
+		"tag": "lether_boots_description",
+		"eng": "Gain:\\n\\n+%speed%img_speed +%dodge%img_dodge",
+		"hr": "Dobij:\\n\\n+%speed%img_speed +%dodge%img_dodge"
+	},
+	{
+		"id": 12,
+		"tag": "longsword_name",
+		"eng": "Longsword",
+		"hr": "Dugi mač"
+	},
+	{
+		"id": 13,
+		"tag": "longsword_description",
+		"eng": "Gain:\\n\\n+%atk%img_atk +%speed%img_speed",
+		"hr": "Dobij:\\n\\n+%atk%img_atk +%speed%img_speed"
+	},
+	{
+		"id": 14,
+		"tag": "halberd_name",
+		"eng": "Halberd",
+		"hr": "Halebarda"
+	},
+	{
+		"id": 15,
+		"tag": "halberd_description",
+		"eng": "Gain:\\n\\n+%atk%img_atk +%armor%img_armor",
+		"hr": "Dobij:\\n\\n+%atk%img_atk +%armor%img_armor"
+	},
+	{
+		"id": 16,
+		"tag": "back",
+		"eng": "BACK",
+		"hr": "NAZAD"
+	},
+	{
+		"id": 17,
+		"tag": "save",
+		"eng": "SAVE",
+		"hr": "SPREMI"
+	},
+	{
+		"id": 18,
+		"tag": "reset",
+		"eng": "RESET",
+		"hr": "RESETIRAJ"
+	},
+	{
+		"id": 19,
+		"tag": "graphics",
+		"eng": "GENERIC",
+		"hr": "GENERIČNO"
+	},
+	{
+		"id": 20,
+		"tag": "audio",
+		"eng": "AUDIO",
+		"hr": "ZVUK"
+	},
+	{
+		"id": 21,
+		"tag": "gameplay",
+		"eng": "GAMEPLAY",
+		"hr": "IGRANJE"
+	},
+	{
+		"id": 22,
+		"tag": "pp",
+		"eng": "Primary Palette",
+		"hr": "Primarna paleta"
+	},
+	{
+		"id": 23,
+		"tag": "sp",
+		"eng": "Secondary Palette",
+		"hr": "Sekundarna paleta"
+	},
+	{
+		"id": 24,
+		"tag": "hpp",
+		"eng": "HP Color",
+		"hr": "Boja HP-a"
+	},
+	{
+		"id": 25,
+		"tag": "fs",
+		"eng": "Fullscreen",
+		"hr": "Cijeli zaslon"
+	},
+	{
+		"id": 26,
+		"tag": "cc",
+		"eng": "Common Color",
+		"hr": "Uobičajena boja"
+	},
+	{
+		"id": 27,
+		"tag": "rc",
+		"eng": "Rare Color",
+		"hr": "Rijetka boja"
+	},
+	{
+		"id": 28,
+		"tag": "lc",
+		"eng": "Legendary Color",
+		"hr": "Legendarna boja"
+	},
+	{
+		"id": 29,
+		"tag": "ki",
+		"eng": "Keyboard Input",
+		"hr": "Unos pomoću tipkovnice"
+	},
+	{
+		"id": 30,
+		"tag": "diff",
+		"eng": "Difficulty",
+		"hr": "Težina"
+	},
+	{
+		"id": 31,
+		"tag": "bm",
+		"eng": "Background Music",
+		"hr": "Pozadinska muzika"
+	},
+	{
+		"id": 32,
+		"tag": "es",
+		"eng": "Effect sounds",
+		"hr": "Zvučni efekti"
+	},
+	{
+		"id": 33,
+		"tag": "st",
+		"eng": "START",
+		"hr": "START"
+	},
+	{
+		"id": 34,
+		"tag": "tut",
+		"eng": "TUTORIAL",
+		"hr": "TUTORIJAL"
+	},
+	{
+		"id": 35,
+		"tag": "opt",
+		"eng": "OPTIONS",
+		"hr": "OPCIJE"
+	},
+	{
+		"id": 36,
+		"tag": "esc",
+		"eng": "EXIT",
+		"hr": "IZAĐI"
+	},
+	{
+		"id": 37,
+		"tag": "t_1",
+		"eng": "Welcome to first dele.\\n\\nYor goal is simple: reach the end of each floor by defeating enemies and picking up loot.\\n\\nTo naigate the tutorial click the arrow on bottom right or press the interact button (%inter) if using keyboard. To use keyboard press %kboard.",
+		"hr": "Dobrodošli u First Dele.\\n\\nVaš cilj je jednostavan: doći do kraja svake razine pobjeđujući neprijatelje i skupljajući plijen.\\n\\nZa navigaciju tutorialom kliknite strelicu dolje desno ili pritisnite gumb za interakciju (%inter) ako koristite tipkovnicu. Za korištenje tipkovnice pritisnite %kboard."
+	},
+	{
+		"id": 38,
+		"tag": "t_2",
+		"eng": "To help you achieve your goal you will pick up variety of equipment that will boost your fighting prowess.",
+		"hr": "Kako biste postigli svoj cilj, pokupit ćete raznovrsnu opremu koja će poboljšati vašu borbenu vještinu."
+	},
+	{
+		"id": 39,
+		"tag": "t_3",
+		"eng": "On the bottom of the screen you can see all your equipment. This equipment can be moved by dragging it with the mouse or by selecting it with %inter and moving with movement keys.",
+		"hr": "Na dnu ekrana možete vidjeti svu svoju opremu. Ovu opremu možete pomicati povlačenjem mišem ili odabirom pomoću %inter i pomicanjem tipkama za kretanje."
+	},
+	{
+		"id": 40,
+		"tag": "t_4",
+		"eng": "On the left side of your screen you can see your stats or if you mouse over the enemy you can see their stats.\\n\\nPuting the mouse over your stats will show you their description.",
+		"hr": "Na lijevoj strani ekrana možete vidjeti svoje statistike ili ako mišem prijeđete preko neprijatelja možete vidjeti njihove statistike.\\n\\nPostavljanjem miša preko svojih statistika prikazat će se njihov opis."
+	},
+	{
+		"id": 41,
+		"tag": "t_5",
+		"eng": "Your delve will always start with a combat encounter. You can start the combat encounter whenever you would like by pressing the \"START\" button.",
+		"hr": "Vaše istraživanje uvijek će započeti borbenim susretom. Borbeni susret možete započeti kad god želite pritiskom na gumb \"START\"."
+	},
+	{
+		"id": 42,
+		"tag": "t_6",
+		"eng": "When you win combat you'll be greated by a reward screen. Here you can claim your reward by pressing the \"TAKE\" button. After taking the reward you can leave the romm, by pressing the \"LEAVE\" button, to continue your delve.",
+		"hr": "Kada pobijedite u borbi, dočekat će vas zaslon s nagradom. Ovdje možete preuzeti svoju nagradu pritiskom na gumb \"UZMI\". Nakon što uzmete nagradu, možete napustiti sobu pritiskom na gumb \"IZLAZ\" kako biste nastavili svoje istraživanje."
+	},
+	{
+		"id": 43,
+		"tag": "t_7",
+		"eng": "To enter the next room you can click on one of the 3 options. In a normal delve all the option will be random, but for the tutorial you can only enter the SHOP.",
+		"hr": "Za ulazak u sljedeću sobu možete kliknuti na jednu od 3 opcije. U normalnom istraživanju sve opcije će biti nasumične, ali za tutorial možete ući samo u TRGOVINU."
+	},
+	{
+		"id": 44,
+		"tag": "t_8",
+		"eng": "In the shop you can sell you own by draging it over the \"SELL\" window or if using the nkeyboard by pressing the sell key (%sell).",
+		"hr": "U trgovini možete prodati svoje predmete povlačenjem miša preko prozora \"PRODAJA\" ili, ako koristite tipkovnicu, pritiskom na tipku za prodaju (%sell)."
+	},
+	{
+		"id": 45,
+		"tag": "t_9",
+		"eng": "To buy equipment just press the sign with the price below the desired item. If you don't like any items on sale you can press the reroll button, below the \"SELL\" window, if you have enough gold.",
+		"hr": "Za kupnju opreme samo pritisnite znak s cijenom ispod željenog predmeta. Ako vam se ne sviđaju predmeti na prodaji možete pritisnuti gumb za promijenu trgovine, ispod prozora \"PRODAJA\", ako imate dovoljno zlata."
+	},
+	{
+		"id": 46,
+		"tag": "t_10",
+		"eng": "When you are ready press the \"LEAVE\" button to learn about the \"EVENT\" room.",
+		"hr": "Kada budete spremni, pritisnite gumb \"IZLAZ\" kako biste saznali više o sobi \"DOGAĐAJ\"."
+	},
+	{
+		"id": 47,
+		"tag": "t_11",
+		"eng": "In the event rooms you'll see a short description accompanied by 3 choices. After reading the short text you can make your choice. The effects of your choices may vary from gaining/losing stats to maybe even gaining some equipment.",
+		"hr": "U sobama događaja vidjet ćete kratak opis popraćen s 3 izbora. Nakon što pročitate kratki tekst, možete donijeti odluku. Učinci vaših odluka mogu varirati od dobivanja/gubitka statistika do možda čak i dobivanja neke opreme."
+	},
+	{
+		"id": 48,
+		"tag": "t_12",
+		"eng": "Now that you are at the end of the floor you will face a boss fight. A boss fight is similar to regular enemy encounters just a bit more dificult.\\n\\nDefeating the boss gies you better rewards and a chance to move to the next floor.",
+		"hr": "Sada kada ste na kraju kata, suočit ćete se s borbom s bossom. Borba s bossom slična je običnim susretima s neprijateljem, samo malo teža.\\n\\nPobjeda nad bossom donosi vam bolje nagrade i priliku za prelazak na sljedeći kat."
+	},
+	{
+		"id": 49,
+		"tag": "hk",
+		"eng": "HOTKEYS",
+		"hr": "TIPKOVNI PREČACI"
+	},
+	{
+		"id": 50,
+		"tag": "ki",
+		"eng": "KEYBOARD INPUT",
+		"hr": "UNOS POMOĆU TIPKOVNICE"
+	},
+	{
+		"id": 51,
+		"tag": "sell",
+		"eng": "SELL",
+		"hr": "PRODAJ"
+	},
+	{
+		"id": 52,
+		"tag": "up",
+		"eng": "UP",
+		"hr": "GORE"
+	},
+	{
+		"id": 53,
+		"tag": "down",
+		"eng": "DOWN",
+		"hr": "DOLJE"
+	},
+	{
+		"id": 54,
+		"tag": "left",
+		"eng": "LEFT",
+		"hr": "LIJEVO"
+	},
+	{
+		"id": 55,
+		"tag": "right",
+		"eng": "RIGHT",
+		"hr": "DESNO"
+	},
+	{
+		"id": 56,
+		"tag": "def_1",
+		"eng": "DEFEAT",
+		"hr": "PORAZ"
+	},
+	{
+		"id": 57,
+		"tag": "def_2",
+		"eng": "Better luck next time.",
+		"hr": "Više sreće sljedeći put."
+	},
+	{
+		"id": 58,
+		"tag": "next_f",
+		"eng": "NEXT FLOOR",
+		"hr": "SLJEDEĆA RAZINA"
+	},
+	{
+		"id": 59,
+		"tag": "return",
+		"eng": "MENU",
+		"hr": "MENI"
+	},
+	{
+		"id": 60,
+		"tag": "lang_1",
+		"eng": "ENGLISH",
+		"hr": "ENGLESKI"
+	},
+	{
+		"id": 61,
+		"tag": "lang_2",
+		"eng": "CROATIAN",
+		"hr": "HRATSKI"
+	},
+	{
+		"id": 62,
+		"tag": "take",
+		"eng": "TAKE",
+		"hr": "UZMI"
+	},
+	{
+		"id": 63,
+		"tag": "l",
+		"eng": "LEAVE",
+		"hr": "IZLAZ"
+	},
+	{
+		"id": 64,
+		"tag": "slime",
+		"eng": "Slime",
+		"hr": "Sluz"
+	},
+	{
+		"id": 65,
+		"tag": "bird",
+		"eng": "Bird",
+		"hr": "Ptica"
+	},
+	{
+		"id": 66,
+		"tag": "knight",
+		"eng": "Knight",
+		"hr": "Vitez"
+	},
+	{
+		"id": 67,
+		"tag": "rogue",
+		"eng": "Rogue",
+		"hr": "Odmetnik"
+	},
+	{
+		"id": 68,
+		"tag": "baron slime",
+		"eng": "Baron Slime",
+		"hr": "Sluz Barun"
+	},
+	{
+		"id": 69,
+		"tag": "rapier",
+		"eng": "Rapier",
+		"hr": "Rapira"
+	},
+	{
+		"id": 70,
+		"tag": "rapier",
+		"eng": "Gain:\\n\\n+%atk%img_atk +%speed%img_speed +%lifesteal%img_lifesteal",
+		"hr": "Dobij:\\n\\n+%atk%img_atk +%speed%img_speed +%lifesteal%img_lifesteal"
+	},
+	{
+		"id": 71,
+		"tag": "hp_potion",
+		"eng": "HP Potion",
+		"hr": "HP Napitak"
+	},
+	{
+		"id": 72,
+		"tag": "hp_potion",
+		"eng": "Every 2 attacks heal 10 %img_hp",
+		"hr": "Svaka 2 napada liječi 10 %img_hp"
+	},
+	{
+		"id": 73,
+		"tag": "lang",
+		"eng": "Languages",
+		"hr": "Jezici"
+	},
+	{
+		"id": 74,
+		"tag": "resume",
+		"eng": "RESUME",
+		"hr": "NASTAVI"
+	},
+	{
+		"id": 75,
+		"tag": "blacksmith",
+		"eng": "BLACKSMITH",
+		"hr": "KOVAČ"
+	},
+	{
+		"id": 76,
+		"tag": "blacksmith",
+		"eng": "A small makeshift blacksmithy is tcked in a crevice of the dungeon's tunell wall. A gruf looking blacksmith looks up at you from his anvil.\\n\\n\"Lookig to buy something?\", a booming voice echoes through the tunell.",
+		"hr": "Mala improvizirana kovačnica nalazi se u pukotini zida tunela tamnice. Kovač grubog izgleda gleda u vas sa svog nakovnja.\\n\\n\"Tražiš nešto za kupiti?\", odjekuje gromki glas kroz tunel."
+	},
+	{
+		"id": 77,
+		"tag": "blacksmith",
+		"eng": "Say you are looking for a weapon",
+		"hr": "Reci da tražiš oružje."
+	},
+	{
+		"id": 78,
+		"tag": "blacksmith",
+		"eng": "Offer to help him in the smithy.",
+		"hr": "Ponudi mu pomoć u kovačnici."
+	},
+	{
+		"id": 79,
+		"tag": "blacksmith",
+		"eng": "Say you aren't looking for anything.",
+		"hr": "Reci da za sada ne tražiš ništa."
+	},
+	{
+		"id": 80,
+		"tag": "cave",
+		"eng": "CRYSTAL CAVE",
+		"hr": "KRISTALNA ŠPILJA"
+	},
+	{
+		"id": 81,
+		"tag": "cave",
+		"eng": "The tunell you are currently walking through opens up to a vast room filled with all kinds of colorful crystals.On the other end of the room you see three doors framed with different colored crystals. Which one will you walk through?",
+		"hr": "Tunel kroz koji trenutno prolazite otvara se u ogromnu prostoriju ispunjenu svim vrstama šarenih kristala. Na drugom kraju prostorije vidite tri vrata uokvirena kristalima različitih boja. Kroz koja ćete proći? "
+	},
+	{
+		"id": 82,
+		"tag": "cave",
+		"eng": "A door framed with blood red crystals.",
+		"hr": "Vrata uokvirena krvavocrvenim kristalima."
+	},
+	{
+		"id": 83,
+		"tag": "cave",
+		"eng": "A door framed by translucent green crystals.",
+		"hr": "Vrata uokvirena prozirnim zelenim kristalima."
+	},
+	{
+		"id": 84,
+		"tag": "cave",
+		"eng": "A door framed by dull yellow crystals.",
+		"hr": "Vrata uokvirena mutnožutim kristalima."
+	},
+	{
+		"id": 85,
+		"tag": "potion_seller",
+		"eng": "POTION SELLER",
+		"hr": "PRODAVAČ NAPITAKA"
+	},
+	{
+		"id": 86,
+		"tag": "potion_seller",
+		"eng": "A shady looking merchant in a top hat appears before you opening a side of his jacket. The jacket is full of potions in all shapes and sizes.\\n\\n\"Can I interest you in one of my potions?\", the merchent ask in a achingly sweet voice.",
+		"hr": "Sumnjiv trgovac u cilindru pojavljuje se pred vama otvarajući stranu svoje jakne. Jakna je puna napitaka svih oblika i veličina.\\n\\n\"Mogu li vas zainteresirati za jedan od mojih napitaka?\", pita trgovac bolno slatkim glasom."
+	},
+	{
+		"id": 87,
+		"tag": "potion_seller",
+		"eng": "Ask for a common potion.",
+		"hr": "Zatražite običan napitak."
+	},
+	{
+		"id": 88,
+		"tag": "potion_seller",
+		"eng": "Ask if he has any exotic potions.",
+		"hr": "Pitajte ima li kakve egzotične napitke."
+	},
+	{
+		"id": 89,
+		"tag": "potion_seller",
+		"eng": "Say you are not interested.",
+		"hr": "Recite da niste zainteresirani."
+	},
+	{
+		"id": 90,
+		"tag": "mercenary",
+		"eng": "MERCENARY WORK",
+		"hr": "PLAĆENIČKI POSAO"
+	},
+	{
+		"id": 91,
+		"tag": "mercenary",
+		"eng": "You stumble on a pair of exhousted adventurers.\\n\\nWhile looking at you with anticipation the ask, \"Can you please escort us back to the dungeon exit?\"",
+		"hr": "Nailaziš na par iscrpljenih avanturista.\\n\\nDok te gledaju s iščekivanjem, pitaju: \"Možeš li nas, molim te, otpratiti natrag do izlaza iz tamnice?\""
+	},
+	{
+		"id": 92,
+		"tag": "mercenary",
+		"eng": "Agree to escort them partway.",
+		"hr": "Pristaješ ih otpratiti do pola puta."
+	},
+	{
+		"id": 93,
+		"tag": "mercenary",
+		"eng": "Escort them to the exit.",
+		"hr": "Otprati ih do izlaza."
+	},
+	{
+		"id": 94,
+		"tag": "library",
+		"eng": "A MAGICAL LIBRARY",
+		"hr": "ČAROBNA KNJIŽNICA"
+	},
+	{
+		"id": 95,
+		"tag": "library",
+		"eng": "Out of nowhere a magical library appears before you. Entering inside a kind looking old man asks offers you refreshments and asks if you would like to borrow some books.",
+		"hr": "Niotkuda se pred vama pojavljuje čarobna knjižnica. Ulazeći unutra, ljubazni starac vam nudi vam osvježenje i pita želite li posuditi neke knjige."
+	},
+	{
+		"id": 96,
+		"tag": "library",
+		"eng": "Ask him if he can help you with finding a book.",
+		"hr": "Pitajte ga može li vam pomoći u pronalaženju knjige."
+	},
+	{
+		"id": 97,
+		"tag": "library",
+		"eng": "Look through the library on your own.",
+		"hr": "Sami pregledajte knjižnicu."
+	},
+	{
+		"id": 98,
+		"tag": "library",
+		"eng": "Just take the refreshments and leave.",
+		"hr": "Samo uzmite osvježenje i izađite."
+	},
+	{
+		"id": 99,
+		"tag": "bat_alter",
+		"eng": "A BAT ALTAR",
+		"hr": "OLTAR ŠIŠMIŠA"
+	},
+	{
+		"id": 100,
+		"tag": "bat_alter",
+		"eng": "You enter a dim room with an old looking bat altar in the middle. Coming closer jou can see that the altar is old and worn down. It's color more gray than black and it's base covered in layers of dried blood.Next to the alter there is sign asking for donations of eather blood or gold.",
+		"hr": "Ulazite u mračnu sobu sa starim oltarom šišmiša u sredini. Približavajući se, vidite da je oltar star i istrošen. Više je sive nego crne boje, a baza mu je prekrivena slojevima osušene krvi.Pored oltara nalazi se znak koji traži donacije krvi ili zlata."
+	},
+	{
+		"id": 101,
+		"tag": "bat_alter",
+		"eng": "Offer your blood.",
+		"hr": "Ponudite svoju krv."
+	},
+	{
+		"id": 102,
+		"tag": "bat_alter",
+		"eng": "Offer some gold",
+		"hr": "Ponudite malo zlata."
+	},
+	{
+		"id": 103,
+		"tag": "bat_alter",
+		"eng": "You are creeped out and just leave.",
+		"hr": "Jezite se i jednostavno odlazite."
+	},
+	{
+		"id": 104,
+		"eng": "Big Potion",
+		"hr": "Veliki Napitak"
+	},
+	{
+		"id": 105,
+		"eng": "Every 4 attacks heal 15% %img_hp",
+		"hr": "Svaka 4 napada liječi 15% %img_hp"
+	},
+	{
+		"id": 106,
+		"eng": "Arcane Bolt",
+		"hr": "Magična bljesak"
+	},
+	{
+		"id": 107,
+		"eng": "Every 2 attacks deal 20 %img_atk to the last enemy.",
+		"hr": "Svaka 2 napada nanesi 20 %img_atk posljednjem neprijatelju."
+	},
+	{
+		"id": 108,
+		"eng": "Fireball",
+		"hr": "Vatrena kugla"
+	},
+	{
+		"id": 109,
+		"eng": "Every 4 attacks deal 40 %img_atk to ALL enemies",
+		"hr": "Svaka 4 napada nanesi 40 %img_atk SVIM neprijateljima"
+	},
+	{
+		"id": 110,
+		"eng": "ATK Potion",
+		"hr": "ATK Napitak"
+	},
+	{
+		"id": 111,
+		"eng": "Gain:\\n\\n+%atk%img_atk",
+		"hr": "Dobij:\\n\\n+%atk%img_atk"
+	},
+	{
+		"id": 112,
+		"eng": "Scroll of Haste",
+		"hr": "Svitak žurbe"
+	},
+	{
+		"id": 113,
+		"eng": "Every attack gain 5% %img_speed",
+		"hr": "Svaki napad dobij 5% %img_speed"
+	},
+	{
+		"id": 114,
+		"eng": "Knife",
+		"hr": "Nož"
+	},
+	{
+		"id": 115,
+		"eng": "Gain:\\n\\n+%atk%img_atk +%speed%img_speed",
+		"hr": "Dobij:\\n\\n+%atk%img_atk +%speed%img_speed"
+	},
+	{
+		"id": 116,
+		"eng": "Helmet",
+		"hr": "Kaciga"
+	},
+	{
+		"id": 117,
+		"eng": "Gain:\\n\\n+%hp %img_hp +%armor%img_armor",
+		"hr": "Dobij:\\n\\n+%hp %img_hp +%armor%img_armor"
+	},
+	{
+		"id": 118,
+		"eng": "Viking Helmet",
+		"hr": "Vikinška kaciga"
+	},
+	{
+		"id": 119,
+		"eng": "Gain:\\n\\n+%hp %img_hp +%armor%img_armor +%speed%img_speed",
+		"hr": "Dobij:\\n\\n+%hp %img_hp +%armor%img_armor +%speed%img_speed"
+	},
+	{
+		"id": 120,
+		"eng": "Wooden Shield",
+		"hr": "Drveni štit"
+	},
+	{
+		"id": 121,
+		"eng": "Gain:\\n\\n+%hp %img_hp +%armor%img_armor",
+		"hr": "Dobij:\\n\\n+%hp %img_hp +%armor%img_armor"
+	},
+	{
+		"id": 122,
+		"eng": "Fang Necklace",
+		"hr": "Ogrlica s očnjakom"
+	},
+	{
+		"id": 123,
+		"eng": "Gain:\\n\\n+%lifesteal%img_lifesteal",
+		"hr": "Dobij:\\n\\n+%lifesteal%img_lifesteal"
+	},
+	{
+		"id": 124,
+		"eng": "This stat determens the ammount of damege an attack deals.",
+		"hr": "Ova statistika određuje količinu štete koju napad nanosi."
+	},
+	{
+		"id": 125,
+		"eng": "This stat determens the speed of your attacks.",
+		"hr": "Ova statistika određuje brzinu vaših napada."
+	},
+	{
+		"id": 126,
+		"eng": "This stat reduces the damage you take from enemy attacks.",
+		"hr": "Ova statistika smanjuje štetu koju primate od neprijateljskih napada."
+	},
+	{
+		"id": 127,
+		"eng": "The ammount of healt you gain when you attack an enemy",
+		"hr": "Količina zdravlja koju dobivate kada napadnete neprijatelja."
+	},
+	{
+		"id": 128,
+		"eng": "This stat determens the chance of your attack to criticly strike.",
+		"hr": "Ova statistika određuje vjerojatnost kritičnog udarca vašeg napada."
+	},
+	{
+		"id": 129,
+		"eng": "This stat determens the chance of dodging an enemy attack",
+		"hr": "Ova statistika određuje vjerojatnost izbjegavanja neprijateljskog napada."
+	},
+	{
+		"id": 130,
+		"eng": "Amount of gold the player has.",
+		"hr": "Količina zlata koju igrač ima."
+	},
+	{
+		"id": 131,
+		"eng": "VICTORY!!!",
+		"hr": "POBJEDA!!!"
+	},
+	{
+		"id": 132,
+		"eng": "Return to main menu to try again.",
+		"hr": "Vratite se na glavni izbornik za ponovni pokušaj."
+	},
+	{
+		"id": 133,
+		"eng": "Hungry Axe",
+		"hr": "Gladna sjekira"
+	},
+	{
+		"id": 134,
+		"eng": "Gain:\\n\\n+%atk%img_atk -%hp %img_hp +%lifesteal%img_lifesteal",
+		"hr": "Dobij:\\n\\n+%atk%img_atk -%hp %img_hp +%lifesteal%img_lifesteal"
+	},
+	{
+		"id": 135,
+		"eng": "Avarice",
+		"hr": "Škrtost"
+	},
+	{
+		"id": 136,
+		"eng": "At the end of combau gain 1%img_gold. And gain +2%img_atk per gold you have.",
+		"hr": "Na kraju combaua dobit ćete 1% img_gold. I dobit ćete +2% img_atk po zlatu koje imate."
+	}
+]

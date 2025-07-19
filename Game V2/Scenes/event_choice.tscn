@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://24ne6dhftdd3"]
+
+[ext_resource type="Shader" path="res://Game V2/scripts/Shaders/color_swap.gdshader" id="1_5w6w7"]
+[ext_resource type="Texture2D" uid="uid://bcvdjr4pjrgin" path="res://Game V2/Sprites/Event choice btn.png" id="1_c111o"]
+[ext_resource type="Script" path="res://Game V2/scripts/event_choice.gd" id="2_x446c"]
+[ext_resource type="Texture2D" uid="uid://dqycl77wj7luu" path="res://Game V2/Sprites/Event choice btn hover frame.png" id="3_eihel"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ebijf"]
+shader = ExtResource("1_5w6w7")
+shader_parameter/target_color_1 = null
+shader_parameter/replace_color_1 = null
+shader_parameter/target_color_2 = null
+shader_parameter/replace_color_2 = null
+shader_parameter/tolerance = null
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ihm6n"]
+size = Vector2(176, 32)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pvqxm"]
+shader = ExtResource("1_5w6w7")
+shader_parameter/target_color_1 = null
+shader_parameter/replace_color_1 = null
+shader_parameter/target_color_2 = null
+shader_parameter/replace_color_2 = null
+shader_parameter/tolerance = null
+
+[node name="Choice" type="Sprite2D"]
+material = SubResource("ShaderMaterial_ebijf")
+texture = ExtResource("1_c111o")
+script = ExtResource("2_x446c")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_ihm6n")
+
+[node name="HoverBorder" type="Sprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_pvqxm")
+texture = ExtResource("3_eihel")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

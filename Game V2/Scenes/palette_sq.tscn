@@ -1,0 +1,59 @@
+[gd_scene load_steps=11 format=3 uid="uid://co2tj0ngaact1"]
+
+[ext_resource type="Script" path="res://Game V2/scripts/palette_sq.gd" id="1_kggaj"]
+[ext_resource type="Shader" path="res://Game V2/scripts/Shaders/color_swap.gdshader" id="2_bhutu"]
+[ext_resource type="Texture2D" uid="uid://18cgoeb4s6ca" path="res://Game V2/Sprites/palette sq.png" id="3_biakq"]
+[ext_resource type="Texture2D" uid="uid://csgeprlkt2j7" path="res://Game V2/Sprites/palette sq-chosen.png" id="4_bvptl"]
+[ext_resource type="Script" path="res://Game V2/scripts/Background.gd" id="5_rbr3x"]
+[ext_resource type="Texture2D" uid="uid://bowlrcam4nqjl" path="res://Game V2/Sprites/palette sq hover frame.png" id="6_ofkac"]
+[ext_resource type="Texture2D" uid="uid://dao0dpolxtl7y" path="res://Game V2/Sprites/palette sq frame.png" id="6_qutlf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rdeeu"]
+shader = ExtResource("2_bhutu")
+shader_parameter/target_color_1 = null
+shader_parameter/replace_color_1 = null
+shader_parameter/target_color_2 = null
+shader_parameter/replace_color_2 = null
+shader_parameter/tolerance = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hc5a0"]
+shader = ExtResource("2_bhutu")
+shader_parameter/target_color_1 = null
+shader_parameter/replace_color_1 = null
+shader_parameter/target_color_2 = null
+shader_parameter/replace_color_2 = null
+shader_parameter/tolerance = null
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ktv1"]
+
+[node name="Palette Sq" type="Node2D"]
+script = ExtResource("1_kggaj")
+
+[node name="Sq" type="Sprite2D" parent="."]
+texture = ExtResource("3_biakq")
+
+[node name="Chosen" type="Sprite2D" parent="."]
+visible = false
+z_index = 2
+material = SubResource("ShaderMaterial_rdeeu")
+texture = ExtResource("4_bvptl")
+script = ExtResource("5_rbr3x")
+
+[node name="Border" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_rdeeu")
+texture = ExtResource("6_qutlf")
+script = ExtResource("5_rbr3x")
+
+[node name="Hover_border" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+material = SubResource("ShaderMaterial_hc5a0")
+texture = ExtResource("6_ofkac")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_2ktv1")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

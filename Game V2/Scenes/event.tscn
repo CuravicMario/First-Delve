@@ -1,0 +1,89 @@
+[gd_scene load_steps=13 format=3 uid="uid://b7mctolwahulb"]
+
+[ext_resource type="Script" path="res://Game V2/scripts/event.gd" id="1_lg6vb"]
+[ext_resource type="Texture2D" uid="uid://bssam4bujfytu" path="res://Game V2/Sprites/combat-border.png" id="1_p3rhe"]
+[ext_resource type="Shader" path="res://Game V2/scripts/Shaders/color_swap.gdshader" id="2_7xqeo"]
+[ext_resource type="PackedScene" uid="uid://d0jiruwlj8fmv" path="res://Game V2/Scenes/room_coplete_btn.tscn" id="2_rfoc0"]
+[ext_resource type="Texture2D" uid="uid://btsof6hs6pl7x" path="res://Game V2/Sprites/event body text.png" id="3_18uh3"]
+[ext_resource type="PackedScene" uid="uid://bph5j3st78206" path="res://Game V2/Scenes/reward.tscn" id="3_yfvhc"]
+[ext_resource type="PackedScene" uid="uid://24ne6dhftdd3" path="res://Game V2/Scenes/event_choice.tscn" id="4_0li75"]
+[ext_resource type="Script" path="res://Game V2/scripts/Event Text Body.gd" id="6_meb5u"]
+[ext_resource type="Texture2D" uid="uid://c3l54cp0uvuct" path="res://Game V2/Sprites/event body text hover frame.png" id="7_rw3em"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hyj34"]
+shader = ExtResource("2_7xqeo")
+shader_parameter/target_color_1 = null
+shader_parameter/replace_color_1 = null
+shader_parameter/target_color_2 = null
+shader_parameter/replace_color_2 = null
+shader_parameter/tolerance = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6itvp"]
+shader = ExtResource("2_7xqeo")
+shader_parameter/target_color_1 = null
+shader_parameter/replace_color_1 = null
+shader_parameter/target_color_2 = null
+shader_parameter/replace_color_2 = null
+shader_parameter/tolerance = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bubsh"]
+shader = ExtResource("2_7xqeo")
+shader_parameter/target_color_1 = null
+shader_parameter/replace_color_1 = null
+shader_parameter/target_color_2 = null
+shader_parameter/replace_color_2 = null
+shader_parameter/tolerance = null
+
+[node name="Event" type="Node2D"]
+script = ExtResource("1_lg6vb")
+
+[node name="Border" type="Sprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_hyj34")
+texture = ExtResource("1_p3rhe")
+
+[node name="Reward" parent="." node_paths=PackedStringArray("DOWN_NEIGHBOUR") instance=ExtResource("3_yfvhc")]
+visible = false
+DOWN_NEIGHBOUR = NodePath("../Room Complete")
+
+[node name="TakeBtn" parent="Reward" index="2" node_paths=PackedStringArray("DOWN_NEIGHBOUR")]
+DOWN_NEIGHBOUR = NodePath("../../Room Complete")
+
+[node name="Room Complete" parent="." node_paths=PackedStringArray("UP_NEIGHBOUR", "DOWN_NEIGHBOUR") instance=ExtResource("2_rfoc0")]
+visible = false
+position = Vector2(0, 80)
+label_group = "shopLeave"
+UP_NEIGHBOUR = NodePath("../Reward")
+DOWN_NEIGHBOUR = NodePath(".")
+
+[node name="Event Text Body" type="Sprite2D" parent="." node_paths=PackedStringArray("RIGHT_NEIGHBOUR")]
+material = SubResource("ShaderMaterial_6itvp")
+position = Vector2(-96, 19)
+texture = ExtResource("3_18uh3")
+script = ExtResource("6_meb5u")
+RIGHT_NEIGHBOUR = NodePath("../Choices/Choice")
+
+[node name="HoverBorder" type="Sprite2D" parent="Event Text Body"]
+visible = false
+material = SubResource("ShaderMaterial_bubsh")
+texture = ExtResource("7_rw3em")
+
+[node name="Choices" type="Node2D" parent="."]
+
+[node name="Choice" parent="Choices" node_paths=PackedStringArray("DOWN_NEIGHBOUR", "LEFT_NEIGHBOUR") instance=ExtResource("4_0li75")]
+position = Vector2(96, -29)
+DOWN_NEIGHBOUR = NodePath("../Choice2")
+LEFT_NEIGHBOUR = NodePath("../../Event Text Body")
+
+[node name="Choice2" parent="Choices" node_paths=PackedStringArray("UP_NEIGHBOUR", "DOWN_NEIGHBOUR", "LEFT_NEIGHBOUR") instance=ExtResource("4_0li75")]
+position = Vector2(96, 20)
+UP_NEIGHBOUR = NodePath("../Choice")
+DOWN_NEIGHBOUR = NodePath("../Choice3")
+LEFT_NEIGHBOUR = NodePath("../../Event Text Body")
+
+[node name="Choice3" parent="Choices" node_paths=PackedStringArray("UP_NEIGHBOUR", "LEFT_NEIGHBOUR") instance=ExtResource("4_0li75")]
+position = Vector2(96, 68)
+UP_NEIGHBOUR = NodePath("../Choice2")
+LEFT_NEIGHBOUR = NodePath("../../Event Text Body")
+
+[editable path="Reward"]

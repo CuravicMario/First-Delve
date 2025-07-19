@@ -1,0 +1,245 @@
+[gd_scene load_steps=19 format=3 uid="uid://b1f4ckpcsnf6p"]
+
+[ext_resource type="Texture2D" uid="uid://bgpji35m5diwo" path="res://Game V2/Sprites/big game mockup-Sheet.png" id="1_0eq08"]
+[ext_resource type="PackedScene" uid="uid://cqsnu3kfj851c" path="res://Game V2/Scenes/UI_canvas_layer.tscn" id="1_feotq"]
+[ext_resource type="Script" path="res://Game V2/scripts/Pixel_Art_Viewport.gd" id="1_wypto"]
+[ext_resource type="PackedScene" uid="uid://34b8fyj557b6" path="res://Game V2/Scenes/player_board.tscn" id="2_l8hus"]
+[ext_resource type="Shader" path="res://Game V2/scripts/Shaders/color_swap.gdshader" id="3_pycti"]
+[ext_resource type="PackedScene" uid="uid://bgkalsj0pbtng" path="res://Game V2/Scenes/settings_btn.tscn" id="3_xbtvd"]
+[ext_resource type="Script" path="res://Game V2/scripts/Background.gd" id="5_a5o1n"]
+[ext_resource type="PackedScene" uid="uid://dsp4ykthglf5y" path="res://Game V2/Scenes/combat.tscn" id="8_8040x"]
+[ext_resource type="PackedScene" uid="uid://de6qrp7m2i15j" path="res://Game V2/Scenes/room_select.tscn" id="8_c2b10"]
+[ext_resource type="PackedScene" uid="uid://bk08oy8jmlr73" path="res://Game V2/Scenes/shop.tscn" id="9_1kcql"]
+[ext_resource type="PackedScene" uid="uid://bcfe0fuoi0gii" path="res://Game V2/Scenes/player_sprite.tscn" id="9_a1hgo"]
+[ext_resource type="Script" path="res://Game V2/scripts/piece_container.gd" id="9_lxwq6"]
+[ext_resource type="PackedScene" uid="uid://b7mctolwahulb" path="res://Game V2/Scenes/event.tscn" id="10_g36uw"]
+[ext_resource type="PackedScene" uid="uid://c710kdk1hi6pa" path="res://Game V2/Scenes/info.tscn" id="11_6kapb"]
+[ext_resource type="Script" path="res://Game V2/scripts/Reward position.gd" id="11_xtewy"]
+[ext_resource type="PackedScene" uid="uid://ceno2ltn178i2" path="res://Game V2/Scenes/tutorial.tscn" id="16_sq37r"]
+[ext_resource type="PackedScene" uid="uid://dxfsdjarhxedr" path="res://Game V2/Scenes/pause_panel.tscn" id="17_drubo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a7ci6"]
+shader = ExtResource("3_pycti")
+shader_parameter/target_color_1 = null
+shader_parameter/replace_color_1 = null
+shader_parameter/target_color_2 = null
+shader_parameter/replace_color_2 = null
+shader_parameter/tolerance = null
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CanvasLayer" parent="." instance=ExtResource("1_feotq")]
+layer = 0
+
+[node name="Pixel Art" type="SubViewportContainer" parent="."]
+offset_right = 640.0
+offset_bottom = 360.0
+stretch = true
+script = ExtResource("1_wypto")
+
+[node name="SubViewport" type="SubViewport" parent="Pixel Art"]
+handle_input_locally = false
+physics_object_picking = true
+size = Vector2i(640, 360)
+render_target_update_mode = 4
+
+[node name="Camera2D" type="Camera2D" parent="Pixel Art/SubViewport"]
+anchor_mode = 0
+
+[node name="Tutorial" parent="Pixel Art/SubViewport/Camera2D" instance=ExtResource("16_sq37r")]
+visible = false
+z_index = 30
+position = Vector2(320, 180)
+
+[node name="Background" type="Sprite2D" parent="Pixel Art/SubViewport/Camera2D"]
+z_index = -15
+material = SubResource("ShaderMaterial_a7ci6")
+position = Vector2(320, 180)
+texture = ExtResource("1_0eq08")
+script = ExtResource("5_a5o1n")
+
+[node name="Info" parent="Pixel Art/SubViewport/Camera2D" instance=ExtResource("11_6kapb")]
+z_index = 0
+position = Vector2(112, 224)
+
+[node name="TextureProgressBar" parent="Pixel Art/SubViewport/Camera2D/Info/HP Bar" index="0"]
+z_index = 0
+
+[node name="Gold" parent="Pixel Art/SubViewport/Camera2D/Info" index="2" node_paths=PackedStringArray("RIGHT_NEIGHBOUR")]
+RIGHT_NEIGHBOUR = NodePath("../../pieces")
+
+[node name="StatsBlock7" parent="Pixel Art/SubViewport/Camera2D/Info/Stats" index="1" node_paths=PackedStringArray("RIGHT_NEIGHBOUR")]
+RIGHT_NEIGHBOUR = NodePath("../../../pieces")
+
+[node name="StatsBlock9" parent="Pixel Art/SubViewport/Camera2D/Info/Stats" index="3" node_paths=PackedStringArray("RIGHT_NEIGHBOUR")]
+RIGHT_NEIGHBOUR = NodePath("../../../pieces")
+
+[node name="StatsBlock11" parent="Pixel Art/SubViewport/Camera2D/Info/Stats" index="5" node_paths=PackedStringArray("RIGHT_NEIGHBOUR")]
+RIGHT_NEIGHBOUR = NodePath("../../../pieces")
+
+[node name="PlayerSprite" parent="Pixel Art/SubViewport/Camera2D" node_paths=PackedStringArray("pos", "combat_controll_node", "gold_popup_pos") instance=ExtResource("9_a1hgo")]
+texture_filter = 1
+pos = NodePath("../Combat/Player pos")
+combat_controll_node = NodePath("../Combat")
+gold_popup_pos = NodePath("../Info/Gold")
+
+[node name="pieces" type="Node2D" parent="Pixel Art/SubViewport/Camera2D" groups=["focusable"]]
+z_index = 2
+script = ExtResource("9_lxwq6")
+
+[node name="PlayerBoard" parent="Pixel Art/SubViewport/Camera2D" instance=ExtResource("2_l8hus")]
+position = Vector2(248, 209)
+WIDTH = 11
+HEIGHT = 4
+CELL_SIZE = 32
+
+[node name="SettingsBtn" parent="Pixel Art/SubViewport/Camera2D" node_paths=PackedStringArray("DOWN_NEIGHBOUR") instance=ExtResource("3_xbtvd")]
+position = Vector2(32, 32)
+DOWN_NEIGHBOUR = NodePath("../Info/Stats/StatsBlock")
+
+[node name="UnsoldItems" type="Node2D" parent="Pixel Art/SubViewport/Camera2D"]
+
+[node name="Combat" parent="Pixel Art/SubViewport/Camera2D" node_paths=PackedStringArray("player") instance=ExtResource("8_8040x")]
+position = Vector2(424, 80)
+player = NodePath("../PlayerSprite")
+
+[node name="CombatStartBtn" parent="Pixel Art/SubViewport/Camera2D/Combat" index="3" node_paths=PackedStringArray("UP_NEIGHBOUR")]
+btn_real_pos = Vector2(424, 180)
+text_id = 2
+UP_NEIGHBOUR = NodePath("../../PlayerSprite")
+
+[node name="Room Complete" parent="Pixel Art/SubViewport/Camera2D/Combat" index="4" node_paths=PackedStringArray("UP_NEIGHBOUR")]
+label_group = "combatleave"
+btn_real_pos = Vector2(424, 180)
+text_id = 63
+UP_NEIGHBOUR = NodePath("../../PlayerSprite")
+
+[node name="NextFloor" parent="Pixel Art/SubViewport/Camera2D/Combat" index="5" node_paths=PackedStringArray("UP_NEIGHBOUR")]
+label_group = "nextfloor"
+btn_real_pos = Vector2(424, 180)
+text_id = 58
+UP_NEIGHBOUR = NodePath("../Reward/TakeBtn")
+
+[node name="Reward" parent="Pixel Art/SubViewport/Camera2D/Combat" index="6" node_paths=PackedStringArray("unclaimed_equipment_pos")]
+unclaimed_equipment_pos = NodePath("../../UnsoldItems")
+
+[node name="TakeBtn" parent="Pixel Art/SubViewport/Camera2D/Combat/Reward" index="2" node_paths=PackedStringArray("pieces")]
+text_id = 62
+pieces = NodePath("../../../pieces")
+
+[node name="ReturnButton" parent="Pixel Art/SubViewport/Camera2D/Combat/Defeat" index="1" node_paths=PackedStringArray("VIEWPORT", "DOWN_NEIGHBOUR")]
+VIEWPORT = NodePath("../../../../..")
+label_group = "defeat"
+btn_real_pos = Vector2(424, 104)
+text_id = 59
+DOWN_NEIGHBOUR = NodePath("../../../pieces")
+
+[node name="Shop" parent="Pixel Art/SubViewport/Camera2D" node_paths=PackedStringArray("unsold_items") instance=ExtResource("9_1kcql")]
+visible = false
+position = Vector2(424, 80)
+unsold_items = NodePath("../UnsoldItems")
+
+[node name="ShopSlot" parent="Pixel Art/SubViewport/Camera2D/Shop" index="1" node_paths=PackedStringArray("player", "pieces")]
+player = NodePath("../../PlayerSprite")
+pieces = NodePath("../../pieces")
+
+[node name="ShopSlot2" parent="Pixel Art/SubViewport/Camera2D/Shop" index="2" node_paths=PackedStringArray("player", "pieces")]
+player = NodePath("../../PlayerSprite")
+pieces = NodePath("../../pieces")
+
+[node name="ShopSlot3" parent="Pixel Art/SubViewport/Camera2D/Shop" index="3" node_paths=PackedStringArray("player", "pieces")]
+player = NodePath("../../PlayerSprite")
+pieces = NodePath("../../pieces")
+
+[node name="Room Complete" parent="Pixel Art/SubViewport/Camera2D/Shop" index="4"]
+label_group = "shopLeave"
+btn_real_pos = Vector2(424, 160)
+text_id = 63
+
+[node name="Sell" parent="Pixel Art/SubViewport/Camera2D/Shop" index="5"]
+z_index = 11
+
+[node name="Reroll" parent="Pixel Art/SubViewport/Camera2D/Shop" index="6" node_paths=PackedStringArray("player")]
+player = NodePath("../../PlayerSprite")
+
+[node name="Event" parent="Pixel Art/SubViewport/Camera2D" node_paths=PackedStringArray("player", "room_select") instance=ExtResource("10_g36uw")]
+visible = false
+position = Vector2(424, 80)
+event_group_name = "event"
+player = NodePath("../PlayerSprite")
+room_select = NodePath("../RoomSelect")
+
+[node name="Reward" parent="Pixel Art/SubViewport/Camera2D/Event" index="1" node_paths=PackedStringArray("unclaimed_equipment_pos")]
+unclaimed_equipment_pos = NodePath("../../UnsoldItems")
+
+[node name="Reward position" parent="Pixel Art/SubViewport/Camera2D/Event/Reward" index="1"]
+script = ExtResource("11_xtewy")
+
+[node name="TakeBtn" parent="Pixel Art/SubViewport/Camera2D/Event/Reward" index="2" node_paths=PackedStringArray("pieces")]
+text_id = 62
+pieces = NodePath("../../../pieces")
+
+[node name="Room Complete" parent="Pixel Art/SubViewport/Camera2D/Event" index="2"]
+visible = true
+btn_real_pos = Vector2(424, 160)
+text_id = 63
+
+[node name="RoomSelect" parent="Pixel Art/SubViewport/Camera2D" instance=ExtResource("8_c2b10")]
+visible = false
+position = Vector2(424, 80)
+
+[node name="Pause" parent="Pixel Art/SubViewport/Camera2D" instance=ExtResource("17_drubo")]
+visible = false
+position = Vector2(320, 180)
+
+[node name="Resume" parent="Pixel Art/SubViewport/Camera2D/Pause" index="2"]
+btn_real_pos = Vector2(320, 132)
+
+[node name="MainMenu" parent="Pixel Art/SubViewport/Camera2D/Pause" index="3" node_paths=PackedStringArray("VIEWPORT")]
+VIEWPORT = NodePath("../../../..")
+btn_real_pos = Vector2(320, 180)
+
+[node name="Exit" parent="Pixel Art/SubViewport/Camera2D/Pause" index="4" node_paths=PackedStringArray("VIEWPORT")]
+VIEWPORT = NodePath("../../../..")
+btn_real_pos = Vector2(320, 228)
+
+[node name="RightBlocker" parent="Pixel Art/SubViewport/Camera2D/Pause" index="5"]
+btn_real_pos = Vector2(397, 180)
+
+[connection signal="child_entered_tree" from="Pixel Art/SubViewport/Camera2D/pieces" to="Pixel Art/SubViewport/Camera2D/pieces" method="_on_child_entered_tree" flags=18]
+[connection signal="child_order_changed" from="Pixel Art/SubViewport/Camera2D/pieces" to="Pixel Art/SubViewport/Camera2D/pieces" method="_on_child_order_changed" flags=18]
+
+[editable path="CanvasLayer"]
+[editable path="CanvasLayer/Equipment"]
+[editable path="CanvasLayer/PauseRBlocker"]
+[editable path="CanvasLayer/Tutorial"]
+[editable path="CanvasLayer/Price"]
+[editable path="CanvasLayer/Price2"]
+[editable path="CanvasLayer/Price3"]
+[editable path="CanvasLayer/Sell"]
+[editable path="CanvasLayer/EventBodyText"]
+[editable path="CanvasLayer/Choice1"]
+[editable path="CanvasLayer/Choice2"]
+[editable path="CanvasLayer/Choice3"]
+[editable path="CanvasLayer/Stats_discription"]
+[editable path="CanvasLayer/RewardText"]
+[editable path="CanvasLayer/DefeatText"]
+[editable path="CanvasLayer/Reroll"]
+[editable path="Pixel Art/SubViewport/Camera2D/Info"]
+[editable path="Pixel Art/SubViewport/Camera2D/Info/Gold"]
+[editable path="Pixel Art/SubViewport/Camera2D/Info/Gold/Hover"]
+[editable path="Pixel Art/SubViewport/Camera2D/Combat"]
+[editable path="Pixel Art/SubViewport/Camera2D/Combat/Reward"]
+[editable path="Pixel Art/SubViewport/Camera2D/Combat/Defeat"]
+[editable path="Pixel Art/SubViewport/Camera2D/Shop"]
+[editable path="Pixel Art/SubViewport/Camera2D/Shop/ShopSlot"]
+[editable path="Pixel Art/SubViewport/Camera2D/Shop/ShopSlot2"]
+[editable path="Pixel Art/SubViewport/Camera2D/Shop/ShopSlot3"]
+[editable path="Pixel Art/SubViewport/Camera2D/Shop/Reroll"]
+[editable path="Pixel Art/SubViewport/Camera2D/Shop/Reroll/Gold"]
+[editable path="Pixel Art/SubViewport/Camera2D/Shop/Reroll/Gold/Hover"]
+[editable path="Pixel Art/SubViewport/Camera2D/Event"]
+[editable path="Pixel Art/SubViewport/Camera2D/Event/Reward"]
+[editable path="Pixel Art/SubViewport/Camera2D/RoomSelect"]
+[editable path="Pixel Art/SubViewport/Camera2D/RoomSelect/Boss Icon"]
+[editable path="Pixel Art/SubViewport/Camera2D/Pause"]

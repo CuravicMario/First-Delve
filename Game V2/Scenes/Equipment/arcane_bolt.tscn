@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=3 uid="uid://q0k7esdg5wy1"]
+
+[ext_resource type="Script" path="res://Game V2/scripts/arcane_bolt.gd" id="1_wtja3"]
+[ext_resource type="Script" path="res://Game V2/scripts/Parts.gd" id="2_tesrr"]
+[ext_resource type="Shader" path="res://Game V2/scripts/Shaders/color_swap.gdshader" id="3_ee63d"]
+[ext_resource type="Texture2D" uid="uid://coaa6rvyiaiiq" path="res://Game V2/Sprites/Equipment/arcane bolt.png" id="4_gx5gn"]
+[ext_resource type="PackedScene" uid="uid://bb8uimg5kiniu" path="res://Game V2/Scenes/hover.tscn" id="5_eupb2"]
+[ext_resource type="Material" uid="uid://bsbussaclyott" path="res://Game V2/scripts/Shaders/Material/color_changer.tres" id="6_rfxho"]
+[ext_resource type="Texture2D" uid="uid://dl662fivjybb3" path="res://Game V2/Sprites/Equipment/1x1 hover border.png" id="7_w4wol"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3qhij"]
+shader = ExtResource("3_ee63d")
+shader_parameter/target_color_1 = Color(0.921569, 0.898039, 0.807843, 1)
+shader_parameter/replace_color_1 = Color(0.921569, 0.898039, 0.807843, 1)
+shader_parameter/target_color_2 = Color(0.180392, 0.188235, 0.215686, 1)
+shader_parameter/replace_color_2 = Color(0.180392, 0.188235, 0.215686, 1)
+shader_parameter/tolerance = null
+
+[node name="ArcaneBolt" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_wtja3")
+dmg = 20
+attack_to_trigger = 2
+
+[node name="Parts" type="Node2D" parent="."]
+script = ExtResource("2_tesrr")
+
+[node name="Part 1" type="Sprite2D" parent="Parts"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_3qhij")
+texture = ExtResource("4_gx5gn")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(-16, 16, 16, 16, 16, -16, -16, -16)
+
+[node name="Hover" parent="." instance=ExtResource("5_eupb2")]
+visible = false
+position = Vector2(0, -58)
+
+[node name="Hover_border" type="Sprite2D" parent="."]
+visible = false
+z_index = 5
+texture_filter = 1
+material = ExtResource("6_rfxho")
+texture = ExtResource("7_w4wol")
+
+[node name="SwitchPosition" type="Marker2D" parent="."]
+position = Vector2(0, 58)
+
+[node name="DefaultPosition" type="Marker2D" parent="."]
+position = Vector2(0, -58)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

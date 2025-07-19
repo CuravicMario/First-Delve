@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cmxk21bg0pni"
+path="res://.godot/imported/Troubadeck 10 The Answer is Yes.ogg-872c4737b8fc8dec9d0685376e37aa0d.oggvorbisstr"
+
+[deps]
+
+source_file="res://Game V2/Sounds/Music/Troubadeck 10 The Answer is Yes.ogg"
+dest_files=["res://.godot/imported/Troubadeck 10 The Answer is Yes.ogg-872c4737b8fc8dec9d0685376e37aa0d.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

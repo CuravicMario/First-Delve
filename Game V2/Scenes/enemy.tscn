@@ -1,0 +1,114 @@
+[gd_scene load_steps=11 format=3 uid="uid://bswvh1tgsf5w2"]
+
+[ext_resource type="Shader" path="res://Game V2/scripts/Shaders/color_swap.gdshader" id="1_cism7"]
+[ext_resource type="Script" path="res://Game V2/scripts/enemy.gd" id="1_n03ge"]
+[ext_resource type="Texture2D" uid="uid://chdn4ft2smhvp" path="res://Game V2/Sprites/enemy atk timer bar.png" id="2_rwegg"]
+[ext_resource type="Texture2D" uid="uid://bb0wi8wqthfj0" path="res://Game V2/Sprites/enemy atk timer fill.png" id="3_cv3lt"]
+[ext_resource type="Texture2D" uid="uid://dl662fivjybb3" path="res://Game V2/Sprites/Equipment/1x1 hover border.png" id="4_gus8k"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yybs8"]
+shader = ExtResource("1_cism7")
+shader_parameter/target_color_1 = null
+shader_parameter/replace_color_1 = null
+shader_parameter/target_color_2 = null
+shader_parameter/replace_color_2 = null
+shader_parameter/tolerance = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_du25e"]
+shader = ExtResource("1_cism7")
+shader_parameter/target_color_1 = null
+shader_parameter/replace_color_1 = null
+shader_parameter/target_color_2 = null
+shader_parameter/replace_color_2 = null
+shader_parameter/tolerance = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yywbm"]
+shader = ExtResource("1_cism7")
+shader_parameter/target_color_1 = null
+shader_parameter/replace_color_1 = null
+shader_parameter/target_color_2 = null
+shader_parameter/replace_color_2 = null
+shader_parameter/tolerance = null
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_65d7h"]
+size = Vector2(32, 32)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1llx6"]
+shader = ExtResource("1_cism7")
+shader_parameter/target_color_1 = null
+shader_parameter/replace_color_1 = null
+shader_parameter/target_color_2 = null
+shader_parameter/replace_color_2 = null
+shader_parameter/tolerance = null
+
+[node name="Enemy" type="Sprite2D"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_yybs8")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
+script = ExtResource("1_n03ge")
+
+[node name="Health bar" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_du25e")
+position = Vector2(0, 20)
+texture = ExtResource("2_rwegg")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Health bar"]
+self_modulate = Color(1, 0.14902, 0.164706, 1)
+z_index = -1
+anchors_preset = -1
+anchor_left = 0.0666667
+anchor_top = 0.25
+anchor_right = 0.933333
+anchor_bottom = 0.75
+offset_left = -15.0
+offset_top = -4.0
+offset_right = -15.0
+offset_bottom = -4.0
+size_flags_horizontal = 4
+value = 63.0
+texture_progress = ExtResource("3_cv3lt")
+metadata/_edit_use_anchors_ = true
+
+[node name="Timer Border" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_yywbm")
+position = Vector2(0, 25)
+texture = ExtResource("2_rwegg")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Timer Border"]
+z_index = -1
+anchors_preset = -1
+anchor_left = 0.0666667
+anchor_top = 0.25
+anchor_right = 0.933333
+anchor_bottom = 0.75
+offset_left = -15.0
+offset_top = -4.0
+offset_right = -15.0
+offset_bottom = -4.0
+size_flags_horizontal = 4
+value = 63.0
+texture_progress = ExtResource("3_cv3lt")
+metadata/_edit_use_anchors_ = true
+
+[node name="Atk Progress" type="Timer" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_65d7h")
+
+[node name="Hover_border" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+material = SubResource("ShaderMaterial_1llx6")
+texture = ExtResource("4_gus8k")
+
+[node name="DamagePopupPos" type="Marker2D" parent="."]
+position = Vector2(13, -49)
+
+[connection signal="timeout" from="Atk Progress" to="." method="_on_atk_progress_timeout"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
