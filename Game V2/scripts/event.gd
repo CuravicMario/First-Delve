@@ -55,7 +55,7 @@ func construct_an_event(id):
 	event_texts[0].position_self(self.position + body_text.position)
 	
 	var full_text = "[color="+Style.primary_color.to_html(false)+"][color="+Style.primary_color.to_html(false)+"][p margins=20,20,20,20][center][font_size=40]%s[/font_size]" % TextManager.get_text_by_id(Global.event_db[id - 1]["title"])
-	full_text += "[img color="+Style.primary_color.to_html(false)+"]res://Sprites/tests/main menu/event_title_divider.png[/img][/center]"
+	full_text += "\n[img color="+Style.primary_color.to_html(false)+"]res://Sprites/tests/main menu/event_title_divider.png[/img][/center]"
 	full_text += "[font_size=20]%s[/font_size][/p][/color]" % TextManager.get_text_by_id(Global.event_db[id - 1]["body"])
 	
 	event_texts[0].text.text  = full_text.replace("\\n", "\n")
